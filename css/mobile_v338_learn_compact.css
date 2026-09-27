@@ -1,0 +1,110 @@
+
+/* V338 — 모바일 학습자료 UX 압축
+   PC(901px+) 변경 없음.
+   V337의 2x3 학습카드 + 상세 확대보기는 그대로 유지.
+*/
+@media (max-width:900px){
+
+  /* 1) 학년 선택 3개: 작게 3등분하지 않고 가로 스와이프 */
+  #learn .v129-grade-card-row{
+    display:flex !important;
+    grid-template-columns:none !important;
+    gap:10px !important;
+    width:100% !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    padding:4px 14px 10px !important;
+    margin:0 !important;
+    scroll-snap-type:x mandatory !important;
+    scroll-padding-left:14px !important;
+    -webkit-overflow-scrolling:touch !important;
+    scrollbar-width:none !important;
+  }
+  #learn .v129-grade-card-row::-webkit-scrollbar{
+    display:none !important;
+  }
+
+  #learn .v129-grade-card-row > *{
+    flex:0 0 74% !important;
+    width:74% !important;
+    max-width:290px !important;
+    min-width:245px !important;
+    scroll-snap-align:start !important;
+    margin:0 !important;
+  }
+
+  #learn .v129-grade-card-row img{
+    width:100% !important;
+    height:auto !important;
+    display:block !important;
+  }
+
+  /* 2) 선택된 학년 소개의 큰 일러스트 제거.
+        텍스트 영역은 남겨 콘텐츠 중심으로 전환 */
+  #learn #lessonBody .v139Head.v145Head img,
+  #learn #lessonBody .v139Head.v145Head picture,
+  #learn #lessonBody .v139Head.v145Head svg,
+  #learn #lessonBody .v139Head.v145Head [class*="art"],
+  #learn #lessonBody .v139Head.v145Head [class*="Art"],
+  #learn #lessonBody .v139Head.v145Head [class*="illust"],
+  #learn #lessonBody .v139Head.v145Head [class*="Illust"]{
+    display:none !important;
+  }
+
+  #learn #lessonBody .v139Head.v145Head{
+    min-height:0 !important;
+    height:auto !important;
+    margin:8px 8px 4px !important;
+    padding:13px 14px !important;
+    border-radius:14px !important;
+    background:#f5f9fc !important;
+    overflow:visible !important;
+  }
+
+  /* 소개 영역 안의 제목/문구를 모바일에서 읽기 좋게 */
+  #learn #lessonBody .v139Head.v145Head h1,
+  #learn #lessonBody .v139Head.v145Head h2,
+  #learn #lessonBody .v139Head.v145Head h3,
+  #learn #lessonBody .v139Head.v145Head strong{
+    margin:0 0 5px !important;
+    font-size:16px !important;
+    line-height:1.3 !important;
+    word-break:keep-all !important;
+  }
+
+  #learn #lessonBody .v139Head.v145Head p,
+  #learn #lessonBody .v139Head.v145Head span{
+    font-size:12px !important;
+    line-height:1.5 !important;
+    word-break:keep-all !important;
+    overflow-wrap:break-word !important;
+  }
+
+  /* 혹시 배경이미지로 들어간 소개 일러스트도 제거 */
+  #learn #lessonBody .v139Head.v145Head{
+    background-image:none !important;
+  }
+
+  /* 3) V337 2열 x 3행 유지 + 소개 영역과 간격 축소 */
+  #learn #lessonBody .v139Grid{
+    margin-top:4px !important;
+  }
+}
+
+/* 360px급에서는 스와이프 카드 폭을 조금 줄여 다음 카드가 보이게 */
+@media (max-width:374px){
+  #learn .v129-grade-card-row > *{
+    flex-basis:72% !important;
+    width:72% !important;
+    min-width:225px !important;
+  }
+}
+
+/* 415~430px에서는 카드가 너무 넓어지지 않게 */
+@media (min-width:415px) and (max-width:900px){
+  #learn .v129-grade-card-row > *{
+    flex-basis:70% !important;
+    width:70% !important;
+    max-width:300px !important;
+  }
+}

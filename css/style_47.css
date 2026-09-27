@@ -1,0 +1,30 @@
+
+#learn .v157HighWrap{max-width:1180px;margin:24px auto 0}
+#learn .v157HighGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#learn .v157HighCard{
+  position:relative;min-height:138px;padding:24px 72px 22px 26px;
+  border:1px solid #dceaf4;border-radius:22px;background:#fff;
+  box-shadow:0 8px 22px rgba(35,76,112,.08);cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+#learn .v157HighCard:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(35,76,112,.13);border-color:#b8d9ef}
+#learn .v157HighNo{
+  display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;
+  border-radius:50%;background:#1685d1;color:#fff;font-weight:900;font-size:16px;margin-bottom:10px
+}
+#learn .v157HighCard h4{margin:0 0 7px;color:#123f67;font-size:22px;line-height:1.25;letter-spacing:-.6px}
+#learn .v157HighCard p{margin:0;color:#61788c;font-size:14px;line-height:1.55}
+#learn .v157HighArrow{
+  position:absolute;right:24px;bottom:22px;width:36px;height:36px;border-radius:50%;
+  background:#eef7fd
+}
+#learn .v157HighArrow:after{
+  content:"";position:absolute;left:13px;top:11px;width:9px;height:9px;
+  border-top:2px solid #1685d1;border-right:2px solid #1685d1;transform:rotate(45deg)
+}
+#learn .v157HighNote{margin:20px 2px 0;color:#6d8294;font-size:13px;text-align:center}
+@media(max-width:760px){
+ #learn .v157HighGrid{grid-template-columns:1fr}
+ #learn .v157HighCard{min-height:124px;padding:20px 62px 18px 20px}
+ #learn .v157HighCard h4{font-size:19px}
+}

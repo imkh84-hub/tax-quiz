@@ -1,0 +1,43 @@
+/* V219: 학습자료 메인 배너 — 글자 없는 기존 일러스트 + 독립 HTML 텍스트 */
+#learn > .learnHeroV219{
+  position:relative; isolation:isolate; height:360px;
+  padding:38px 46px; align-items:center;
+  background:#eefaff url('../images/learn_hero_v219.png') center center / cover no-repeat !important;
+  border-radius:22px; overflow:hidden;
+}
+#learn > .learnHeroV219::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(247,253,255,.83) 0%,rgba(247,253,255,.65) 28%,rgba(247,253,255,.08) 53%,transparent 70%);
+}
+#learn > .learnHeroV219::after{display:none !important}
+#learn > .learnHeroV219 .heroCopy{position:relative;z-index:1;width:56%;max-width:660px;padding:0;margin:0}
+#learn > .learnHeroV219 .eyebrow{color:#1684c9;font-weight:900;font-size:14px;letter-spacing:.015em}
+#learn > .learnHeroV219 h2{font-family:'Arial Rounded MT Bold','NanumSquareRound','Pretendard','Noto Sans KR','Malgun Gothic',sans-serif;font-size:clamp(30px,3.3vw,45px);font-weight:900;line-height:1.24;letter-spacing:-.055em;color:#173955;margin:17px 0 14px;max-width:none}
+#learn > .learnHeroV219 h2 strong{color:#1678c7;font-weight:900}
+#learn > .learnHeroV219 p{font-size:16px;font-weight:650;line-height:1.7;color:#476780;max-width:none;margin:0}
+@media(max-width:700px){
+  #learn > .learnHeroV219{height:420px;padding:24px 21px;align-items:flex-start;background-position:62% center !important}
+  #learn > .learnHeroV219::before{background:linear-gradient(180deg,rgba(247,253,255,.96) 0%,rgba(247,253,255,.92) 27%,rgba(247,253,255,.30) 51%,transparent 76%)}
+  #learn > .learnHeroV219 .heroCopy{width:100%;max-width:none}
+  #learn > .learnHeroV219 .eyebrow{font-size:12px}
+  #learn > .learnHeroV219 h2{font-size:clamp(25px,6.8vw,34px);line-height:1.28;margin:10px 0;max-width:none}
+  #learn > .learnHeroV219 p{font-size:12px;max-width:none}
+}
+
+/* V220: style_23.css의 더 높은 선택자 우선순위로 구 이미지가 남던 문제 수정 */
+#learn > .hero.sky.learnHeroV219 {
+  background-image:url('../images/learn_hero_v219.png') !important;
+  background-color:#f0faff !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+}
+#learn > .hero.sky.learnHeroV219::before {
+  background:linear-gradient(90deg,rgba(247,253,255,.91) 0%,rgba(247,253,255,.72) 28%,rgba(247,253,255,.08) 53%,transparent 70%) !important;
+}
+#learn > .hero.sky.learnHeroV219 .heroCopy {width:56% !important;max-width:660px !important;}
+@media(max-width:700px){
+  #learn > .hero.sky.learnHeroV219{background-position:62% center !important;}
+  #learn > .hero.sky.learnHeroV219::before{background:linear-gradient(180deg,rgba(247,253,255,.97) 0%,rgba(247,253,255,.91) 27%,rgba(247,253,255,.25) 54%,transparent 78%) !important;}
+  #learn > .hero.sky.learnHeroV219 .heroCopy{width:100% !important;}
+}

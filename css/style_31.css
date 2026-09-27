@@ -1,0 +1,30 @@
+
+#learn .v128-learning-grade-heading{
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  margin:18px 0 14px 0 !important;
+  padding:0 !important;
+  white-space:nowrap !important;
+  line-height:1 !important;
+}
+#learn .v128-cap{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex:0 0 auto !important;
+}
+#learn .v128-learning-grade-heading strong{
+  color:#073b69 !important;
+  font-size:25px !important;
+  font-weight:800 !important;
+  letter-spacing:-1px !important;
+  line-height:1.2 !important;
+}
+#learn .v128-learning-grade-heading .v128-sub{
+  color:#5f7893 !important;
+  font-size:15px !important;
+  font-weight:500 !important;
+  line-height:1.3 !important;
+  letter-spacing:-.3px !important;
+}

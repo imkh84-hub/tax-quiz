@@ -1,0 +1,138 @@
+
+/* V344 — 학습자료 모바일 정리
+   1. 안내바↔카드 간격 축소
+   2. 고학년: 1~6 컨테이너 + 7/8 가로형 별도, 8번 좌우 여백 보정
+   3. 중학생: 1~8 모두 동일 컨테이너 안 2열×4행
+   4. 세 학년 팝업 하단 nav 폭/정렬 완전 통일
+*/
+@media (max-width:900px){
+
+  /* 안내바 아래 여백 최소화 */
+  #learn #lessonBody .v139Head.v145Head > .v339MobileInfo{
+    min-height:54px !important;
+    padding:8px 10px !important;
+  }
+
+  /* 저학년/고학년/중학생 카드 컨테이너 상단 패딩 동일 */
+  #learn #lessonBody .v139Grid,
+  #learn #lessonBody .v168HighGrid,
+  #learn #lessonBody .v199MidGrid{
+    padding-top:6px !important;
+    gap:8px !important;
+  }
+
+  /* ===== 고학년 7/8 ===== */
+  #learn #lessonBody .v343HighWideGrid{
+    margin:8px 8px 10px !important;
+    gap:8px !important;
+  }
+  #learn #lessonBody .v343HighWideGrid .v168HighCard{
+    width:100% !important;
+    overflow:hidden !important;
+    border-radius:11px !important;
+    background:transparent !important;
+  }
+  #learn #lessonBody .v343HighWideGrid .v168HighCard img{
+    width:100% !important;
+    height:100% !important;
+    display:block !important;
+    object-fit:cover !important;
+    object-position:center !important;
+    transform:none !important;
+  }
+
+  /* 8번 원본 내부의 좌우 빈 공간을 모바일에서만 미세 보정 */
+  #learn #lessonBody .v343HighWideGrid .v168HighCard:nth-child(2) img{
+    width:104% !important;
+    max-width:none !important;
+    margin-left:-2% !important;
+  }
+
+  /* ===== 중학생: 7/8도 1~6과 같은 2열 규격 ===== */
+  #learn #lessonBody .v206MidWideGrid{
+    display:contents !important;
+  }
+
+  /* JS가 합친 뒤의 중학생 통합 grid */
+  #learn #lessonBody .v344MiddleUnified{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+    margin:0 8px 10px !important;
+    padding:6px 10px 10px !important;
+    border:1px solid #e1ebf3 !important;
+    border-top:0 !important;
+    border-radius:0 0 16px 16px !important;
+    background:#fff !important;
+    box-shadow:0 5px 14px rgba(30,78,112,.05) !important;
+  }
+  #learn #lessonBody .v344MiddleUnified .v199MidCard{
+    width:100% !important;
+    min-width:0 !important;
+    margin:0 !important;
+    overflow:hidden !important;
+    border-radius:11px !important;
+  }
+  #learn #lessonBody .v344MiddleUnified .v199MidCard img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    object-fit:cover !important;
+  }
+
+  /* ===== 세 학년 모달 nav 완전 통일 ===== */
+  #v340LearnModal .v153LessonNav,
+  #v340LearnModal .v172HighNav{
+    display:grid !important;
+    grid-template-columns:1fr auto 1fr !important;
+    align-items:center !important;
+    width:100% !important;
+    max-width:none !important;
+    box-sizing:border-box !important;
+    gap:0 !important;
+    margin:12px 0 0 !important;
+    padding:9px 2px 1px !important;
+    border-top:1px solid #e8eef2 !important;
+  }
+
+  #v340LearnModal .v153LessonNav button,
+  #v340LearnModal .v172HighNav button{
+    width:auto !important;
+    min-width:0 !important;
+    min-height:34px !important;
+    margin:0 !important;
+    padding:0 6px !important;
+    border:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif !important;
+    font-size:11px !important;
+    font-weight:600 !important;
+    color:#657d8b !important;
+    white-space:nowrap !important;
+  }
+
+  #v340LearnModal .v153LessonNav button:first-child,
+  #v340LearnModal .v172HighNav button:first-child{
+    justify-self:start !important;
+    text-align:left !important;
+  }
+
+  #v340LearnModal .v153LessonNav button:nth-child(2),
+  #v340LearnModal .v172HighNav button:nth-child(2){
+    justify-self:center !important;
+    min-width:58px !important;
+    padding:0 13px !important;
+    border:1px solid #dceaf2 !important;
+    border-radius:999px !important;
+    background:#eef7fc !important;
+    color:#276c98 !important;
+    font-weight:700 !important;
+  }
+
+  #v340LearnModal .v153LessonNav button:last-child,
+  #v340LearnModal .v172HighNav button:last-child{
+    justify-self:end !important;
+    text-align:right !important;
+  }
+}

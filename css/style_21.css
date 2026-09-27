@@ -1,0 +1,46 @@
+
+/* 홈/세금교실 등 전체 화면: 실제 클릭 가능한 요소에 일관된 인터랙션 적용 */
+@media (hover:hover) and (pointer:fine){
+  /* 카드·타일·큰 링크 */
+  :is(a,button,[role="button"],[onclick]):not(.v108-intro-close):not(.v108-back-btn):not(.v108-start-btn){
+    transition:transform .20s ease, box-shadow .20s ease, filter .20s ease !important;
+  }
+
+  /* 큰 카드류는 살짝 위로 */
+  :is(.card,.menu-card,.home-card,.quick-card,.feature-card,.v85-grade-card,
+      a[class*="card"],button[class*="card"],[onclick][class*="card"]):hover{
+    transform:translateY(-5px) !important;
+    box-shadow:0 12px 28px rgba(25,61,92,.14) !important;
+  }
+
+  /* 일반 버튼·메뉴·클릭 링크는 과하지 않게 */
+  :is(button,a,[role="button"],[onclick]):not([class*="card"]):not(.v85-grade-card):hover{
+    transform:translateY(-2px);
+  }
+
+  /* 카드 안 화살표는 hover 시 오른쪽으로 살짝 이동 */
+  .v85-grade-card:hover :is(.v88-low-arrow,.v101-high-arrow,.v102-middle-arrow),
+  :is(a,button,[onclick])[class*="card"]:hover :is([class*="arrow"],.arrow){
+    transform:translateX(3px) !important;
+    transition:transform .20s ease !important;
+  }
+}
+
+/* 클릭 가능한 요소임을 명확하게 */
+:is(button,[role="button"],[onclick],a[href]){
+  cursor:pointer;
+}
+
+/* 키보드 접근 시에도 클릭 위치가 분명하도록 */
+:is(button,[role="button"],[onclick],a[href]):focus-visible{
+  outline:3px solid rgba(8,125,240,.28) !important;
+  outline-offset:3px !important;
+}
+
+/* 모션 최소화 설정 존중 */
+@media (prefers-reduced-motion:reduce){
+  :is(a,button,[role="button"],[onclick]){
+    transition:none !important;
+    transform:none !important;
+  }
+}

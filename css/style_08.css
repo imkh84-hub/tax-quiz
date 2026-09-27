@@ -1,0 +1,19 @@
+
+/* 캐릭터와 확실히 분리되도록 저학년 문구를 추가로 오른쪽 이동 */
+#course .v88-low-copy{
+  left:59% !important;
+  top:34px !important;
+}
+#course .v88-low-title{gap:7px !important;}
+#course .v90-sprout{
+  width:27px;height:27px;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#38b86b;
+  flex:0 0 27px;
+  transform:translateY(-1px);
+}
+#course .v90-sprout svg{display:block;width:100%;height:100%;}
+#course .v88-low-arrow{
+  right:14px !important;
+  bottom:18px !important;
+}

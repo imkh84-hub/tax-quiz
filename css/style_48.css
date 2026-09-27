@@ -1,0 +1,11 @@
+
+/* 학년 선택 후 표시되는 공통 중간 배너: 네 모서리 모두 동일하게 라운드 처리 */
+#learn #lessonBody .v139Head.v145Head{
+  border-radius:24px !important;
+  overflow:hidden !important;
+  clip-path:inset(0 round 24px) !important;
+}
+#learn #lessonBody .v139Head.v145Head::before,
+#learn #lessonBody .v139Head.v145Head::after{
+  border-radius:inherit !important;
+}

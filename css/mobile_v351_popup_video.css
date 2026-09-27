@@ -1,0 +1,77 @@
+
+@media (max-width:900px){
+  /* ===== 학습자료 팝업 ===== */
+  #v351LearnModal{
+    position:fixed; inset:0; z-index:99999; display:none;
+    align-items:center; justify-content:center;
+    padding:14px; box-sizing:border-box;
+    background:rgba(20,39,52,.48); backdrop-filter:blur(6px);
+  }
+  #v351LearnModal.open{display:flex}
+  #v351LearnModal .v351Dialog{
+    position:relative; width:min(100%,430px); max-height:88vh;
+    overflow:auto; box-sizing:border-box;
+    padding:12px; border-radius:20px; background:#fff;
+    box-shadow:0 18px 50px rgba(14,39,56,.24);
+  }
+  #v351LearnModal .v351Close{
+    position:absolute; right:16px; top:16px; z-index:2;
+    width:38px; height:38px; border:1px solid #d8e6ee;
+    border-radius:50%; background:rgba(255,255,255,.94);
+    font-size:25px; line-height:34px; color:#56707e;
+  }
+  #v351LearnModal .v351Content img{display:block;width:100%;height:auto;border-radius:13px}
+  #v351LearnModal .v351Nav{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    margin-top:11px;padding-top:9px;border-top:1px solid #e8eef2;
+  }
+  #v351LearnModal .v351Nav button{
+    border:0;background:transparent;min-height:34px;padding:0 7px;
+    font:600 11px Pretendard,"Noto Sans KR",sans-serif;color:#657d8b;
+  }
+  #v351LearnModal .v351Nav button:first-child{justify-self:start}
+  #v351LearnModal .v351Nav button:nth-child(2){
+    justify-self:center;min-width:58px;padding:0 13px;border:1px solid #dceaf2;
+    border-radius:999px;background:#eef7fc;color:#276c98;font-weight:700
+  }
+  #v351LearnModal .v351Nav button:last-child{justify-self:end}
+  #v351LearnModal .v351Nav button:disabled{opacity:.28}
+
+  /* ===== 교육영상 모바일 ===== */
+  #video .v351VideoMobile{display:block}
+  #video .v351VideoOriginal{display:none!important}
+  #video .v351VideoTabs{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+    margin:8px 8px 12px;padding:4px;border-radius:14px;background:#f1f6f9;
+  }
+  #video .v351VideoTab{
+    min-width:0;height:38px;padding:0 5px;border:0;border-radius:10px;
+    background:transparent;color:#647987;
+    font:700 11px Pretendard,"Noto Sans KR",sans-serif;white-space:nowrap;
+  }
+  #video .v351VideoTab.active{background:#fff;color:#176c9f;box-shadow:0 2px 8px rgba(25,78,110,.10)}
+  #video .v351VideoGrid{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;
+    margin:0 8px 16px;
+  }
+  #video .v351VideoCard{
+    overflow:hidden;border:1px solid #e2ebf0;border-radius:15px;background:#fff;
+    box-shadow:0 4px 13px rgba(32,74,101,.07);
+  }
+  #video .v351VideoCard img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  #video .v351VideoMeta{padding:9px 9px 10px}
+  #video .v351VideoTitle{
+    min-height:34px;margin:0;color:#183f5c;font:800 12px/1.38 Pretendard,"Noto Sans KR",sans-serif;
+    word-break:keep-all;overflow-wrap:break-word;
+  }
+  #video .v351VideoGo{
+    display:flex;align-items:center;justify-content:space-between;margin-top:7px;
+    color:#2675a5;font:700 10px Pretendard,"Noto Sans KR",sans-serif;
+  }
+  #video .v351VideoEmpty{
+    grid-column:1/-1;padding:24px 12px;text-align:center;color:#718794;font-size:12px;
+  }
+}
+@media (min-width:901px){
+  #video .v351VideoMobile{display:none!important}
+}

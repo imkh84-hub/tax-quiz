@@ -1,0 +1,77 @@
+
+/* V353: education video mobile UI exists directly in HTML.
+   No load/setTimeout/build dependency. */
+.v353VideoMobile{display:none}
+
+@media (max-width:900px){
+  /* Hide old mobile/desktop video cards + old footnote only on mobile */
+  #video .v223VideoGradeGrid,
+  #video .v223VideoGradeNote,
+  #video .v351VideoMobile,
+  #video .v352VideoMobile{
+    display:none!important;
+  }
+
+  #video .v353VideoMobile{
+    display:block!important;
+    margin:8px 8px 18px;
+  }
+
+  #video .v353OfficialGuide{
+    display:flex;align-items:center;gap:9px;
+    margin:0 0 10px;padding:10px 11px;
+    border:1px solid #dcebf3;border-radius:13px;
+    background:#f7fbfd;color:#587080;
+    font:600 11px/1.45 Pretendard,"Noto Sans KR","Malgun Gothic",sans-serif;
+  }
+  #video .v353GuideIcon{
+    flex:0 0 28px;width:28px;height:28px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:9px;background:#e7f4fb;color:#1674a6;font-size:13px;
+  }
+  #video .v353GuideText{min-width:0;word-break:keep-all}
+  #video .v353GuideText strong{
+    display:inline-block;padding:2px 6px;margin:0 2px;
+    border-radius:999px;background:#e4f3fb;color:#0d72a7;font-weight:800;
+  }
+
+  #video .v353Tabs{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;
+    margin:0 0 10px;padding:4px;
+    border-radius:14px;background:#f0f5f8;
+  }
+  #video .v353Tab{
+    height:38px;min-width:0;border:0;border-radius:10px;
+    background:transparent;color:#657b89;
+    font:700 11px Pretendard,"Noto Sans KR","Malgun Gothic",sans-serif;
+    white-space:nowrap;
+  }
+  #video .v353Tab.active{
+    background:#fff;color:#0874b7;
+    box-shadow:0 2px 8px rgba(24,77,109,.11);
+  }
+
+  #video .v353Stage{
+    display:none;width:100%;overflow:hidden;
+    border:1px solid #dfeaf0;border-radius:16px;
+    background:#fff;text-decoration:none;
+    box-shadow:0 5px 15px rgba(31,72,98,.08);
+  }
+  #video .v353Stage.active{display:block}
+  #video .v353Stage img{
+    display:block!important;width:100%!important;height:auto!important;
+    max-width:none!important;aspect-ratio:auto!important;
+    object-fit:contain!important;object-position:center!important;
+    margin:0!important;padding:0!important;
+  }
+  #video .v353Action{
+    display:flex;align-items:center;justify-content:space-between;
+    min-height:44px;padding:0 14px;border-top:1px solid #edf2f5;
+    color:#1775a9;
+    font:800 11px Pretendard,"Noto Sans KR","Malgun Gothic",sans-serif;
+  }
+}
+
+@media (min-width:901px){
+  #video .v353VideoMobile{display:none!important}
+}

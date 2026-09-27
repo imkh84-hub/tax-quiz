@@ -1,0 +1,35 @@
+/* V260 — course spacing + illustrated lower-grade intro */
+#course > .v106-grade-heading{margin-top:15px !important;margin-bottom:15px !important;}
+#course > .v247GradeCards{margin-top:0 !important;margin-bottom:15px !important;}
+#course > .v243HomeGuide.v257CourseGuide{margin-top:0 !important;margin-bottom:0 !important;}
+
+/* Lower-grade intro uses the approved illustration as the full visual surface. */
+#gradeIntroModal.v260LowerArt .v108-intro-panel{
+  width:min(1200px,94vw) !important;
+  max-width:1200px !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:28px !important;
+  overflow:hidden !important;
+  background:transparent !important;
+  box-shadow:0 24px 70px rgba(22,58,92,.24) !important;
+  position:relative !important;
+}
+#gradeIntroModal.v260LowerArt .v108-intro-panel > :not(.v260LowerStage){display:none !important;}
+#gradeIntroModal .v260LowerStage{display:none;}
+#gradeIntroModal.v260LowerArt .v260LowerStage{display:block;position:relative;width:100%;aspect-ratio:3/2;background:#fff;}
+#gradeIntroModal.v260LowerArt .v260LowerStage img{display:block;width:100%;height:100%;object-fit:cover;}
+#gradeIntroModal.v260LowerArt .v260Hotspot{
+  position:absolute;border:0;background:transparent;color:transparent;cursor:pointer;
+  border-radius:999px;font-size:0;outline:none;
+}
+#gradeIntroModal.v260LowerArt .v260Hotspot:focus-visible{box-shadow:0 0 0 5px rgba(20,126,238,.38);}
+#gradeIntroModal.v260LowerArt .v260Close{top:2.2%;right:2.1%;width:6.2%;height:8.7%;border-radius:50%;}
+#gradeIntroModal.v260LowerArt .v260Back{left:4.7%;bottom:4.0%;width:23%;height:9.7%;}
+#gradeIntroModal.v260LowerArt .v260Start{right:4.4%;bottom:4.0%;width:25.5%;height:9.7%;}
+@media(max-width:900px){
+ #course > .v106-grade-heading{margin-top:15px !important;margin-bottom:15px !important;}
+ #course > .v247GradeCards{margin-bottom:15px !important;}
+ #course > .v243HomeGuide.v257CourseGuide{margin:0 auto !important;}
+ #gradeIntroModal.v260LowerArt .v108-intro-panel{width:96vw !important;border-radius:18px !important;}
+}

@@ -1,0 +1,87 @@
+
+/* V346 안정화: 학년 재진입 시 DOM 이동 금지.
+   실제 원본 DOM을 그대로 두고 CSS만으로 최종 모바일 배치를 유지한다. */
+@media (max-width:900px){
+
+  /* 안내 + 카드 간격 */
+  #learn #lessonBody .v139Grid,
+  #learn #lessonBody .v168HighGrid,
+  #learn #lessonBody .v199MidGrid{
+    padding-top:6px !important;
+    gap:8px !important;
+  }
+
+  /* 고학년: 원본 grid에서 1~6 2열, 7/8 전체폭 */
+  #learn #lessonBody .v168HighGrid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(-n+6){
+    grid-column:auto !important;
+    width:100% !important;
+  }
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(7),
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(8){
+    grid-column:1 / -1 !important;
+    width:100% !important;
+    height:auto !important;
+    overflow:hidden !important;
+  }
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(7){
+    aspect-ratio:1023/202 !important;
+  }
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(8){
+    aspect-ratio:923/205 !important;
+  }
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(7) img,
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(8) img{
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    transform:none !important;
+    object-fit:cover !important;
+    object-position:center !important;
+  }
+
+  /* 중학생: 기존 1~6 grid + 7/8 grid를 각각 2열로.
+     7/8은 전체폭으로 커지지 않고 한 칸씩 배치 */
+  #learn #lessonBody .v199MidGrid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  #learn #lessonBody .v206MidWideGrid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+    margin:8px 8px 10px !important;
+    padding:0 10px 10px !important;
+    border-left:1px solid #e1ebf3 !important;
+    border-right:1px solid #e1ebf3 !important;
+    border-bottom:1px solid #e1ebf3 !important;
+    border-radius:0 0 16px 16px !important;
+    background:#fff !important;
+    box-shadow:0 5px 14px rgba(30,78,112,.05) !important;
+  }
+  #learn #lessonBody .v206MidWideGrid > .v199MidCard{
+    grid-column:auto !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    margin:0 !important;
+  }
+  #learn #lessonBody .v206MidWideGrid > .v199MidCard img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:960/278 !important;
+    object-fit:contain !important;
+  }
+
+  /* 이전 버전이 만든 임시 wrapper가 남더라도 표시하지 않음 */
+  #learn #lessonBody .v343HighWideGrid,
+  #learn #lessonBody .v344MiddleUnified{
+    display:none !important;
+  }
+}

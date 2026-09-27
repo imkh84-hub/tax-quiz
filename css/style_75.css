@@ -1,0 +1,306 @@
+/* V257 — HOME/Course lower-section swap and shared horizontal geometry */
+
+/* Home ending illustration: align to the same full content width as the home hero/cards */
+#home > .v183-learn-overview.v257HomeOverview{
+  width:100% !important; max-width:none !important; margin:38px 0 0 !important; padding:0 !important;
+  overflow:hidden !important; border-radius:28px !important; background:#fff !important;
+  box-shadow:0 12px 34px rgba(32,78,120,.10) !important; box-sizing:border-box !important;
+}
+#home > .v183-learn-overview.v257HomeOverview .v183-learn-overview-img{
+  display:block !important; width:100% !important; height:auto !important; aspect-ratio:2.5/1 !important;
+  object-fit:cover !important; object-position:center !important; border-radius:28px !important;
+}
+
+/* Course ending guide: align exactly with course hero / heading / grade-card width */
+#course > .v243HomeGuide.v257CourseGuide{
+  width:100% !important; max-width:none !important; margin:38px 0 0 !important; padding:0 !important; box-sizing:border-box !important;
+}
+#course .v243HomeGuide{
+  max-width:1700px;
+  margin:44px auto 34px;
+  padding:0 18px;
+}
+#course .v243GuideHead{text-align:center;margin-bottom:24px}
+#course .v243GuideHead h2{
+  margin:0 0 7px;
+  color:#153f78;
+  font-size:29px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+#course .v243GuideHead p{
+  margin:0;
+  color:#6d7f99;
+  font-size:15px;
+  font-weight:650;
+}
+#course .v243GuideSteps{
+  display:grid;
+  grid-template-columns:1fr 42px 1fr 42px 1fr 42px 1fr;
+  align-items:center;
+  gap:8px;
+}
+#course .v243Step{
+  min-height:164px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border:1px solid #e4edf7;
+  border-radius:24px;
+  background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);
+  box-shadow:0 7px 22px rgba(42,79,118,.07);
+}
+#course .v243StepNo{
+  position:absolute;left:18px;top:14px;
+  color:#9db3cc;font-size:13px;font-weight:900;letter-spacing:.8px;
+}
+#course .v243StepIcon{font-size:31px;line-height:1;margin-bottom:9px}
+#course .v243Step strong{font-size:19px;color:#173f74;margin-bottom:7px}
+#course .v243Step p{margin:0;color:#667b95;font-size:14px;line-height:1.55;font-weight:600}
+#course .v243GuideArrow{font-size:28px;color:#94afd0;text-align:center;font-weight:900}
+#course .v243BottomCta{
+  margin-top:24px;
+  min-height:100px;
+  border-radius:25px;
+  padding:22px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  background:linear-gradient(105deg,#eef9f5 0%,#eef7ff 52%,#f6f1ff 100%);
+  border:1px solid #dcebe9;
+}
+#course .v243BottomCta strong{display:block;color:#12467a;font-size:21px;margin-bottom:6px}
+#course .v243BottomCta p{margin:0;color:#637991;font-size:14px;font-weight:600}
+#course .v243BottomCta button{
+  flex:0 0 auto;border:0;border-radius:999px;padding:14px 22px;
+  background:#12b58e;color:#fff;font-size:15px;font-weight:900;cursor:pointer;
+  box-shadow:0 6px 15px rgba(18,181,142,.2);
+}
+#course .v243BottomCta button span{margin-left:8px}
+@media(max-width:900px){
+ #course .v243GuideSteps{grid-template-columns:1fr 1fr;gap:12px}
+ #course .v243GuideArrow{display:none}
+ #course .v243BottomCta{align-items:flex-start;flex-direction:column}
+}
+
+/* V244 HOME — 이미지 없이 CSS 일러스트형 아이콘 + CTA hover */
+#course .v243StepIcon{display:none!important}
+#course .v244StepIcon{
+  width:66px;height:66px;border-radius:21px;
+  position:relative;display:block;margin:0 0 11px;
+  box-shadow:0 8px 20px rgba(45,91,139,.10), inset 0 0 0 1px rgba(255,255,255,.9);
+}
+#course .v243Step:nth-of-type(1) .v244StepIcon{background:linear-gradient(145deg,#e9fbf3,#d8f5e8)}
+#course .v243Step:nth-of-type(2) .v244StepIcon{background:linear-gradient(145deg,#fff7df,#ffedc4)}
+#course .v243Step:nth-of-type(3) .v244StepIcon{background:linear-gradient(145deg,#edf7ff,#dceeff)}
+#course .v243Step:nth-of-type(4) .v244StepIcon{background:linear-gradient(145deg,#fff0f5,#ffe1ec)}
+
+/* 01 학년 선택 */
+#course .v244Person{
+ position:absolute;left:10px;bottom:12px;width:19px;height:19px;border-radius:50%;
+ background:#45b989;box-shadow:0 18px 0 5px #45b989;
+}
+#course .v244SelectCard{
+ position:absolute;right:8px;top:13px;width:32px;height:40px;border-radius:8px;background:#fff;
+ box-shadow:0 3px 9px rgba(40,100,120,.12);padding-top:7px;
+}
+#course .v244SelectCard i{display:block;width:19px;height:4px;border-radius:5px;background:#74cda8;margin:0 auto 5px}
+
+/* 02 세금 공부 */
+#course .v244Book{
+ position:absolute;left:12px;bottom:13px;width:43px;height:29px;
+ border-radius:5px 5px 11px 11px;background:#fff;transform:rotate(-2deg);
+ box-shadow:0 4px 10px rgba(166,111,22,.12);
+}
+#course .v244Book:before,#course .v244Book:after{
+ content:"";position:absolute;top:5px;width:17px;height:17px;border-top:3px solid #f5a623;
+}
+#course .v244Book:before{left:4px;border-right:2px solid #f5a623}
+#course .v244Book:after{right:4px;border-left:2px solid #f5a623}
+#course .v244Spark{position:absolute;right:7px;top:5px;color:#ffad21;font-size:20px;font-weight:900}
+
+/* 03 교육영상 */
+#course .v244Screen{
+ position:absolute;left:10px;top:15px;width:45px;height:34px;border-radius:8px;
+ background:#fff;box-shadow:0 4px 10px rgba(46,115,183,.13);
+}
+#course .v244Screen i{
+ position:absolute;left:18px;top:9px;width:0;height:0;
+ border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:13px solid #489de8;
+}
+#course .v244Headphone{
+ position:absolute;left:16px;top:7px;width:33px;height:29px;border:4px solid #347fd0;
+ border-bottom:0;border-radius:20px 20px 0 0;
+}
+
+/* 04 학습효과 */
+#course .v244Chart{
+ position:absolute;left:11px;bottom:12px;width:37px;height:38px;border-left:3px solid #ef6b94;border-bottom:3px solid #ef6b94;
+}
+#course .v244Chart i{position:absolute;bottom:2px;width:7px;border-radius:5px 5px 0 0;background:#f38aa9}
+#course .v244Chart i:nth-child(1){left:5px;height:13px}
+#course .v244Chart i:nth-child(2){left:16px;height:22px}
+#course .v244Chart i:nth-child(3){left:27px;height:31px}
+#course .v244Check{
+ position:absolute;right:5px;top:5px;width:24px;height:24px;border-radius:50%;
+ display:grid;place-items:center;background:#fff;color:#ef5d89;font-size:16px;font-weight:1000;
+ box-shadow:0 3px 8px rgba(180,70,110,.12);
+}
+
+/* 단계 카드도 아주 미세하게 반응 */
+@media (hover:hover) and (pointer:fine){
+ #course .v243Step{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+ #course .v243Step:hover{
+   transform:translateY(-2px);
+   box-shadow:0 11px 27px rgba(42,79,118,.10);
+   border-color:#d5e5f5;
+ }
+ #course .v244StepIcon{transition:transform .22s ease}
+ #course .v243Step:hover .v244StepIcon{transform:scale(1.06)}
+}
+
+/* 우측 하단 '세금교실 시작하기' CTA */
+#course .v243BottomCta button{
+ transition:transform .2s ease,box-shadow .2s ease,filter .2s ease!important;
+}
+@media (hover:hover) and (pointer:fine){
+ #course .v243BottomCta button:hover{
+   transform:scale(1.045)!important;
+   box-shadow:0 10px 23px rgba(18,181,142,.30)!important;
+   filter:brightness(1.035);
+ }
+ #course .v243BottomCta button:hover span{
+   display:inline-block;
+   transform:translateX(3px);
+ }
+ #course .v243BottomCta button span{transition:transform .2s ease}
+}
+
+/* V245 HOME — 의미 중심의 인라인 SVG 단계 아이콘 */
+#course .v244StepIcon{display:none!important}
+#course .v245StepIcon{
+  width:72px;height:72px;display:block;margin:0 0 11px;
+  transition:transform .22s ease,filter .22s ease;
+}
+#course .v245StepIcon svg{display:block;width:100%;height:100%;overflow:visible}
+#course .v245StepIcon .soft{fill:var(--soft)}
+#course .v245StepIcon .paper{fill:#fff}
+#course .v245StepIcon .main{fill:var(--main)}
+#course .v245StepIcon .line{
+  fill:none;stroke:var(--main);stroke-width:3;stroke-linecap:round;stroke-linejoin:round
+}
+#course .v245StepIcon .whiteLine{
+  fill:none;stroke:#fff;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round
+}
+#course .v245StepIcon .tiny{
+  fill:var(--main);font-size:7px;font-weight:900;font-family:Arial,sans-serif;text-anchor:middle
+}
+#course .v245StepIcon .won{
+  fill:var(--main);font-size:17px;font-weight:900;font-family:Arial,sans-serif;text-anchor:middle
+}
+#course .v245StepIcon .bar1{fill:color-mix(in srgb,var(--main) 48%,white)}
+#course .v245StepIcon .bar2{fill:color-mix(in srgb,var(--main) 70%,white)}
+#course .v245StepIcon .checkCircle{stroke:var(--main);stroke-width:1.5}
+#course .v245StepIcon .checkLine{
+  fill:none;stroke:var(--main);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round
+}
+#course .v245Green{--main:#28b878;--soft:#e7f8f0}
+#course .v245Orange{--main:#f5a01d;--soft:#fff3dc}
+#course .v245Blue{--main:#398fdf;--soft:#e8f4ff}
+#course .v245Pink{--main:#ee628d;--soft:#ffedf3}
+
+@media (hover:hover) and (pointer:fine){
+ #course .v243Step:hover .v245StepIcon{
+   transform:scale(1.08);
+   filter:drop-shadow(0 7px 8px rgba(42,79,118,.10));
+ }
+}
+
+/* V246 HOME — 4단계 이용 흐름을 가로형 정보 카드로 재설계 */
+#course .v243GuideSteps,#course .v243Step,#course .v243GuideArrow{display:none!important}
+#course .v246GuideSteps{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr) 34px minmax(0,1fr) 34px minmax(0,1fr);
+ gap:9px;
+ align-items:center;
+}
+#course .v246Step{
+ --main:#35b77b;--soft:#edf9f3;--border:#d9eee4;
+ min-width:0;height:112px;position:relative;
+ display:grid;grid-template-columns:62px 1fr;align-items:center;column-gap:15px;
+ padding:18px 18px 18px 23px;
+ border:1px solid var(--border);border-radius:22px;
+ background:linear-gradient(135deg,#fff 0%,var(--soft) 100%);
+ box-shadow:0 6px 18px rgba(42,79,118,.055);
+ transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+#course .v246Green{--main:#2fb77b;--soft:#edf9f3;--border:#d7eee3}
+#course .v246Orange{--main:#f2a126;--soft:#fff7e8;--border:#f4e6c9}
+#course .v246Blue{--main:#3d91df;--soft:#edf7ff;--border:#dbeaf7}
+#course .v246Pink{--main:#eb658f;--soft:#fff1f5;--border:#f4dce5}
+#course .v246No{
+ position:absolute;top:10px;left:13px;
+ font-size:11px;line-height:1;font-weight:900;letter-spacing:.5px;
+ color:var(--main);opacity:.62;
+}
+#course .v246Icon{
+ width:58px;height:58px;border-radius:18px;
+ display:grid;place-items:center;
+ background:var(--soft);
+ box-shadow:inset 0 0 0 1px rgba(255,255,255,.92);
+ transition:transform .2s ease;
+}
+#course .v246Icon svg{width:52px;height:52px;display:block}
+#course .v246Icon .paper{fill:#fff;stroke:var(--main);stroke-width:1.2}
+#course .v246Icon .main{fill:var(--main)}
+#course .v246Icon .line{
+ fill:none;stroke:var(--main);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round
+}
+#course .v246Icon .whiteLine{
+ fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round
+}
+#course .v246Icon .bar1{fill:color-mix(in srgb,var(--main) 46%,white)}
+#course .v246Icon .bar2{fill:color-mix(in srgb,var(--main) 68%,white)}
+#course .v246Icon .trend{
+ fill:none;stroke:var(--main);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round
+}
+#course .v246Copy{min-width:0;text-align:left}
+#course .v246Copy strong{
+ display:block;margin:0 0 7px;
+ color:#173f74;font-size:18px;line-height:1.2;font-weight:900;letter-spacing:-.4px;
+}
+#course .v246Copy p{
+ margin:0;color:#667b95;font-size:13.5px;line-height:1.45;font-weight:650;
+ word-break:keep-all;
+}
+#course .v246Arrow{
+ color:#a7bed6;font-size:25px;font-weight:900;text-align:center;
+}
+@media (hover:hover) and (pointer:fine){
+ #course .v246Step:hover{
+  transform:translateY(-2px);
+  box-shadow:0 11px 24px rgba(42,79,118,.09);
+  border-color:var(--main);
+ }
+ #course .v246Step:hover .v246Icon{transform:scale(1.06)}
+}
+@media(max-width:1100px){
+ #course .v246GuideSteps{grid-template-columns:1fr 1fr;gap:12px}
+ #course .v246Arrow{display:none}
+}
+@media(max-width:650px){
+ #course .v246GuideSteps{grid-template-columns:1fr}
+}
+
+
+/* Override the old max-width/padding after the cloned guide rules. */
+#course > .v243HomeGuide.v257CourseGuide{width:100% !important;max-width:none !important;margin-left:0 !important;margin-right:0 !important;padding-left:0 !important;padding-right:0 !important;}
+@media(max-width:900px){
+ #home > .v183-learn-overview.v257HomeOverview{width:calc(100% - 28px) !important;margin:22px auto 0 !important;border-radius:18px !important;}
+ #home > .v183-learn-overview.v257HomeOverview .v183-learn-overview-img{aspect-ratio:auto !important;border-radius:18px !important;}
+ #course > .v243HomeGuide.v257CourseGuide{width:calc(100% - 28px) !important;margin:26px auto 0 !important;}
+}

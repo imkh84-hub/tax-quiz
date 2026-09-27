@@ -1,0 +1,45 @@
+
+#learn .v153ImageLesson{
+  max-width:1180px;
+  margin:26px auto 0;
+}
+#learn .v153ImageLesson > img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:22px;
+  box-shadow:0 10px 30px rgba(35,76,112,.12);
+}
+#learn .v153LessonNav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin:22px 0 4px;
+}
+#learn .v153LessonNav button{
+  min-width:128px;
+  height:46px;
+  border:1px solid #d7e4ef;
+  border-radius:23px;
+  background:#fff;
+  color:#174b77;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(35,76,112,.07);
+}
+#learn .v153LessonNav button:hover:not(:disabled){
+  background:#eef7ff;
+  border-color:#acd5f1;
+}
+#learn .v153LessonNav button:disabled{
+  opacity:.4;
+  cursor:default;
+}
+@media(max-width:640px){
+  #learn .v153ImageLesson{margin-top:18px}
+  #learn .v153ImageLesson > img{border-radius:14px}
+  #learn .v153LessonNav{gap:7px}
+  #learn .v153LessonNav button{min-width:0;flex:1;height:44px;font-size:14px}
+}

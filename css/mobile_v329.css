@@ -1,0 +1,105 @@
+
+/* V329 — 모바일 세금교실 탭 정리
+   PC(901px+) 변경 없음.
+   390px 주 기준 / 360~430px 유동 대응.
+*/
+@media (max-width:900px){
+
+  /* 1. 세금교실 메인 비주얼: 기존보다 약 12% 낮게 */
+  #course .v257CourseGuide{
+    overflow:hidden !important;
+  }
+  #course .v257CourseGuide > img,
+  #course .v257CourseGuide .hero img,
+  #course .v257CourseGuide img:first-child{
+    width:100% !important;
+    height:auto !important;
+    max-height:none !important;
+    display:block !important;
+  }
+
+  /* 실제 상단 메인 카드/배너가 별도 클래스일 때도 동일하게 축소 */
+  #course .hero,
+  #course [class*="Hero"]{
+    max-height:390px !important;
+    overflow:hidden !important;
+  }
+  #course .hero img,
+  #course [class*="Hero"] img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+  }
+
+  /* 2. 학년 선택 영역 간격 압축 */
+  #course .v106-grade-heading{
+    margin-top:12px !important;
+    margin-bottom:10px !important;
+    padding-top:8px !important;
+    padding-bottom:8px !important;
+  }
+
+  #course .v247GradeCards{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:9px !important;
+  }
+
+  /* 3. 세 학년 카드 외곽 크기를 완전히 동일하게 */
+  #course .v247GradeCard,
+  #course .v247GradeCard:nth-child(1),
+  #course .v247GradeCard:nth-child(2),
+  #course .v247GradeCard:nth-child(3){
+    width:100% !important;
+    max-width:100% !important;
+    height:auto !important;
+    aspect-ratio:1.90 / 1 !important;
+    min-height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+    border-radius:16px !important;
+    overflow:hidden !important;
+  }
+
+  /* 4. 이미지 원본 비율 차이와 무관하게 같은 카드 프레임에 맞춤 */
+  #course .v247GradeCard img,
+  #course .v247GradeCard:nth-child(1) img,
+  #course .v247GradeCard:nth-child(2) img,
+  #course .v247GradeCard:nth-child(3) img{
+    position:static !important;
+    width:100% !important;
+    height:100% !important;
+    min-width:100% !important;
+    max-width:none !important;
+    min-height:100% !important;
+    max-height:none !important;
+    display:block !important;
+    object-fit:fill !important;
+    object-position:center center !important;
+    transform:none !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  /* 5. 이용방법 이하 영역은 현재 디자인 유지 */
+  #course .v246GuideSteps{
+    margin-top:14px !important;
+  }
+}
+
+/* 360px급 소형폰 */
+@media (max-width:374px){
+  #course .v247GradeCards{gap:8px !important}
+  #course .v247GradeCard,
+  #course .v247GradeCard:nth-child(1),
+  #course .v247GradeCard:nth-child(2),
+  #course .v247GradeCard:nth-child(3){
+    border-radius:14px !important;
+  }
+}
+
+/* 415~430px 대형폰 */
+@media (min-width:415px) and (max-width:900px){
+  #course .v247GradeCards{gap:10px !important}
+}

@@ -1,0 +1,7 @@
+/* V209 middle school inline detail: match high-grade content width */
+#lessonBody .v199MidWrap #v209MiddleDetail{grid-column:1/-1;width:100%;margin-top:24px;box-sizing:border-box}
+#v209MiddleDetail .v209MiddleDetailImg{display:block;width:100%;height:auto;border-radius:18px}
+#v209MiddleDetail .v172HighNav{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px 0 4px}
+#v209MiddleDetail .v172HighNav button{border:1px solid #d2dce9;border-radius:28px;background:white;padding:12px 24px;font:inherit;color:#17365c;cursor:pointer}
+#v209MiddleDetail .v172HighNav button:disabled{opacity:.4;cursor:default}
+@media(max-width:650px){#v209MiddleDetail .v172HighNav button{padding:10px 14px}}

@@ -1,0 +1,18 @@
+/* V312 — low-grade card trial: match the new 16:9 artwork exactly.
+   Only the first course card is changed; upper/middle remain V311. */
+@media (min-width:901px){
+  #course .v247GradeCard:first-child{
+    aspect-ratio:16 / 9 !important;
+    align-self:center !important;
+  }
+  #course .v247GradeCard:first-child img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+  }
+}
+@media (max-width:900px){
+  #course .v247GradeCard:first-child{aspect-ratio:16 / 9 !important;}
+  #course .v247GradeCard:first-child img{width:100% !important;height:100% !important;object-fit:contain !important;}
+}

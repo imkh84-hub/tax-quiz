@@ -1,0 +1,25 @@
+
+#video > .hero {
+  background-image:
+    linear-gradient(90deg,
+      rgba(241,250,255,.96) 0%,
+      rgba(241,250,255,.90) 24%,
+      rgba(241,250,255,.56) 38%,
+      rgba(241,250,255,.10) 52%,
+      rgba(241,250,255,0) 63%),
+    url('../images/image_003.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  position: relative !important;
+}
+#video > .hero .heroIllustration,
+#video > .hero .heroArt {
+  display:none !important;
+}
+#video > .hero .heroCopy {
+  position:relative !important;
+  z-index:2 !important;
+  width:47% !important;
+}
+#video > .hero:after { display:none !important; }

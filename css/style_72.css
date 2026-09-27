@@ -1,0 +1,106 @@
+/* V250 — COURSE 학년카드 최종 중앙정렬 + 잘림 보정 + hover 확대 복원 */
+#course .v106-grade-heading,
+#course .v247GradeCards,
+#course .v183-learn-overview{
+  width:calc(100% - 64px) !important;
+  max-width:1440px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  box-sizing:border-box !important;
+}
+
+#course .v106-grade-heading{
+  margin-top:24px !important;
+  margin-bottom:16px !important;
+}
+
+#course .v247GradeCards{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:22px !important;
+  justify-content:center !important;
+  align-items:center !important;
+  overflow:visible !important;
+  margin-bottom:26px !important;
+}
+
+#course .v247GradeCard{
+  position:relative !important;
+  width:100% !important;
+  min-width:0 !important;
+  aspect-ratio:1.67 / 1 !important;
+  overflow:hidden !important;
+  border-radius:22px !important;
+  transform:translateZ(0) scale(1) !important;
+  transform-origin:center center !important;
+  transition:transform .22s ease, box-shadow .22s ease, filter .22s ease !important;
+  will-change:transform !important;
+  z-index:1 !important;
+}
+
+#course .v247GradeCard img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:fill !important;
+  max-width:none !important;
+  pointer-events:none !important;
+}
+
+/* 중학생 원본 JPG 왼쪽에 섞여 있는 녹색 조각을 카드 배경색으로 가림 */
+#course .v247GradeCard:nth-child(3)::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:0;
+  top:0;
+  bottom:0;
+  width:2.5%;
+  background:#f1e7ff;
+  pointer-events:none;
+}
+
+/* 원본에서 끝 글자가 잘린 문구를 코드 텍스트로 완성 */
+#course .v247GradeCard:nth-child(3)::after{
+  content:"더 넓은 세상,\A세금과 미래를 함께";
+  white-space:pre;
+  position:absolute;
+  z-index:3;
+  left:60.5%;
+  top:53.5%;
+  width:36%;
+  padding:5px 0 7px;
+  box-sizing:border-box;
+  background:linear-gradient(90deg,rgba(246,239,255,.98),rgba(244,235,255,.98));
+  color:#173c63;
+  font-family:"Jua","Gowun Dodum",sans-serif;
+  font-size:clamp(15px,1.18vw,23px);
+  line-height:1.38;
+  text-align:left;
+  letter-spacing:-.03em;
+  pointer-events:none;
+}
+
+@media (hover:hover) and (pointer:fine){
+  #course .v247GradeCard:hover{
+    transform:translateZ(0) scale(1.045) !important;
+    box-shadow:0 16px 34px rgba(35,75,115,.20) !important;
+    filter:saturate(1.025) !important;
+    z-index:20 !important;
+  }
+}
+#course .v247GradeCard:focus-visible{
+  outline:4px solid rgba(30,122,216,.30) !important;
+  outline-offset:4px !important;
+  transform:translateZ(0) scale(1.025) !important;
+  z-index:20 !important;
+}
+
+@media(max-width:900px){
+  #course .v106-grade-heading,
+  #course .v247GradeCards,
+  #course .v183-learn-overview{width:calc(100% - 28px) !important;}
+  #course .v247GradeCards{grid-template-columns:1fr !important;gap:16px !important;}
+  #course .v247GradeCard{aspect-ratio:auto !important;}
+  #course .v247GradeCard img{height:auto !important;}
+}

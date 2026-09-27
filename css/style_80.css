@@ -1,0 +1,693 @@
+/* V264 — illustrated upper-grade intro, matched to the approved lower-grade popup geometry */
+#gradeIntroModal.v264UpperArt{
+  padding:28px;
+  backdrop-filter:blur(8px);
+  background:rgba(18,38,58,.48);
+}
+#gradeIntroModal.v264UpperArt .v108-intro-panel{
+  width:min(820px,94vw) !important;
+  max-width:820px !important;
+  max-height:92vh !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:28px !important;
+  overflow:hidden !important;
+  background:#fff !important;
+  box-shadow:0 28px 80px rgba(16,55,90,.25) !important;
+  position:relative !important;
+}
+#gradeIntroModal.v264UpperArt .v108-intro-panel > :not(.v264UpperStage){display:none !important;}
+#gradeIntroModal .v264UpperStage{display:none;}
+#gradeIntroModal.v264UpperArt .v264UpperStage{
+  display:block;position:relative;width:100%;aspect-ratio:3/2;background:#fff;
+}
+#gradeIntroModal.v264UpperArt .v264UpperStage img{
+  display:block;width:100%;height:100%;object-fit:cover;
+}
+#gradeIntroModal.v264UpperArt .v264Hotspot{
+  position:absolute;border:0;background:transparent;color:transparent;cursor:pointer;
+  border-radius:999px;font-size:0;outline:none;
+}
+#gradeIntroModal.v264UpperArt .v264Hotspot:focus-visible{box-shadow:0 0 0 5px rgba(20,126,238,.38);}
+#gradeIntroModal.v264UpperArt .v264Close{
+  top:16px;right:16px;width:40px;height:40px;z-index:20;
+  border-radius:50%;background:rgba(255,255,255,.94);color:#526579;
+  box-shadow:0 5px 18px rgba(35,52,68,.18);
+}
+#gradeIntroModal.v264UpperArt .v264Close::before{
+  content:"×";display:grid;place-items:center;width:100%;height:100%;
+  font-size:27px;line-height:1;font-weight:500;transform:translateY(-2px);
+}
+#gradeIntroModal.v264UpperArt .v264Close:hover{background:#fff;transform:scale(1.04);}
+#gradeIntroModal.v264UpperArt .v264Back{left:3.5%;bottom:3.4%;width:24.5%;height:10.2%;}
+#gradeIntroModal.v264UpperArt .v264Start{right:4.3%;bottom:3.4%;width:25.5%;height:10.2%;}
+@media(max-width:900px){
+  #gradeIntroModal.v264UpperArt{padding:14px;}
+  #gradeIntroModal.v264UpperArt .v108-intro-panel{width:min(820px,96vw) !important;border-radius:20px !important;}
+  #gradeIntroModal.v264UpperArt .v264Close{top:10px;right:10px;width:36px;height:36px;}
+}
+
+/* V265 — upper-grade artwork already contains the visible close icon.
+   Keep the HTML control as an invisible clickable hotspot only. */
+#gradeIntroModal.v264UpperArt .v264Close{
+  background:transparent !important;
+  box-shadow:none !important;
+  color:transparent !important;
+  transform:none !important;
+}
+#gradeIntroModal.v264UpperArt .v264Close::before{content:none !important;}
+#gradeIntroModal.v264UpperArt .v264Close:hover{background:transparent !important;transform:none !important;}
+
+/* V268 — corrected upper-grade artwork; keep close hit-area compact and aligned */
+#gradeIntroModal.v264UpperArt .v264Close{
+  top:1.8% !important;
+  right:1.7% !important;
+  width:5.2% !important;
+  height:7.0% !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+/* V269 — shift the entire upper-grade artwork 10px left without changing its scale/height.
+   Extend the image to the right by the same amount so no blank strip appears. */
+#gradeIntroModal.v264UpperArt .v264UpperStage img{
+  width:calc(100% + 10px) !important;
+  max-width:none !important;
+  transform:translateX(-10px) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Hotspot{
+  transform:translateX(-10px) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Close:hover{
+  transform:translateX(-10px) !important;
+}
+
+/* V270 — keep V269 composition; move only the upper-grade close hotspot 7px left to match corrected artwork X. */
+#gradeIntroModal.v264UpperArt .v264Close{
+  right:calc(1.7% + 7px) !important;
+}
+
+/* V272 — safe close-button fix based on V270.
+   Keep upper artwork/image rendering untouched. Restore a real close button using
+   the same geometry and typography as the approved lower-grade close button. */
+#gradeIntroModal.v264UpperArt .v264Close{
+  top:16px !important;
+  right:16px !important;
+  width:40px !important;
+  height:40px !important;
+  min-width:40px !important;
+  min-height:40px !important;
+  z-index:30 !important;
+  transform:none !important;
+  border:0 !important;
+  border-radius:50% !important;
+  background:rgba(255,255,255,.94) !important;
+  color:#526579 !important;
+  box-shadow:0 5px 18px rgba(35,52,68,.18) !important;
+  font-size:0 !important;
+}
+#gradeIntroModal.v264UpperArt .v264Close::before{
+  content:"×" !important;
+  display:grid !important;
+  place-items:center !important;
+  width:100% !important;
+  height:100% !important;
+  font-size:27px !important;
+  line-height:1 !important;
+  font-weight:500 !important;
+  color:#526579 !important;
+  transform:none !important;
+}
+#gradeIntroModal.v264UpperArt .v264Close:hover{
+  background:#fff !important;
+  transform:scale(1.04) !important;
+}
+@media(max-width:900px){
+  #gradeIntroModal.v264UpperArt .v264Close{
+    top:10px !important;right:10px !important;width:36px !important;height:36px !important;
+    min-width:36px !important;min-height:36px !important;
+  }
+}
+
+/* V274 — rebuild upper + middle illustrated intro screens on the approved lower-grade 3:2 geometry. */
+#gradeIntroModal.v264UpperArt,
+#gradeIntroModal.v274MiddleArt{
+  padding:28px;
+  backdrop-filter:blur(8px);
+  background:rgba(18,38,58,.48);
+}
+#gradeIntroModal.v264UpperArt .v108-intro-panel,
+#gradeIntroModal.v274MiddleArt .v108-intro-panel{
+  width:min(820px,94vw) !important;
+  max-width:820px !important;
+  max-height:92vh !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:28px !important;
+  overflow:hidden !important;
+  background:#fff !important;
+  box-shadow:0 28px 80px rgba(16,55,90,.25) !important;
+  position:relative !important;
+}
+#gradeIntroModal.v264UpperArt .v108-intro-panel > :not(.v264UpperStage),
+#gradeIntroModal.v274MiddleArt .v108-intro-panel > :not(.v274MiddleStage){display:none !important;}
+#gradeIntroModal .v274MiddleStage{display:none;}
+#gradeIntroModal.v264UpperArt .v264UpperStage,
+#gradeIntroModal.v274MiddleArt .v274MiddleStage{
+  display:block !important;position:relative;width:100%;aspect-ratio:3/2;background:#fff;
+}
+#gradeIntroModal.v264UpperArt .v264UpperStage img,
+#gradeIntroModal.v274MiddleArt .v274MiddleStage img{
+  display:block !important;width:100% !important;height:100% !important;max-width:none !important;
+  object-fit:cover !important;transform:none !important;
+}
+#gradeIntroModal.v264UpperArt .v264Hotspot,
+#gradeIntroModal.v274MiddleArt .v274Hotspot{
+  position:absolute;border:0;color:transparent;cursor:pointer;border-radius:999px;
+  font-size:0;outline:none;transform:none !important;
+}
+/* Close button: exactly the same placement/geometry as the approved lower-grade screen. */
+#gradeIntroModal.v264UpperArt .v264Close,
+#gradeIntroModal.v274MiddleArt .v274Close{
+  top:16px !important;right:16px !important;width:40px !important;height:40px !important;
+  min-width:40px !important;min-height:40px !important;z-index:30 !important;
+  border-radius:50% !important;background:rgba(255,255,255,.94) !important;
+  color:#526579 !important;box-shadow:0 5px 18px rgba(35,52,68,.18) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Close::before,
+#gradeIntroModal.v274MiddleArt .v274Close::before{
+  content:"×" !important;display:grid !important;place-items:center !important;
+  width:100% !important;height:100% !important;font-size:27px !important;
+  line-height:1 !important;font-weight:500 !important;color:#526579 !important;
+}
+#gradeIntroModal.v264UpperArt .v264Close:hover,
+#gradeIntroModal.v274MiddleArt .v274Close:hover{background:#fff !important;transform:scale(1.04) !important;}
+/* Artwork bottom-button hotspots, kept proportional to the new 3:2 artwork. */
+#gradeIntroModal.v264UpperArt .v264Back{left:1.5% !important;bottom:1.3% !important;width:22% !important;height:8.2% !important;}
+#gradeIntroModal.v264UpperArt .v264Start{right:1.5% !important;bottom:1.3% !important;width:22% !important;height:8.2% !important;}
+#gradeIntroModal.v274MiddleArt .v274Back{left:3.3% !important;bottom:2.5% !important;width:21.5% !important;height:8.5% !important;background:transparent !important;}
+#gradeIntroModal.v274MiddleArt .v274Start{right:3.0% !important;bottom:2.5% !important;width:22.5% !important;height:8.5% !important;background:transparent !important;}
+@media(max-width:900px){
+  #gradeIntroModal.v264UpperArt,#gradeIntroModal.v274MiddleArt{padding:14px;}
+  #gradeIntroModal.v264UpperArt .v108-intro-panel,#gradeIntroModal.v274MiddleArt .v108-intro-panel{width:min(820px,96vw) !important;border-radius:20px !important;}
+  #gradeIntroModal.v264UpperArt .v264Close,#gradeIntroModal.v274MiddleArt .v274Close{top:10px !important;right:10px !important;width:36px !important;height:36px !important;min-width:36px !important;min-height:36px !important;}
+}
+
+/* V275 — 고학년/중학생 시작화면 여백 및 X 정렬 미세조정
+   저학년의 여유로운 인상을 기준으로, 일러스트 비율은 유지하면서
+   데스크톱에서 팝업 폭을 살짝 줄여 좌우 바깥 여백을 확보한다. */
+@media (min-width:901px){
+  #gradeIntroModal.v264UpperArt .v108-intro-panel,
+  #gradeIntroModal.v274MiddleArt .v108-intro-panel{
+    width:min(760px,88vw) !important;
+    max-width:760px !important;
+  }
+  #gradeIntroModal.v264UpperArt .v264Close,
+  #gradeIntroModal.v274MiddleArt .v274Close{
+    top:10px !important;
+    right:16px !important;
+  }
+}
+
+/* V277 — 고학년/중학생: 흰 띠 없이 팝업 전체를 축소해 바깥 좌우 여백 확보.
+   이미지 자체는 항상 패널을 100% 채우며, 저학년과 같은 방식으로 표시한다. */
+@media (min-width:901px){
+  #gradeIntroModal.v264UpperArt .v108-intro-panel,
+  #gradeIntroModal.v274MiddleArt .v108-intro-panel{
+    width:min(700px,82vw) !important;
+    max-width:700px !important;
+    background:transparent !important;
+  }
+  #gradeIntroModal.v264UpperArt .v264UpperStage,
+  #gradeIntroModal.v274MiddleArt .v274MiddleStage{
+    width:100% !important;
+    aspect-ratio:3/2 !important;
+    margin:0 !important;
+  }
+  #gradeIntroModal.v264UpperArt .v264UpperStage img,
+  #gradeIntroModal.v274MiddleArt .v274MiddleStage img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    margin:0 !important;
+    transform:none !important;
+  }
+  #gradeIntroModal.v264UpperArt .v264Close,
+  #gradeIntroModal.v274MiddleArt .v274Close{
+    top:4px !important;
+    right:16px !important;
+  }
+}
+
+/* V278 — final upper/middle intro artwork + real HTML controls.
+   The artwork contains no close/back/start controls. All three are HTML UI.
+   Upper and middle use the exact same modal and close-button geometry as lower grade. */
+#gradeIntroModal.v264UpperArt,
+#gradeIntroModal.v274MiddleArt{
+  padding:28px !important;
+}
+#gradeIntroModal.v264UpperArt .v108-intro-panel,
+#gradeIntroModal.v274MiddleArt .v108-intro-panel{
+  width:min(820px,94vw) !important;
+  max-width:820px !important;
+  border-radius:28px !important;
+  background:#fff !important;
+  overflow:hidden !important;
+}
+#gradeIntroModal.v264UpperArt .v264UpperStage,
+#gradeIntroModal.v274MiddleArt .v274MiddleStage{
+  width:100% !important;
+  aspect-ratio:3/2 !important;
+  position:relative !important;
+  overflow:hidden !important;
+}
+#gradeIntroModal.v264UpperArt .v264UpperStage img,
+#gradeIntroModal.v274MiddleArt .v274MiddleStage img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+/* Exact lower-grade close geometry. */
+#gradeIntroModal.v264UpperArt .v264Close,
+#gradeIntroModal.v274MiddleArt .v274Close{
+  top:16px !important;
+  right:16px !important;
+  width:40px !important;
+  height:40px !important;
+  min-width:40px !important;
+  min-height:40px !important;
+  background:rgba(255,255,255,.94) !important;
+  box-shadow:0 5px 18px rgba(35,52,68,.18) !important;
+  color:#526579 !important;
+  font-size:0 !important;
+  z-index:40 !important;
+}
+#gradeIntroModal.v264UpperArt .v264Close::before,
+#gradeIntroModal.v274MiddleArt .v274Close::before{
+  content:"×" !important;
+  display:grid !important;
+  place-items:center !important;
+  width:100% !important;
+  height:100% !important;
+  font-size:27px !important;
+  line-height:1 !important;
+  font-weight:500 !important;
+  color:#526579 !important;
+}
+/* Real bottom buttons: same visual language as lower grade, over the artwork. */
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back,
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  bottom:3.1% !important;
+  height:9.2% !important;
+  width:24% !important;
+  border:3px solid rgba(255,255,255,.95) !important;
+  box-shadow:0 6px 18px rgba(31,67,91,.18) !important;
+  color:#0b4f80 !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  white-space:nowrap !important;
+  z-index:35 !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back{
+  left:4.7% !important;
+  background:rgba(255,255,255,.96) !important;
+  border-color:#a9d9f8 !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back::before,
+#gradeIntroModal.v274MiddleArt .v274Back::before{content:"←  ";}
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  right:4.4% !important;
+  width:25.5% !important;
+  color:#fff !important;
+  background:linear-gradient(135deg,#168cff,#0873e9) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start::after,
+#gradeIntroModal.v274MiddleArt .v274Start::after{content:"  →";}
+@media(max-width:900px){
+  #gradeIntroModal.v264UpperArt,#gradeIntroModal.v274MiddleArt{padding:14px !important;}
+  #gradeIntroModal.v264UpperArt .v108-intro-panel,#gradeIntroModal.v274MiddleArt .v108-intro-panel{width:min(820px,96vw) !important;border-radius:20px !important;}
+  #gradeIntroModal.v264UpperArt .v264Close,#gradeIntroModal.v274MiddleArt .v274Close{top:10px !important;right:10px !important;width:36px !important;height:36px !important;min-width:36px !important;min-height:36px !important;}
+}
+
+
+/* V281 — approved upper/middle artwork now includes the two bottom controls.
+   Keep those controls visually inside the artwork; HTML buttons are transparent hit areas only.
+   The close X remains a real HTML control so its position stays consistent. */
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back,
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  color:transparent !important;
+  font-size:0 !important;
+  height:10.5% !important;
+  bottom:6.0% !important;
+  z-index:35 !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back::before,
+#gradeIntroModal.v274MiddleArt .v274Back::before,
+#gradeIntroModal.v264UpperArt .v264Start::after,
+#gradeIntroModal.v274MiddleArt .v274Start::after{content:none !important;}
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back{
+  left:15.5% !important;
+  width:34% !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  right:14.5% !important;
+  width:34% !important;
+}
+/* X: same geometry for both grades, independent from the artwork. */
+#gradeIntroModal.v264UpperArt .v264Close,
+#gradeIntroModal.v274MiddleArt .v274Close{
+  top:16px !important;
+  right:16px !important;
+  width:40px !important;
+  height:40px !important;
+  min-width:40px !important;
+  min-height:40px !important;
+}
+
+/* V282 — 고학년/중학생 하단 버튼을 저학년과 동일한 실제 UI로 통일.
+   이미지에 새겨진 기존 버튼은 같은 영역을 실제 버튼이 완전히 덮는다. */
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back,
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  bottom:4.0% !important;
+  height:9.7% !important;
+  border-radius:999px !important;
+  font-size:16px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  white-space:nowrap !important;
+  color:#0b4f80 !important;
+  z-index:50 !important;
+  cursor:pointer !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back{
+  left:4.7% !important;
+  width:23% !important;
+  background:#fff !important;
+  border:3px solid #a9d9f8 !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.16) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back::before,
+#gradeIntroModal.v274MiddleArt .v274Back::before{
+  content:"←  " !important;
+  display:inline !important;
+  color:#0b4f80 !important;
+  font-size:18px !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  right:4.4% !important;
+  width:25.5% !important;
+  color:#fff !important;
+  background:linear-gradient(135deg,#168cff 0%,#0873e9 100%) !important;
+  border:3px solid rgba(255,255,255,.98) !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.18) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start::after,
+#gradeIntroModal.v274MiddleArt .v274Start::after{
+  content:"  →" !important;
+  display:inline !important;
+  color:#fff !important;
+  font-size:18px !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back:hover,
+#gradeIntroModal.v274MiddleArt .v274Back:hover,
+#gradeIntroModal.v264UpperArt .v264Start:hover,
+#gradeIntroModal.v274MiddleArt .v274Start:hover{transform:translateY(-1px);}
+
+/* V283 — 새 고학년 일러스트 적용. 이미지에는 학년 다시 선택 버튼이 없고 학습 시작하기만 포함. */
+#gradeIntroModal.v264UpperArt .v264Back{display:none !important;}
+#gradeIntroModal.v264UpperArt .v264Start{
+  right:7.3% !important; bottom:4.2% !important; width:31.5% !important; height:10.2% !important;
+  background:transparent !important;
+}
+\n\n/* V284 — 고학년 하단 UI를 저학년 기준으로 정리.\n   왼쪽 빈 공간에는 저학년형 '학년 다시 선택' 실제 버튼을 표시하고,\n   이미지에 이미 그려진 '학습 시작하기'는 투명 클릭영역만 사용한다.\n   X는 사용자 피드백에 따라 조금 위로 이동. */\n#gradeIntroModal.v264UpperArt .v264Back{\n  display:flex !important;\n  left:4.7% !important;\n  bottom:4.0% !important;\n  width:23% !important;\n  height:9.7% !important;\n  border-radius:999px !important;\n  background:#fff !important;\n  border:3px solid #a9d9f8 !important;\n  box-shadow:0 5px 14px rgba(31,67,91,.16) !important;\n  color:#0b4f80 !important;\n  font-size:16px !important;\n  font-weight:800 !important;\n  align-items:center !important;\n  justify-content:center !important;\n  z-index:50 !important;\n}\n#gradeIntroModal.v264UpperArt .v264Back::before{\n  content:"←  " !important;\n  display:inline !important;\n  color:#0b4f80 !important;\n  font-size:18px !important;\n}\n#gradeIntroModal.v264UpperArt .v264Start{\n  right:7.3% !important;\n  bottom:4.2% !important;\n  width:31.5% !important;\n  height:10.2% !important;\n  background:transparent !important;\n  border:0 !important;\n  box-shadow:none !important;\n  color:transparent !important;\n  font-size:0 !important;\n}\n#gradeIntroModal.v264UpperArt .v264Start::after{content:none !important;}\n#gradeIntroModal.v264UpperArt .v264Close{\n  top:8px !important;\n  right:16px !important;\n}\n
+/* V285 — 고학년 하단 버튼/X 최종 보정 (실제 CSS 규칙) */
+#gradeIntroModal.v264UpperArt .v264Back{
+  display:flex !important;
+  position:absolute !important;
+  left:4.7% !important;
+  right:auto !important;
+  bottom:4.0% !important;
+  width:23% !important;
+  height:9.7% !important;
+  border-radius:999px !important;
+  background:#fff !important;
+  border:3px solid #a9d9f8 !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.16) !important;
+  color:#0b4f80 !important;
+  font-size:16px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  align-items:center !important;
+  justify-content:center !important;
+  white-space:nowrap !important;
+  z-index:60 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back::before{
+  content:"←  " !important;
+  display:inline !important;
+  color:#0b4f80 !important;
+  font-size:18px !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start{
+  display:block !important;
+  position:absolute !important;
+  right:7.3% !important;
+  left:auto !important;
+  bottom:4.2% !important;
+  width:31.5% !important;
+  height:10.2% !important;
+  background:transparent !important;
+  background-image:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  color:transparent !important;
+  font-size:0 !important;
+  text-shadow:none !important;
+  opacity:1 !important;
+  z-index:55 !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start::before,
+#gradeIntroModal.v264UpperArt .v264Start::after{content:none !important;display:none !important;}
+#gradeIntroModal.v264UpperArt .v264Close{
+  top:4px !important;
+  right:16px !important;
+  z-index:70 !important;
+}
+
+/* V286 — 고학년: 버튼 없는 새 일러스트 + 저학년과 동일한 하단 버튼 지오메트리/스타일 */
+#gradeIntroModal.v264UpperArt .v264UpperStage img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v264UpperArt .v264Start{
+  display:flex !important;
+  position:absolute !important;
+  bottom:4.0% !important;
+  height:9.7% !important;
+  border-radius:999px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  z-index:60 !important;
+  cursor:pointer !important;
+  white-space:nowrap !important;
+  font-size:18px !important;
+  line-height:1 !important;
+  font-weight:800 !important;
+  box-sizing:border-box !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back{
+  left:4.7% !important;
+  width:23% !important;
+  background:#fff !important;
+  border:3px solid #a9d9f8 !important;
+  color:#0b4f80 !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.16) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back::before{
+  content:"←" !important;
+  display:inline-block !important;
+  margin-right:10px !important;
+  color:#0b4f80 !important;
+  font-size:20px !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start{
+  right:4.4% !important;
+  width:25.5% !important;
+  background:linear-gradient(135deg,#168cff 0%,#0873e9 100%) !important;
+  border:3px solid #fff !important;
+  color:#fff !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.18) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start::after{
+  content:"→" !important;
+  display:inline-block !important;
+  margin-left:12px !important;
+  color:#fff !important;
+  font-size:20px !important;
+}
+/* 저학년 X와 동일한 위치/크기 */
+#gradeIntroModal.v264UpperArt .v264Close{
+  top:16px !important;
+  right:16px !important;
+  width:40px !important;
+  height:40px !important;
+  min-width:40px !important;
+  min-height:40px !important;
+  z-index:70 !important;
+}
+
+/* V287 — 중학생 새 일러스트 적용 + 저학년과 동일한 하단 버튼 / 고학년 X 위치 보정 */
+#gradeIntroModal.v274MiddleArt .v274MiddleStage img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+/* 저학년 버튼 지오메트리를 중학생에 그대로 적용 */
+#gradeIntroModal.v274MiddleArt .v274Back,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  display:flex !important;
+  position:absolute !important;
+  bottom:4.0% !important;
+  height:9.7% !important;
+  border-radius:999px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  z-index:80 !important;
+  cursor:pointer !important;
+  box-sizing:border-box !important;
+  white-space:nowrap !important;
+  font-size:18px !important;
+  line-height:1 !important;
+  font-weight:800 !important;
+}
+#gradeIntroModal.v274MiddleArt .v274Back{
+  left:4.7% !important;
+  width:23% !important;
+  background:#fff !important;
+  border:3px solid #a9d9f8 !important;
+  color:#0b4f80 !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.16) !important;
+}
+#gradeIntroModal.v274MiddleArt .v274Back::before{
+  content:"←" !important;
+  display:inline-block !important;
+  margin-right:10px !important;
+  color:#0b4f80 !important;
+  font-size:20px !important;
+}
+#gradeIntroModal.v274MiddleArt .v274Start{
+  right:4.4% !important;
+  width:25.5% !important;
+  background:linear-gradient(135deg,#168cff 0%,#0873e9 100%) !important;
+  border:3px solid #fff !important;
+  color:#fff !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.18) !important;
+}
+#gradeIntroModal.v274MiddleArt .v274Start::after{
+  content:"→" !important;
+  display:inline-block !important;
+  margin-left:12px !important;
+  color:#fff !important;
+  font-size:20px !important;
+}
+/* 고학년 X가 낮아 보이던 부분만 위로 8px 보정 */
+#gradeIntroModal.v264UpperArt .v264Close{
+  top:8px !important;
+  right:16px !important;
+}
+
+/* V288 — 세 학년 하단 버튼 공통 지오메트리 + 고학년/중학생 X 상향 정렬
+   기준: 저학년 확정 좌표. 학년별 개별 좌표를 덮어써 이후 어긋남을 방지한다. */
+#gradeIntroModal.v260LowerArt .v260Back,
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back{
+  left:4.7% !important;
+  right:auto !important;
+  bottom:4.0% !important;
+  width:23% !important;
+  height:9.7% !important;
+}
+#gradeIntroModal.v260LowerArt .v260Start,
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  left:auto !important;
+  right:4.4% !important;
+  bottom:4.0% !important;
+  width:25.5% !important;
+  height:9.7% !important;
+}
+/* 고학년/중학생 실제 버튼도 동일한 시각 규격 */
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back,
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  border-radius:999px !important;
+  font-size:18px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  box-sizing:border-box !important;
+}
+#gradeIntroModal.v264UpperArt .v264Back,
+#gradeIntroModal.v274MiddleArt .v274Back{
+  background:#fff !important;
+  border:3px solid #a9d9f8 !important;
+  color:#0b4f80 !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.16) !important;
+}
+#gradeIntroModal.v264UpperArt .v264Start,
+#gradeIntroModal.v274MiddleArt .v274Start{
+  background:linear-gradient(135deg,#168cff 0%,#0873e9 100%) !important;
+  border:3px solid #fff !important;
+  color:#fff !important;
+  box-shadow:0 5px 14px rgba(31,67,91,.18) !important;
+}
+/* 저학년은 16px이 기준. 고학년/중학생은 시각적으로 낮아 보여 8px 위로 보정. */
+#gradeIntroModal.v260LowerArt .v260Close{
+  top:16px !important; right:16px !important;
+  width:40px !important; height:40px !important;
+}
+#gradeIntroModal.v264UpperArt .v264Close,
+#gradeIntroModal.v274MiddleArt .v274Close{
+  top:8px !important; right:16px !important;
+  width:40px !important; height:40px !important;
+  min-width:40px !important; min-height:40px !important;
+}
+@media(max-width:900px){
+  #gradeIntroModal.v260LowerArt .v260Close{top:10px !important;right:10px !important;width:36px !important;height:36px !important;}
+  #gradeIntroModal.v264UpperArt .v264Close,
+  #gradeIntroModal.v274MiddleArt .v274Close{top:4px !important;right:10px !important;width:36px !important;height:36px !important;min-width:36px !important;min-height:36px !important;}
+}

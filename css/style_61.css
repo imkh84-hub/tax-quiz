@@ -1,0 +1,24 @@
+/* V221: 학습자료 메인 배너의 왼쪽 글자에만 둥글고 귀여운 서체 적용.
+   Jua(제목) + Gowun Dodum(설명), 네트워크가 없는 경우 시스템 서체로 대체. */
+#learn > .hero.sky.learnHeroV219 .heroCopy .eyebrow {
+  font-family:'Gowun Dodum','NanumSquareRound','Malgun Gothic',sans-serif;
+  font-weight:800; font-size:15px; letter-spacing:-.025em;
+}
+#learn > .hero.sky.learnHeroV219 .heroCopy h2,
+#learn > .hero.sky.learnHeroV219 .heroCopy h2 strong {
+  font-family:'Jua','NanumSquareRound','Malgun Gothic',sans-serif;
+  font-weight:400; letter-spacing:-.018em;
+}
+#learn > .hero.sky.learnHeroV219 .heroCopy h2 {
+  font-size:clamp(32px,3.6vw,48px);line-height:1.28;
+  margin:17px 0 15px;
+}
+#learn > .hero.sky.learnHeroV219 .heroCopy p {
+  font-family:'Gowun Dodum','NanumSquareRound','Malgun Gothic',sans-serif;
+  font-size:17px;font-weight:700;letter-spacing:-.035em;line-height:1.6;
+}
+@media(max-width:700px){
+ #learn > .hero.sky.learnHeroV219 .heroCopy .eyebrow{font-size:12px;}
+ #learn > .hero.sky.learnHeroV219 .heroCopy h2{font-size:clamp(25px,6.8vw,34px);margin:10px 0;}
+ #learn > .hero.sky.learnHeroV219 .heroCopy p{font-size:12px;}
+}

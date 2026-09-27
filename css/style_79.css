@@ -1,0 +1,31 @@
+/* V263 — compact Course guide heading card */
+#course .v243GuideHead{
+  width:fit-content !important;
+  max-width:min(760px, calc(100% - 32px)) !important;
+  margin:0 auto 24px !important;
+  padding:16px 42px 15px !important;
+  box-sizing:border-box !important;
+  text-align:center !important;
+  border:1px solid rgba(91,158,126,.24) !important;
+  border-radius:18px !important;
+  background:linear-gradient(135deg,rgba(244,251,247,.96) 0%,rgba(252,254,253,.98) 52%,#fff 100%) !important;
+  box-shadow:0 7px 20px rgba(43,92,67,.075), inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+#course .v243GuideHead::before{display:none !important;content:none !important;}
+#course .v243GuideHead h2{
+  margin:0 0 6px !important;
+  text-align:center !important;
+  font-size:26px !important;
+}
+#course .v243GuideHead p{
+  margin:0 !important;
+  text-align:center !important;
+}
+@media(max-width:900px){
+  #course .v243GuideHead{
+    width:calc(100% - 24px) !important;
+    max-width:680px !important;
+    padding:15px 22px 14px !important;
+    border-radius:16px !important;
+  }
+}

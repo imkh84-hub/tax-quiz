@@ -1,0 +1,120 @@
+
+/* V343 — 모바일 학습자료 3학년군 컨테이너 구조 통일
+   저학년: 안내 + 1~6을 하나의 박스처럼
+   고학년/중학생: 안내 + 1~6을 같은 박스처럼, 7/8은 아래 전체폭 별도
+   PC 변경 없음
+*/
+@media (max-width:900px){
+
+  /* 공통: 안내바를 '독립 캡슐'이 아니라 상단 헤더처럼 보이게 */
+  #learn #lessonBody .v139Head.v145Head{
+    margin:8px 8px 0 !important;
+    padding:0 !important;
+    border:1px solid #e1ebf3 !important;
+    border-bottom:0 !important;
+    border-radius:16px 16px 0 0 !important;
+    background:#fff !important;
+    box-shadow:0 3px 12px rgba(30,78,112,.05) !important;
+  }
+
+  #learn #lessonBody .v139Head.v145Head > .v339MobileInfo{
+    min-height:56px !important;
+    margin:0 !important;
+    padding:10px 11px !important;
+    border:0 !important;
+    border-radius:16px 16px 0 0 !important;
+    background:#f7fbfe !important;
+    box-shadow:none !important;
+    border-bottom:1px solid #e8f0f5 !important;
+  }
+
+  /* 저학년 1~6: 안내바와 시각적으로 한 컨테이너 */
+  #learn #lessonBody .v139Grid{
+    margin:0 8px 10px !important;
+    padding:10px !important;
+    gap:8px !important;
+    border:1px solid #e1ebf3 !important;
+    border-top:0 !important;
+    border-radius:0 0 16px 16px !important;
+    background:#fff !important;
+    box-shadow:0 5px 14px rgba(30,78,112,.05) !important;
+  }
+
+  /* 고학년 1~6 컨테이너도 저학년과 동일한 하단 박스 */
+  #learn #lessonBody .v168HighGrid{
+    margin:0 8px 10px !important;
+    padding:10px !important;
+    gap:8px !important;
+    border:1px solid #e1ebf3 !important;
+    border-top:0 !important;
+    border-radius:0 0 16px 16px !important;
+    background:#fff !important;
+    box-shadow:0 5px 14px rgba(30,78,112,.05) !important;
+  }
+
+  /* 고학년 7/8은 박스 밖의 별도 전체폭 카드처럼 보이게 */
+  #learn #lessonBody .v168HighGrid .v168HighCard:nth-child(7),
+  #learn #lessonBody .v168HighGrid .v168HighCard:nth-child(8){
+    grid-column:1 / -1 !important;
+    margin-top:2px !important;
+  }
+
+  /* 중학생 1~6 컨테이너 */
+  #learn #lessonBody .v199MidGrid{
+    margin:0 8px 0 !important;
+    padding:10px !important;
+    gap:8px !important;
+    border:1px solid #e1ebf3 !important;
+    border-top:0 !important;
+    border-radius:0 0 16px 16px !important;
+    background:#fff !important;
+    box-shadow:0 5px 14px rgba(30,78,112,.05) !important;
+  }
+
+  /* 중학생 7/8은 1~6 박스 아래 별도 전체폭 */
+  #learn #lessonBody .v206MidWideGrid{
+    margin:9px 8px 10px !important;
+    padding:0 !important;
+    gap:8px !important;
+    border:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+
+  /* 고학년은 7/8이 같은 grid DOM 안에 있으므로
+     1~6 박스와 7/8을 시각적으로 분리 */
+  #learn #lessonBody .v168HighGrid:has(.v168HighCard:nth-child(7)){
+    padding-bottom:10px !important;
+  }
+
+  /* 카드 자체 테두리/라운드 통일 */
+  #learn #lessonBody .v139Grid article,
+  #learn #lessonBody .v168HighCard,
+  #learn #lessonBody .v199MidCard{
+    overflow:hidden !important;
+    border-radius:11px !important;
+  }
+}
+
+/* :has 미지원 환경에서도 구조가 깨지지 않도록 위 규칙들은 독립 작동 */
+
+@media (max-width:900px){
+  #learn #lessonBody .v343HighWideGrid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+    margin:9px 8px 10px !important;
+    padding:0 !important;
+  }
+  #learn #lessonBody .v343HighWideGrid .v168HighCard{
+    width:100% !important;
+    min-width:0 !important;
+    aspect-ratio:1023/202 !important;
+  }
+  #learn #lessonBody .v343HighWideGrid .v168HighCard img{
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+  }
+}

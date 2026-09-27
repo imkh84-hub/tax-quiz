@@ -1,0 +1,7 @@
+/* V217: 이전에 승인한 학년별 일러스트 3장을 카드별로 분리 적용.
+   카드 전체 확대 및 학년별 선택 광원은 기존 V214 CSS 그대로 유지. */
+#learn .v129-grade-card-row{align-items:start;}
+#learn .v129-grade-card{height:auto !important;aspect-ratio:1.415 / 1;}
+#learn .v129-grade-card .v132-low-card-image,
+#learn .v129-grade-card .v133-high-card-image,
+#learn .v129-grade-card .v134-middle-card-image{width:100% !important;height:100% !important;object-fit:fill !important;}

@@ -1,0 +1,40 @@
+
+#course .v106-grade-heading{
+  width:100% !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  margin:0 0 10px !important;
+  padding:0 2px !important;
+  font-family:"Noto Sans KR","Malgun Gothic",sans-serif !important;
+  white-space:nowrap !important;
+}
+#course .v106-heading-cap{
+  width:42px !important;
+  height:35px !important;
+  flex:0 0 42px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+#course .v106-heading-cap svg{
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+}
+#course .v106-grade-heading strong{
+  color:#083d79 !important;
+  font-size:25px !important;
+  line-height:1.1 !important;
+  font-weight:900 !important;
+  letter-spacing:-1px !important;
+}
+#course .v106-heading-desc{
+  color:#53657d !important;
+  font-size:15px !important;
+  line-height:1.2 !important;
+  font-weight:500 !important;
+  letter-spacing:-.4px !important;
+  padding-left:2px !important;
+}

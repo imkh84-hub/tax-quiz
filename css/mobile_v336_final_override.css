@@ -1,0 +1,61 @@
+
+/* V336 — 반드시 style_80/style_81 뒤에서 로드되는 최종 모바일 오버라이드 */
+@media (max-width:900px){
+
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    font-size:8px !important;
+    font-weight:700 !important;
+    line-height:1 !important;
+    letter-spacing:-0.15px !important;
+    white-space:nowrap !important;
+    word-break:keep-all !important;
+    padding:0 5px !important;
+    text-indent:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+
+  #gradeIntroModal.v264UpperArt .v264Back::before,
+  #gradeIntroModal.v274MiddleArt .v274Back::before{
+    font-size:9px !important;
+    content:"← " !important;
+  }
+
+  #gradeIntroModal.v264UpperArt .v264Start::after,
+  #gradeIntroModal.v274MiddleArt .v274Start::after{
+    font-size:9px !important;
+    content:" →" !important;
+  }
+
+  /* 버튼 폭도 글자보다 여유 있게 */
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v274MiddleArt .v274Back{
+    left:4.7% !important;
+    width:23% !important;
+  }
+
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    right:4.4% !important;
+    width:25.5% !important;
+  }
+}
+
+@media (max-width:374px){
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    font-size:7px !important;
+  }
+  #gradeIntroModal.v264UpperArt .v264Back::before,
+  #gradeIntroModal.v274MiddleArt .v274Back::before,
+  #gradeIntroModal.v264UpperArt .v264Start::after,
+  #gradeIntroModal.v274MiddleArt .v274Start::after{
+    font-size:8px !important;
+  }
+}

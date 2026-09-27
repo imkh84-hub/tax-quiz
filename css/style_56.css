@@ -1,0 +1,22 @@
+/* V214: 저학년 6개 카드의 부드러운 선택광을 학년별 카드색에 맞춰 적용. */
+/* 저학년: 기존 파란색 유지 */
+#learn .v129-grade-card.v129-low-card.v135-selected,
+#learn .v132GradeCard.v135-selected:not(.v130-high-card):not(.v134-middle-card){
+  outline:none !important;
+  box-shadow:0 0 0 4px rgba(19,139,211,.18),0 12px 27px rgba(31,79,115,.18) !important;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+/* 고학년: 같은 밝기와 번짐의 연녹색 */
+#learn .v130-high-card.v135-selected,
+#learn .v168HighCard.v211-topic-selected{
+  outline:none !important;
+  box-shadow:0 0 0 4px rgba(35,159,104,.18),0 12px 27px rgba(35,104,78,.18) !important;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+/* 중학생: 같은 밝기와 번짐의 연보라색 */
+#learn .v134-middle-card.v135-selected,
+#learn .v199MidCard.v211-topic-selected{
+  outline:none !important;
+  box-shadow:0 0 0 4px rgba(133,103,198,.18),0 12px 27px rgba(86,67,135,.18) !important;
+  transition:transform .2s ease,box-shadow .2s ease;
+}

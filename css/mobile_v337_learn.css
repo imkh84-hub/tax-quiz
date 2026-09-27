@@ -1,0 +1,143 @@
+
+/* V337 — 모바일 학습자료 재구성
+   PC(901px+)는 기존 화면 유지.
+*/
+@media (max-width:900px){
+
+  /* 1) '학년별 학습자료' 제목과 설명을 2단으로 */
+  #learn .v128-learning-grade-heading{
+    display:grid !important;
+    grid-template-columns:auto 1fr !important;
+    grid-template-areas:
+      "icon title"
+      "sub sub" !important;
+    align-items:center !important;
+    column-gap:7px !important;
+    row-gap:4px !important;
+    padding:10px 2px 8px !important;
+  }
+  #learn .v128-cap{grid-area:icon !important}
+  #learn .v128-learning-grade-heading strong{
+    grid-area:title !important;
+    min-width:0 !important;
+    white-space:nowrap !important;
+  }
+  #learn .v128-learning-grade-heading .v128-sub{
+    grid-area:sub !important;
+    display:block !important;
+    width:100% !important;
+    margin:0 !important;
+    padding-left:0 !important;
+    white-space:normal !important;
+    word-break:keep-all !important;
+    overflow-wrap:break-word !important;
+    line-height:1.45 !important;
+  }
+
+  /* 2) 학년 선택 썸네일은 현재 3개 한 줄을 유지하되 여백 정돈 */
+  #learn .v129-grade-card-row{
+    gap:7px !important;
+    margin-top:4px !important;
+  }
+
+  /* 3) 저학년 1~6 학습카드: 2열 x 3행 */
+  #learn #lessonBody .v139Grid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+    padding:10px 8px 12px !important;
+  }
+  #learn #lessonBody .v139Grid article{
+    width:100% !important;
+    min-width:0 !important;
+    aspect-ratio:494/270 !important;
+    border-radius:12px !important;
+    margin:0 !important;
+  }
+  #learn #lessonBody .v139Grid article .v147ExactCard{
+    width:100% !important;
+    height:100% !important;
+    object-fit:fill !important;
+  }
+
+  /* 학습 소개 영역도 모바일에서 지나치게 길지 않게 */
+  #learn #lessonBody .v139Head.v145Head{
+    min-height:0 !important;
+  }
+
+  /* 4) 상세카드: 폭을 최대한 활용 */
+  #learn #lessonBody .v140Detail{
+    margin:6px 8px 14px !important;
+    padding:10px 8px !important;
+    border-radius:15px !important;
+  }
+  #learn #lessonBody .v153ImageLesson{
+    width:100% !important;
+  }
+  #learn #lessonBody .v153ImageLesson > img{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    cursor:zoom-in !important;
+    border-radius:10px !important;
+  }
+
+  /* 상세자료 아래 이동 버튼은 그대로 한 줄 */
+  #learn #lessonBody .v153LessonNav{
+    gap:6px !important;
+  }
+  #learn #lessonBody .v153LessonNav button{
+    min-width:0 !important;
+    padding-left:8px !important;
+    padding-right:8px !important;
+    white-space:nowrap !important;
+  }
+}
+
+/* 상세자료 확대 뷰어 */
+.v337Zoom{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:14px;
+  background:rgba(10,25,38,.82);
+  backdrop-filter:blur(4px);
+}
+.v337Zoom.open{display:flex}
+.v337ZoomPanel{
+  position:relative;
+  width:min(96vw,760px);
+  max-height:94vh;
+  overflow:auto;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 18px 60px rgba(0,0,0,.35);
+  -webkit-overflow-scrolling:touch;
+}
+.v337ZoomPanel img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.v337ZoomClose{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:100000;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:#fff;
+  color:#173d5b;
+  font-size:28px;
+  line-height:42px;
+  box-shadow:0 4px 18px rgba(0,0,0,.25);
+}
+@media (min-width:901px){
+  .v337Zoom{display:none !important}
+}

@@ -1,0 +1,16 @@
+
+@media (max-width:900px){
+  /* V354 safety: legacy V351 must never hide the new V353/V354 mobile video UI */
+  #video .v353VideoMobile,
+  #video .v353Stages{
+    display:block!important;
+  }
+  #video .v353Stage{display:none!important;}
+  #video .v353Stage.active{display:block!important;}
+
+  /* If a stale legacy class was ever attached, neutralize it on the new UI only */
+  #video .v353VideoMobile.v351VideoOriginal,
+  #video .v353Stages.v351VideoOriginal{
+    display:block!important;
+  }
+}

@@ -1,0 +1,73 @@
+
+#course .v85-grade-clean{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:22px !important;
+}
+#course .v85-grade-card{
+  position:relative !important;
+  aspect-ratio:auto !important;
+  height:230px !important;
+  border-radius:22px !important;
+}
+#course .v85-grade-card img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+/* 저학년: 캐릭터는 왼쪽, 오른쪽을 텍스트 공간으로 */
+#course .v85-grade-card.low img{
+  object-position:center center !important;
+}
+#course .v88-low-copy{
+  position:absolute;
+  z-index:3;
+  left:47%;
+  top:34px;
+  text-align:left;
+  font-family:"Noto Sans KR","Malgun Gothic",sans-serif;
+  pointer-events:none;
+  color:#16385f;
+  letter-spacing:-0.6px;
+}
+#course .v88-low-title{
+  display:flex;align-items:center;gap:9px;
+  margin:0 0 7px;
+  color:#0966c8;
+  font-size:22px;
+  line-height:1.15;
+  font-weight:900;
+  white-space:nowrap;
+}
+#course .v88-sprout{font-size:23px;line-height:1;}
+#course .v88-low-grade{
+  margin:0 0 20px;
+  font-size:16px;
+  line-height:1.2;
+  font-weight:800;
+  color:#17385d;
+  white-space:nowrap;
+}
+#course .v88-low-desc{
+  margin:0;
+  font-size:16px;
+  line-height:1.48;
+  font-weight:650;
+  color:#27496b;
+  white-space:nowrap;
+}
+#course .v88-low-arrow{
+  position:absolute;
+  z-index:4;
+  right:20px;
+  bottom:24px;
+  width:48px;height:48px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#087df0;
+  color:#fff;
+  font-size:29px;
+  line-height:1;
+  font-weight:400;
+  pointer-events:none;
+  box-shadow:0 5px 12px rgba(8,125,240,.20);
+}

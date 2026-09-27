@@ -1,0 +1,143 @@
+
+/* V341 — 모바일 학습자료 최종 구조 정리
+   - 저학년: 1~6 = 2열×3
+   - 고학년/중학생: 1~6 = 2열×3, 7~8 = 전체폭 가로형
+   - 세 학년 모두 상세자료 모달
+   - 팝업 타이포/하단 내비게이션 세련되게 정리
+   - PC(901px+) 변경 없음
+*/
+@media (max-width:900px){
+
+  /* 사이트/모달 한글 타이포 */
+  #learn, .v340LearnModal{
+    font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif !important;
+    color:#183b56 !important;
+  }
+
+  /* 1~6은 공통 2열 */
+  #learn #lessonBody .v139Grid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+  }
+
+  /* 7,8번이 존재하는 고학년/중학생:
+     원래 긴 가로 메뉴의 성격을 살려 전체폭 */
+  #learn #lessonBody .v139Grid article:nth-child(7),
+  #learn #lessonBody .v139Grid article:nth-child(8){
+    grid-column:1 / -1 !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    aspect-ratio:auto !important;
+  }
+
+  #learn #lessonBody .v139Grid article:nth-child(7) .v147ExactCard,
+  #learn #lessonBody .v139Grid article:nth-child(8) .v147ExactCard{
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    object-fit:contain !important;
+    object-position:center !important;
+  }
+
+  /* ===== 상세 모달 ===== */
+  .v340LearnDialog{
+    padding:40px 12px 12px !important;
+    border-radius:18px !important;
+    background:#fff !important;
+  }
+
+  .v340LearnContent{
+    color:#536b7a !important;
+    font-size:13px !important;
+    font-weight:400 !important;
+    line-height:1.6 !important;
+    word-break:keep-all !important;
+    overflow-wrap:break-word !important;
+  }
+
+  .v340LearnContent h1,
+  .v340LearnContent h2,
+  .v340LearnContent h3,
+  .v340LearnContent strong{
+    color:#183b56 !important;
+    font-weight:700 !important;
+    letter-spacing:-.25px !important;
+  }
+
+  /* X 버튼도 가볍게 */
+  .v340LearnClose{
+    top:8px !important;
+    right:8px !important;
+    width:32px !important;
+    height:32px !important;
+    line-height:31px !important;
+    font-size:21px !important;
+    font-weight:400 !important;
+    color:#557080 !important;
+    background:#f1f6f9 !important;
+    box-shadow:none !important;
+  }
+
+  /* ===== 이전 / 목록 / 다음 : 하나의 미니멀 내비게이션 바 ===== */
+  .v340LearnContent .v153LessonNav{
+    display:grid !important;
+    grid-template-columns:1fr auto 1fr !important;
+    align-items:center !important;
+    gap:4px !important;
+    margin:12px 2px 0 !important;
+    padding:9px 0 1px !important;
+    border-top:1px solid #e8eef2 !important;
+  }
+
+  .v340LearnContent .v153LessonNav button{
+    appearance:none !important;
+    -webkit-appearance:none !important;
+    min-width:0 !important;
+    min-height:34px !important;
+    margin:0 !important;
+    padding:0 8px !important;
+    border:0 !important;
+    border-radius:10px !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    color:#657d8b !important;
+    font-family:inherit !important;
+    font-size:11px !important;
+    line-height:1 !important;
+    font-weight:600 !important;
+    letter-spacing:-.15px !important;
+    white-space:nowrap !important;
+  }
+
+  /* 왼쪽 이전 */
+  .v340LearnContent .v153LessonNav button:first-child{
+    justify-self:start !important;
+    text-align:left !important;
+  }
+
+  /* 가운데 목록만 캡슐 */
+  .v340LearnContent .v153LessonNav button:nth-child(2){
+    justify-self:center !important;
+    min-width:58px !important;
+    padding:0 13px !important;
+    border:1px solid #dceaf2 !important;
+    border-radius:999px !important;
+    background:#eef7fc !important;
+    color:#276c98 !important;
+    font-size:11px !important;
+    font-weight:700 !important;
+  }
+
+  /* 오른쪽 다음 */
+  .v340LearnContent .v153LessonNav button:last-child{
+    justify-self:end !important;
+    text-align:right !important;
+  }
+
+  .v340LearnContent .v153LessonNav button:active{
+    opacity:.65 !important;
+    transform:scale(.98) !important;
+  }
+}

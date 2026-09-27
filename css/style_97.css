@@ -1,0 +1,44 @@
+
+/* V325 — 중학생 카드 외곽 규격을 저학년/고학년과 완전히 동일하게 고정 */
+@media (min-width:901px){
+  #course .v247GradeCard:nth-child(3){
+    width:94% !important;
+    aspect-ratio:1.90 / 1 !important;
+    justify-self:center !important;
+    align-self:center !important;
+    border-radius:20px !important;
+    overflow:hidden !important;
+    box-shadow:0 7px 18px rgba(35,75,115,.09) !important;
+  }
+  #course .v247GradeCard:nth-child(3) img{
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:fill !important;
+    object-position:center center !important;
+    transform:none !important;
+    margin:0 !important;
+    display:block !important;
+  }
+}
+@media (max-width:900px){
+  #course .v247GradeCard:nth-child(3){
+    width:96% !important;
+    aspect-ratio:1.90 / 1 !important;
+    justify-self:center !important;
+    border-radius:18px !important;
+    overflow:hidden !important;
+  }
+  #course .v247GradeCard:nth-child(3) img{
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:fill !important;
+    object-position:center center !important;
+    transform:none !important;
+    margin:0 !important;
+    display:block !important;
+  }
+}

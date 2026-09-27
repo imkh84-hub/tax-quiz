@@ -1,0 +1,41 @@
+/* V236 — 학습효과 메인: 승인된 일러스트 배경 + 독립 텍스트 */
+#effect > .hero.effectHeroV236 {
+  position:relative !important; isolation:isolate !important;
+  min-height:360px !important; height:360px !important;
+  padding:38px 46px !important; overflow:hidden !important;
+  background:#eefaff url('../images/effect_hero_v236.png') center center / cover no-repeat !important;
+  border-radius:22px !important;
+}
+#effect > .hero.effectHeroV236::before {
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(247,253,255,.42) 0%,rgba(247,253,255,.25) 24%,rgba(247,253,255,.03) 47%,transparent 65%);
+}
+#effect > .hero.effectHeroV236::after {display:none !important}
+#effect > .hero.effectHeroV236 .heroCopy {
+  position:relative !important;z-index:1 !important;width:52% !important;
+  max-width:640px !important;padding:0 !important;margin:0 !important;
+}
+#effect > .hero.effectHeroV236 .eyebrow {
+  font-family:'Gowun Dodum','Malgun Gothic',sans-serif !important;
+  font-size:15px !important;font-weight:800 !important;color:#167fc0 !important;
+}
+#effect > .hero.effectHeroV236 h2 {
+  font-family:'Jua','Malgun Gothic',sans-serif !important;
+  font-size:clamp(34px,3.7vw,51px) !important;font-weight:400 !important;
+  line-height:1.22 !important;letter-spacing:-.025em !important;
+  color:#214c7b !important;margin:16px 0 12px !important;
+}
+#effect > .hero.effectHeroV236 h2 strong {color:#1582c6 !important;font-weight:400 !important}
+#effect > .hero.effectHeroV236 p {
+  font-family:'Gowun Dodum','Malgun Gothic',sans-serif !important;
+  font-size:16px !important;line-height:1.65 !important;color:#365d7d !important;
+  font-weight:700 !important;max-width:510px !important;margin:0 !important;
+}
+@media(max-width:700px){
+ #effect > .hero.effectHeroV236{height:410px !important;min-height:410px !important;padding:24px 20px !important;align-items:flex-start !important;background-position:65% center !important}
+ #effect > .hero.effectHeroV236::before{background:linear-gradient(180deg,rgba(247,253,255,.96) 0%,rgba(247,253,255,.90) 28%,rgba(247,253,255,.15) 58%,transparent 80%)}
+ #effect > .hero.effectHeroV236 .heroCopy{width:100% !important;max-width:none !important}
+ #effect > .hero.effectHeroV236 .eyebrow{font-size:12px !important}
+ #effect > .hero.effectHeroV236 h2{font-size:clamp(29px,7vw,38px) !important;margin:10px 0 !important}
+ #effect > .hero.effectHeroV236 p{font-size:12px !important;max-width:340px !important}
+}

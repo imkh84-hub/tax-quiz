@@ -1,0 +1,17 @@
+
+/* 완성된 고학년 카드 이미지를 두 번째 카드 전체에 그대로 표시 */
+#learn .v130-high-card.v133-high-full-image{
+  padding:0 !important;
+  overflow:hidden !important;
+  background:#edf9f0 !important;
+}
+#learn .v133-high-card-image{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  transform:none !important;
+  display:block !important;
+}

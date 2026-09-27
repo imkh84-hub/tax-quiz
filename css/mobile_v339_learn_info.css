@@ -1,0 +1,124 @@
+
+/* V339 — 모바일 학습자료: 소개영역을 얇은 안내바로 완전 재구성
+   + 모든 학년의 학습카드를 2열로 통일
+   PC(901px+) 변경 없음.
+*/
+@media (max-width:900px){
+
+  /* 기존 학년 소개 영역의 PC용 큰 공간/배경/일러스트 완전 제거 */
+  #learn #lessonBody .v139Head.v145Head{
+    position:relative !important;
+    display:block !important;
+    width:auto !important;
+    min-width:0 !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    margin:8px 8px 5px !important;
+    padding:0 !important;
+    overflow:visible !important;
+    background:none !important;
+    background-image:none !important;
+    border:0 !important;
+    box-shadow:none !important;
+  }
+
+  #learn #lessonBody .v139Head.v145Head > *{
+    display:none !important;
+  }
+
+  /* 모바일 전용 얇은 학년 안내바 */
+  #learn #lessonBody .v339MobileInfo{
+    display:grid !important;
+    grid-template-columns:auto minmax(0,1fr) auto !important;
+    grid-template-areas:
+      "badge desc count" !important;
+    align-items:center !important;
+    gap:8px !important;
+    width:100% !important;
+    min-height:58px !important;
+    box-sizing:border-box !important;
+    padding:9px 10px !important;
+    border:1px solid #e1ebf3 !important;
+    border-radius:14px !important;
+    background:#f7fbfe !important;
+    box-shadow:0 3px 10px rgba(30,78,112,.06) !important;
+  }
+
+  #learn #lessonBody .v339Badge{
+    grid-area:badge !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    min-height:28px !important;
+    padding:0 9px !important;
+    border-radius:999px !important;
+    background:#e8f4fb !important;
+    color:#17699b !important;
+    font-size:11px !important;
+    line-height:1 !important;
+    font-weight:800 !important;
+    white-space:nowrap !important;
+  }
+
+  #learn #lessonBody .v339Desc{
+    grid-area:desc !important;
+    display:block !important;
+    min-width:0 !important;
+    margin:0 !important;
+    color:#496777 !important;
+    font-size:11px !important;
+    line-height:1.4 !important;
+    font-weight:600 !important;
+    text-align:left !important;
+    word-break:keep-all !important;
+    overflow-wrap:break-word !important;
+  }
+
+  #learn #lessonBody .v339Count{
+    grid-area:count !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    min-height:25px !important;
+    padding:0 8px !important;
+    border-radius:999px !important;
+    background:#fff !important;
+    border:1px solid #d8e7f0 !important;
+    color:#66808f !important;
+    font-size:10px !important;
+    line-height:1 !important;
+    font-weight:800 !important;
+    white-space:nowrap !important;
+  }
+
+  /* 저학년 6개 + 고학년/중학생 8개 모두 2열 */
+  #learn #lessonBody .v139Grid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+    margin-top:3px !important;
+    padding-top:8px !important;
+  }
+}
+
+/* 360px에서는 안내문이 답답하지 않도록 2행 구성 */
+@media (max-width:374px){
+  #learn #lessonBody .v339MobileInfo{
+    grid-template-columns:auto 1fr !important;
+    grid-template-areas:
+      "badge count"
+      "desc desc" !important;
+    row-gap:6px !important;
+  }
+  #learn #lessonBody .v339Count{
+    justify-self:end !important;
+  }
+}
+
+/* PC에서는 모바일 안내바 숨김 */
+@media (min-width:901px){
+  #learn #lessonBody .v339MobileInfo{
+    display:none !important;
+  }
+}

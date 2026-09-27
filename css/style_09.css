@@ -1,0 +1,13 @@
+
+/* 업로드한 3개 일러스트를 각 학년 카드에 그대로 적용 */
+#course .v85-grade-card img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+/* 우선 일러스트 배치 확인 단계: 기존 V90 저학년 문구/화살표는 숨김 */
+#course .v88-low-copy,
+#course .v88-low-arrow{
+  display:none !important;
+}

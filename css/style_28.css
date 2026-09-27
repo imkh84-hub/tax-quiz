@@ -1,0 +1,17 @@
+
+#learn .sectionTitle{
+  position:relative !important;
+  margin-bottom:4px !important;
+}
+#learn .v123-grade-subtitle{
+  margin-top:0 !important;
+  margin-bottom:16px !important;
+  padding:0 !important;
+  text-indent:0 !important;
+  position:relative !important;
+  left:0 !important;
+}
+/* 제목에 앞 아이콘/내부 여백이 있는 경우, 설명도 제목 글자 시작선에 맞춤 */
+#learn .sectionTitle + .v123-grade-subtitle{
+  margin-left:0 !important;
+}

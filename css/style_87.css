@@ -1,0 +1,15 @@
+/* V314 — 저학년 카드 좌우 잘림 보정
+   V313 카드 크기는 그대로 유지하고 이미지 세로 채움은 유지,
+   가로 확대만 제거해 오른쪽 끝까지 보이도록 조정. */
+@media (min-width:901px){
+  #course .v247GradeCard:first-child img{
+    transform:scaleX(1.00) scaleY(1.075) !important;
+    transform-origin:center center !important;
+  }
+}
+@media (max-width:900px){
+  #course .v247GradeCard:first-child img{
+    transform:scaleX(1.00) scaleY(1.07) !important;
+    transform-origin:center center !important;
+  }
+}

@@ -1,0 +1,21 @@
+/* V262 — micro alignment refinements */
+/* Center the Course guide heading copy and soften the left accent. */
+#course .v243GuideHead{
+  padding:18px 24px 17px !important;
+  text-align:center !important;
+  background:linear-gradient(100deg,#f3faf6 0%,#f8fcfa 18%,#fff 52%,#fff 100%) !important;
+}
+#course .v243GuideHead::before{
+  width:6px !important;
+  background:linear-gradient(180deg,rgba(47,183,123,.58),rgba(117,213,173,.32)) !important;
+}
+#course .v243GuideHead h2,
+#course .v243GuideHead p{text-align:center !important;}
+
+/* Optically center the × inside the circular close control. */
+#gradeIntroModal.v260LowerArt .v260Close::before{
+  transform:translateY(-2px);
+}
+@media(max-width:900px){
+  #course .v243GuideHead{padding:16px 18px 15px !important;}
+}

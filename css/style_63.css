@@ -1,0 +1,17 @@
+/* V223 교육영상 학년 선택: 기존 메인 배너와 다른 탭은 유지 */
+#video .v223VideoGrades{margin-top:28px;padding:4px 0 12px}
+#video .v223VideoGradesHead{display:flex;align-items:center;gap:16px;margin:0 0 20px;color:#153e76}
+#video .v223VideoGradesHead h3{font-family:'Jua','Malgun Gothic',sans-serif;font-weight:400;font-size:clamp(25px,3vw,35px);line-height:1.2;margin:0 0 7px;color:#153e76}
+#video .v223VideoGradesHead p{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;margin:0;font-size:15px;color:#5a6983;line-height:1.5}
+#video .v223Clapper{flex:none;display:grid;place-items:center;width:58px;height:58px;border-radius:17px;background:linear-gradient(145deg,#b5e3ff,#4f9df5);border:2px solid #b4dbff;color:#fff;font-size:25px;box-shadow:0 5px 13px #93b8e533}
+#video .v223HeadHint{margin-left:auto;padding:12px 18px;background:#f3f9ff;border:1px solid #d9e9fa;border-radius:30px;color:#426ca5;font-family:'Jua','Malgun Gothic',sans-serif;font-size:15px;text-align:center;line-height:1.35}
+#video .v223VideoGradeGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#video .v223VideoGradeCard{display:block;overflow:hidden;border-radius:22px;outline-offset:4px;border:3px solid transparent;box-shadow:0 5px 17px rgba(37,74,118,.09);transition:transform .23s ease,box-shadow .23s ease,border-color .23s ease;background:#fff;line-height:0}
+#video .v223VideoGradeCard img{display:block;width:100%;height:auto;aspect-ratio:1.11;object-fit:fill}
+#video .v223VideoGradeCard:hover{transform:translateY(-5px) scale(1.012);box-shadow:0 13px 28px rgba(37,74,118,.16)}
+#video .v223VideoGradeCard:focus-visible{outline:3px solid #346bc9}
+#video .v223Low:hover{border-color:#91caff}#video .v223High:hover{border-color:#92d5a7}#video .v223Middle:hover{border-color:#c5a5ef}
+#video .v223VideoGradeNote{font-family:'Gowun Dodum','Malgun Gothic',sans-serif;font-size:12px;line-height:1.5;color:#7d899b;margin:16px 3px 0}
+@media(max-width:850px){#video .v223VideoGradeGrid{gap:10px}#video .v223VideoGradeCard{border-radius:15px}#video .v223HeadHint{display:none}}
+@media(max-width:650px){#video .v223VideoGradesHead{gap:10px}#video .v223Clapper{width:45px;height:45px;font-size:19px}#video .v223VideoGradesHead p{font-size:12px}#video .v223VideoGradeGrid{grid-template-columns:1fr;gap:15px;max-width:450px;margin:auto}#video .v223VideoGradeCard{border-radius:21px}#video .v223VideoGradeCard img{aspect-ratio:auto}#video .v223VideoGradeNote{font-size:11px}}
+@media(prefers-reduced-motion:reduce){#video .v223VideoGradeCard{transition:none}}

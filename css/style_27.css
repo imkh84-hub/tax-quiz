@@ -1,0 +1,15 @@
+
+/* 학습자료 - '학년별 학습자료' 제목과 설명의 시작점/간격 통일 */
+#learn .sectionTitle{
+  margin-bottom:4px !important;
+}
+#learn .sectionTitle + p,
+#learn .v123-grade-subtitle{
+  margin-top:0 !important;
+  margin-left:0 !important;
+  padding-left:0 !important;
+  text-indent:0 !important;
+}
+#learn .v123-grade-subtitle{
+  margin-bottom:16px !important;
+}

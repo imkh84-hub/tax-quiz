@@ -1,0 +1,17 @@
+
+#learn .v134-middle-card{
+  grid-column:3;
+  padding:0 !important;
+  overflow:hidden !important;
+  background:#f2efff !important;
+}
+#learn .v134-middle-card-image{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  transform:none !important;
+  display:block !important;
+}

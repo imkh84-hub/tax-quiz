@@ -1,0 +1,35 @@
+
+/* V310 — header brand alignment and official-site links */
+.v310LogoHome{
+  appearance:none;border:0;background:transparent;padding:0;margin:0;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  border-radius:12px;
+}
+.v310LogoHome:focus-visible{outline:3px solid rgba(10,174,128,.28);outline-offset:4px}
+.v310AgencyLink,.v310OfficeLink{
+  text-decoration:none;color:inherit;position:relative;display:inline-flex;align-items:center;
+  transition:color .18s ease;
+}
+.v310AgencyLink::after,.v310OfficeLink::after{
+  content:"";position:absolute;left:50%;bottom:-6px;width:0;height:2px;border-radius:999px;
+  background:#0aae80;transform:translateX(-50%);transition:width .18s ease;
+}
+.v310AgencyLink:hover,.v310AgencyLink:focus-visible,
+.v310OfficeLink:hover,.v310OfficeLink:focus-visible{color:#078d69 !important}
+.v310AgencyLink:hover::after,.v310AgencyLink:focus-visible::after,
+.v310OfficeLink:hover::after,.v310OfficeLink:focus-visible::after{width:100%}
+.v310AgencyLink:focus-visible,.v310OfficeLink:focus-visible{outline:none}
+@media (min-width:901px){
+  header .v310Brand{display:flex !important;align-items:center !important;gap:11px !important}
+  header .v310LogoHome{height:42px !important;align-self:center !important}
+  header .v310LogoHome .logoBadge{display:flex !important;align-items:center !important;justify-content:center !important}
+  header .v310LogoHome .officialLogo{transform:scale(.94) !important;transform-origin:center center !important}
+  header .v310BrandText{height:42px !important;display:flex !important;align-items:center !important;gap:11px !important}
+  header .v310BrandText .v310AgencyLink{font-size:20px !important;line-height:1 !important;font-weight:900 !important;color:#1f2732 !important;letter-spacing:-.7px !important}
+  header .v310BrandText .v310OfficeLink{font-size:21px !important;line-height:1 !important;font-weight:900 !important;color:#123f86 !important;letter-spacing:-.8px !important}
+}
+@media(max-width:900px){
+  header .v310Brand{align-items:center !important}
+  header .v310BrandText{display:flex !important;align-items:center !important}
+  header .v310LogoHome .officialLogo{transform:scale(.94);transform-origin:center}
+}

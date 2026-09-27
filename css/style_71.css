@@ -1,0 +1,12 @@
+/* V293 education-video visual refresh: preserve official thumbnails/links */
+#video #v223VideoGradesTitle.v224VideoTitle{gap:12px}
+#video #v223VideoGradesTitle .v293VideoSectionIcon{width:58px!important;height:44px!important;flex:0 0 58px!important;overflow:visible}
+#video #v223VideoGradesTitle .v293VideoSectionIcon>img{display:block!important;width:58px!important;height:44px!important;max-width:none!important;max-height:none!important;object-fit:contain!important;filter:drop-shadow(0 4px 8px rgba(48,65,110,.12))}
+#video .v293VideoCard{position:relative}
+#video .v293GradeIcon{position:absolute;z-index:3;left:2.2%;top:2.1%;width:24%;height:17.5%;display:flex;align-items:center;justify-content:center;border-radius:18px;pointer-events:none;box-shadow:0 4px 10px rgba(37,74,118,.07)}
+#video .v293GradeIcon>img{display:block!important;width:92%!important;height:92%!important;object-fit:contain!important;aspect-ratio:auto!important}
+#video .v293LowIcon{background:linear-gradient(135deg,#f5fbff 0%,#e7f6ff 100%)}
+#video .v293HighIcon{background:linear-gradient(135deg,#f7fff9 0%,#eaf9ef 100%)}
+#video .v293MiddleIcon{background:linear-gradient(135deg,#f5faff 0%,#e8f4ff 100%)}
+#video .v293VideoCard:hover .v293GradeIcon{transform:translateY(-2px) scale(1.025);transition:transform .22s ease}
+@media(max-width:650px){#video #v223VideoGradesTitle .v293VideoSectionIcon{width:50px!important;height:38px!important;flex-basis:50px!important}#video #v223VideoGradesTitle .v293VideoSectionIcon>img{width:50px!important;height:38px!important}#video .v293GradeIcon{border-radius:14px}}

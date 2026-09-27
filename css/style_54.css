@@ -1,0 +1,33 @@
+
+#learn .v199MidWrap{max-width:1180px;margin:24px auto 0}
+#learn .v199MidGrid{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:16px;
+ align-items:stretch;
+}
+#learn .v199MidCard{
+ width:100%;min-width:0;
+ border:0;padding:0;margin:0;background:transparent;
+ border-radius:22px;overflow:hidden;cursor:pointer;
+ box-shadow:0 7px 20px rgba(34,73,105,.10);
+ transition:transform .20s ease,box-shadow .20s ease!important;
+ transform-origin:center center!important;
+}
+#learn .v199MidCard img{display:block;width:100%;height:auto}
+@media (hover:hover) and (pointer:fine){
+ #learn .v199MidCard:hover{
+  transform:scale(1.025)!important;
+  box-shadow:0 14px 32px rgba(24,70,105,.16)!important;
+  z-index:30!important;
+ }
+}
+@media(max-width:760px){
+ #learn .v199MidGrid{grid-template-columns:1fr}
+}
+
+/* V206: 7~8번은 세 번째 줄에서 전체 너비를 반씩 사용 */
+#learn .v206MidWideGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+#learn .v206MidWideGrid .v199MidCard{display:block}
+#learn .v206MidWideGrid img{width:100%;height:auto;display:block}
+@media(max-width:760px){#learn .v206MidWideGrid{grid-template-columns:1fr}}

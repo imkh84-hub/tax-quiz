@@ -1,0 +1,75 @@
+
+/* V95 일러스트는 그대로 두고 저학년 카드에 HTML/CSS 콘텐츠만 오버레이 */
+#course .v85-grade-card.low{
+  position:relative !important;
+  overflow:hidden !important;
+}
+#course .v85-grade-card.low .v88-low-copy{
+  display:block !important;
+  position:absolute !important;
+  left:50% !important;
+  top:25px !important;
+  z-index:5 !important;
+  color:#173b70 !important;
+  text-align:left !important;
+  pointer-events:none !important;
+}
+#course .v85-grade-card.low .v88-low-title{
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  margin:0 0 6px !important;
+  font-size:21px !important;
+  line-height:1.15 !important;
+  font-weight:900 !important;
+  color:#0866c8 !important;
+  white-space:nowrap !important;
+}
+#course .v85-grade-card.low .v88-low-grade{
+  margin:0 0 18px !important;
+  font-size:16px !important;
+  line-height:1.2 !important;
+  font-weight:800 !important;
+  color:#183a64 !important;
+}
+#course .v85-grade-card.low .v88-low-desc{
+  margin:0 !important;
+  font-size:15px !important;
+  line-height:1.48 !important;
+  font-weight:650 !important;
+  color:#27496b !important;
+  white-space:nowrap !important;
+}
+/* 참고 이미지처럼 두 잎 + 줄기의 초록 새싹 */
+#course .v85-grade-card.low .v90-sprout{
+  display:inline-flex !important;
+  width:30px !important;
+  height:30px !important;
+  flex:0 0 30px !important;
+  transform:translateY(-1px) !important;
+  color:#42b833 !important;
+}
+#course .v85-grade-card.low .v90-sprout svg{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+}
+/* 원형 화살표도 HTML/CSS로 표시 */
+#course .v85-grade-card.low .v88-low-arrow{
+  display:flex !important;
+  position:absolute !important;
+  right:17px !important;
+  bottom:18px !important;
+  z-index:6 !important;
+  width:46px !important;
+  height:46px !important;
+  border-radius:50% !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#087df0 !important;
+  color:white !important;
+  font-size:27px !important;
+  line-height:1 !important;
+  pointer-events:none !important;
+  box-shadow:0 5px 12px rgba(8,125,240,.18) !important;
+}

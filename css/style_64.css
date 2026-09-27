@@ -1,0 +1,7 @@
+/* V224: replace old grade-card artwork with individually cropped approved 3-card illustration. */
+#video .v224VideoTitle{font-family:'Jua','Malgun Gothic',sans-serif;font-weight:400;color:#173b72;font-size:clamp(23px,2.8vw,32px);margin:0 0 18px}
+#video .v223VideoGradeGrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+#video .v223VideoGradeCard{border:0;border-radius:22px;background:transparent;overflow:hidden;line-height:0;box-shadow:0 5px 17px rgba(37,74,118,.09)}
+#video .v223VideoGradeCard img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+#video .v223VideoGradeCard:hover{box-shadow:0 12px 26px rgba(37,74,118,.16)}
+@media(max-width:650px){#video .v223VideoGradeGrid{grid-template-columns:1fr;max-width:450px;gap:16px;margin:auto}}

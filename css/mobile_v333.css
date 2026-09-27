@@ -1,0 +1,61 @@
+
+/* V333 — 모바일 세금교실 미세 보정
+   1) 고학년/중학생 팝업 하단 버튼에 적정 크기 텍스트 복원
+   2) 저학년 학년카드 이미지를 카드 프레임 끝까지 채움
+   PC는 변경 없음.
+*/
+@media (max-width:900px){
+
+  /* ===== 고학년 / 중학생 팝업 하단 버튼 ===== */
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    text-indent:0 !important;
+    overflow:visible !important;
+    font-size:clamp(10px,3.15vw,13px) !important;
+    line-height:1 !important;
+    font-weight:800 !important;
+    letter-spacing:-0.45px !important;
+    -webkit-text-fill-color:currentColor !important;
+    text-shadow:none !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    white-space:nowrap !important;
+    z-index:30 !important;
+  }
+
+  /* 왼쪽 흰 버튼 */
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v274MiddleArt .v274Back{
+    color:#174d77 !important;
+  }
+
+  /* 오른쪽 파란 버튼 */
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    color:#fff !important;
+  }
+
+  /* ===== 저학년 카드 =====
+     고학년/중학생과 같은 외곽 프레임을 쓰되,
+     저학년 이미지만 약간 확대하여 내부 빈 여백 제거 */
+  #course .v247GradeCard:nth-child(1){
+    overflow:hidden !important;
+  }
+
+  #course .v247GradeCard:nth-child(1) img{
+    width:102.5% !important;
+    height:102.5% !important;
+    min-width:102.5% !important;
+    min-height:102.5% !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:fill !important;
+    object-position:center center !important;
+    transform:translate(-1.25%,-1.25%) !important;
+    margin:0 !important;
+    display:block !important;
+  }
+}

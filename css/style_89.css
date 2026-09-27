@@ -1,0 +1,14 @@
+/* V316 — 고학년 카드 좌우 빈 공간 보정
+   V315/V314의 카드 외곽 규격은 고정하고 고학년 이미지 가로만 미세 확대. */
+@media (min-width:901px){
+  #course .v247GradeCard:nth-child(2) img{
+    transform:scaleX(1.075) scaleY(1.075) !important;
+    transform-origin:center center !important;
+  }
+}
+@media (max-width:900px){
+  #course .v247GradeCard:nth-child(2) img{
+    transform:scaleX(1.07) scaleY(1.07) !important;
+    transform-origin:center center !important;
+  }
+}

@@ -1,0 +1,17 @@
+
+#course .v85-grade-card{
+  height:210px !important;
+  aspect-ratio:auto !important;
+}
+#course .v85-grade-card img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+/* 일러스트 확인 단계: 기존 저학년 텍스트/화살표는 계속 숨김 */
+#course .v88-low-copy,
+#course .v88-low-arrow{
+  display:none !important;
+}

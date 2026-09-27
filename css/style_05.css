@@ -1,0 +1,9 @@
+
+/* 학년 선택 3카드의 좌우 기준선을 상단 메인 배너와 정확히 일치 */
+#course .v85-grade-clean{
+  width:100% !important;
+  max-width:none !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  box-sizing:border-box !important;
+}

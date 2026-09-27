@@ -1,0 +1,15 @@
+
+/* 저학년·고학년: 오른쪽 여학생이 잘리지 않도록 이미지 축소/위치 조정 */
+#learn .v129-low-card .v129-card-art,
+#learn .v130-high-card .v129-card-art{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:58% center !important;
+  transform:scale(.92) !important;
+  transform-origin:center center !important;
+}
+
+/* 축소로 생기는 가장자리 여백은 카드 배경색과 자연스럽게 연결 */
+#learn .v129-low-card{ background:#eaf7ff !important; }
+#learn .v130-high-card{ background:#edf9f0 !important; }

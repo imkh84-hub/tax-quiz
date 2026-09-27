@@ -1,0 +1,62 @@
+
+@media (max-width:900px){
+  /* V351 video UI replaced */
+  #video .v351VideoMobile{display:none!important}
+
+  #video .v352VideoMobile{display:block;margin-top:4px}
+  #video .v352OfficialGuide{
+    display:flex;align-items:center;gap:9px;
+    margin:8px 8px 10px;padding:10px 11px;
+    border:1px solid #dcebf3;border-radius:13px;background:#f7fbfd;
+    color:#526d7d;font:600 10.5px/1.45 Pretendard,"Noto Sans KR",sans-serif;
+  }
+  #video .v352GuideIcon{
+    flex:0 0 28px;width:28px;height:28px;border-radius:9px;
+    display:flex;align-items:center;justify-content:center;
+    background:#e8f5fb;color:#2175a2;font-size:14px;
+  }
+  #video .v352GuideText{min-width:0}
+  #video .v352GuideText strong{color:#1e526f;font-weight:800}
+  #video .v352MenuBadge{
+    display:inline-block;margin:0 2px;padding:2px 6px;
+    border-radius:999px;background:#e6f4fb;color:#1472a4;font-weight:800;
+    white-space:nowrap;
+  }
+
+  #video .v352VideoTabs{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+    margin:0 8px 11px;padding:4px;border-radius:14px;background:#f1f6f9;
+  }
+  #video .v352VideoTab{
+    height:38px;min-width:0;padding:0 4px;border:0;border-radius:10px;
+    background:transparent;color:#647987;
+    font:700 11px Pretendard,"Noto Sans KR",sans-serif;white-space:nowrap;
+  }
+  #video .v352VideoTab.active{
+    background:#fff;color:#176c9f;box-shadow:0 2px 8px rgba(25,78,110,.10);
+  }
+
+  /* One video per grade -> one full-width card */
+  #video .v352VideoStage{margin:0 8px 16px}
+  #video .v352VideoCard{
+    display:block;width:100%;overflow:hidden;
+    border:1px solid #e0eaf0;border-radius:16px;background:#fff;
+    box-shadow:0 5px 15px rgba(32,74,101,.08);
+    text-decoration:none;
+  }
+  #video .v352VideoCard img{
+    display:block;width:100%;height:auto!important;
+    max-width:none;aspect-ratio:auto!important;
+    object-fit:contain!important;object-position:center;
+    margin:0;padding:0;
+  }
+  #video .v352VideoAction{
+    display:flex;align-items:center;justify-content:space-between;
+    min-height:42px;padding:0 13px;
+    border-top:1px solid #edf2f5;
+    color:#2675a5;font:800 11px Pretendard,"Noto Sans KR",sans-serif;
+  }
+}
+@media (min-width:901px){
+  #video .v352VideoMobile{display:none!important}
+}

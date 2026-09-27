@@ -1,0 +1,20 @@
+
+#learn .v139Lesson{margin-top:18px;border:1px solid #dfeef6;border-radius:24px;overflow:hidden;background:#f4fbff;box-shadow:0 8px 26px #234b6812}
+#learn .v139Head{min-height:148px;display:flex;background:linear-gradient(100deg,#edf9ff,#fbfeff 62%,#e9f8ff);border-bottom:1px solid #dfedf4}
+#learn .v139Head>div:first-child{padding:24px 30px;flex:1}
+#learn .v139Head span{display:inline-block;background:#fff;color:#0876c9;border-radius:20px;padding:7px 14px;font-weight:800;font-size:14px}
+#learn .v139Head h3{margin:9px 0 5px;color:#073b69;font-size:29px;letter-spacing:-1.2px}
+#learn .v139Head p{margin:0;color:#506d84;font-size:15px}
+#learn .v139Town{width:310px;position:relative;padding:22px;text-align:right;color:#17476d;background:linear-gradient(#e8f8ff 62%,#dff4df 62%)}
+#learn .v139Town b{font-size:13px;line-height:1.5} #learn .v139Town em{position:absolute;right:25px;bottom:12px;font-style:normal;font-size:48px;white-space:nowrap}
+#learn .v139Grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
+#learn .v139Grid article{position:relative;min-height:170px;background:#fff;border:1px solid #e3edf3;border-radius:18px;padding:18px 70px 18px 62px;box-shadow:0 4px 14px #234b680d}
+#learn .v139Grid i{position:absolute;left:17px;top:17px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#138bd3;color:#fff;font-style:normal;font-weight:800}
+#learn .v139Grid article:nth-child(2) i{background:#ff8a21} #learn .v139Grid article:nth-child(3) i{background:#15975a}
+#learn .v139Grid article:nth-child(4) i{background:#ef5f91} #learn .v139Grid article:nth-child(5) i{background:#7351cf} #learn .v139Grid article:nth-child(6) i{background:#08a1bb}
+#learn .v139Grid h4{margin:1px 0 8px;color:#0a355d;font-size:17px;line-height:1.35} #learn .v139Grid p{margin:0;color:#526e84;font-size:14px;line-height:1.5}
+#learn .v139Grid strong{position:absolute;right:18px;bottom:13px;font-size:43px}
+#learn .v139Grid button{position:absolute;right:13px;top:13px;width:27px;height:27px;border:0;border-radius:50%;background:#edf8ff;color:#1688cf;font-size:21px;cursor:pointer}
+#learn .v139Grid article{transition:.18s ease} #learn .v139Grid article:hover{transform:translateY(-3px);box-shadow:0 10px 24px #234b681a}
+@media(max-width:900px){#learn .v139Grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){#learn .v139Head{display:block}#learn .v139Town{width:auto;height:100px}#learn .v139Grid{grid-template-columns:1fr}}

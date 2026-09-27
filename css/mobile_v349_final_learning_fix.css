@@ -1,0 +1,61 @@
+
+/* V349
+   1) 고학년 7/8: 크롭/고정높이 제거, 원본 전체를 빈 여백 없이 표시
+   2) 고학년/중학생 안내영역→카드 간격을 저학년 기준으로 통일
+   3) V347의 2열×4행 + 하나의 컨테이너 유지
+*/
+@media (max-width:900px){
+
+  /* ===== 세 학년 공통 간격 ===== */
+  #learn #lessonBody .v139Head.v145Head{
+    margin-bottom:0 !important;
+  }
+
+  #learn #lessonBody .v139Grid,
+  #learn #lessonBody .v168HighGrid,
+  #learn #lessonBody .v199MidGrid{
+    margin-top:0 !important;
+    padding-top:6px !important;
+  }
+
+  /* 안내영역 자체의 불필요한 하단 여백 제거 */
+  #learn #lessonBody .v139Head.v145Head > .v339MobileInfo{
+    margin-bottom:0 !important;
+  }
+
+  /* ===== 고학년 7/8 =====
+     원본 비율 그대로. cover/강제 72px 제거. */
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(7),
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(8){
+    grid-column:auto !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:auto !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    background:transparent !important;
+  }
+
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(7) img,
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(8) img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:none !important;
+    min-height:0 !important;
+    aspect-ratio:auto !important;
+    margin:0 !important;
+    padding:0 !important;
+    transform:none !important;
+    object-fit:fill !important;
+    object-position:center !important;
+  }
+
+  /* 고/중 인라인 상세는 모바일에서 숨김 */
+  #learn #lessonBody #v168HighDetail,
+  #learn #lessonBody #v209MiddleDetail{
+    display:none !important;
+  }
+}

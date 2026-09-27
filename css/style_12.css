@@ -1,0 +1,18 @@
+
+/* 저학년 글자 묶음을 V96보다 조금 오른쪽으로 */
+#course .v85-grade-card.low .v88-low-copy{
+  left:54% !important;
+}
+/* 참고 이미지에서 가져온 새싹 아이콘 */
+#course .v85-grade-card.low .v90-sprout{
+  width:31px !important;
+  height:31px !important;
+  flex:0 0 31px !important;
+  overflow:visible !important;
+}
+#course .v85-grade-card.low .v90-sprout .v97-sprout-img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+}

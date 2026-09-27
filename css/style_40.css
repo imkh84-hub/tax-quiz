@@ -1,0 +1,34 @@
+
+#learn .v139Grid article[role="button"]{cursor:pointer}
+#learn .v139Grid article.v140-active{
+  border-color:#9ed7f4;
+  box-shadow:0 0 0 3px rgba(19,139,211,.10),0 10px 24px rgba(35,75,104,.10);
+}
+#learn .v140Detail:empty{display:none}
+#learn .v140Detail{
+  margin:0 18px 20px;
+  padding:30px 32px 26px;
+  border-radius:20px;
+  background:#fff;
+  border:1px solid #dfeaf1;
+  box-shadow:0 5px 18px rgba(35,75,104,.07);
+}
+#learn .v140DetailHead{display:flex;align-items:flex-start;gap:15px;margin-bottom:21px}
+#learn .v140DetailNum{flex:0 0 42px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#138bd3;color:#fff;font-size:20px;font-weight:850}
+#learn .v140DetailHead h3{margin:0 0 5px;color:#073b69;font-size:26px;letter-spacing:-1px}
+#learn .v140DetailHead p{margin:0;color:#61798d;font-size:14px}
+#learn .v140LearnBox{padding:22px 24px;border-radius:16px;background:#f4faff;color:#244b69;line-height:1.75;font-size:15px}
+#learn .v140LearnBox strong{color:#0877c9}
+#learn .v140ExampleRow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}
+#learn .v140Example{padding:17px 12px;border-radius:14px;background:#fff;border:1px solid #e1edf4;text-align:center}
+#learn .v140Example b{display:block;font-size:31px;margin-bottom:7px}
+#learn .v140Example span{color:#385c76;font-size:14px;font-weight:700}
+#learn .v140Point{margin-top:16px;padding:15px 18px;border-radius:14px;background:#fff8dc;color:#6d5613;font-size:14px;font-weight:700}
+#learn .v140Nav{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding-top:18px;border-top:1px solid #e7eef3}
+#learn .v140Nav button{border:1px solid #d8e5ed;background:#fff;color:#315d7b;border-radius:12px;padding:10px 17px;font-weight:750;cursor:pointer}
+#learn .v140Nav button.v140List{background:#087bc7;border-color:#087bc7;color:#fff}
+#learn .v140Nav button:disabled{opacity:.35;cursor:default}
+@media(max-width:640px){
+ #learn .v140Detail{margin:0 14px 16px;padding:22px 18px}
+ #learn .v140ExampleRow{grid-template-columns:1fr}
+}

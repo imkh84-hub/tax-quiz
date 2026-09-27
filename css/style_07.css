@@ -1,0 +1,10 @@
+
+/* 저학년 캐릭터와 글자 겹침 해소: 텍스트 그룹을 오른쪽으로 이동 */
+#course .v88-low-copy{
+  left:55% !important;
+  top:34px !important;
+}
+#course .v88-low-arrow{
+  right:16px !important;
+  bottom:20px !important;
+}

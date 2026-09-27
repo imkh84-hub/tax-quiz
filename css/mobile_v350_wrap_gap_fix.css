@@ -1,0 +1,12 @@
+
+/* V350
+   저학년과 비교해서 확인된 실제 원인 수정:
+   고학년/중학생에만 존재하는 바깥 Wrap의 상단 24px 여백 제거.
+   카드 자체의 기존 V349 레이아웃/팝업은 변경하지 않음.
+*/
+@media (max-width:900px){
+  #learn #lessonBody .v168HighWrap,
+  #learn #lessonBody .v199MidWrap{
+    margin-top:0 !important;
+  }
+}

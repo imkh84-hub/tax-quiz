@@ -1,0 +1,36 @@
+
+/* 세금교실 배너 글자: 학습자료와 동일한 위치/크기, 세로 깨짐 방지 */
+#course > .hero{
+  position:relative !important;
+}
+#course > .hero .heroCopy{
+  position:absolute !important;
+  left:52px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:auto !important;
+  min-width:520px !important;
+  max-width:620px !important;
+  z-index:3 !important;
+}
+#course > .hero .heroCopy .eyebrow,
+#course > .hero .heroCopy h2,
+#course > .hero .heroCopy p{
+  width:auto !important;
+  max-width:none !important;
+  writing-mode:horizontal-tb !important;
+  word-break:keep-all !important;
+  white-space:normal !important;
+}
+#course > .hero .heroCopy .eyebrow{
+  font-size:15px !important;
+}
+#course > .hero .heroCopy h2{
+  font-size:36px !important;
+  line-height:1.25 !important;
+  letter-spacing:-1.5px !important;
+}
+#course > .hero .heroCopy p{
+  font-size:16px !important;
+  line-height:1.6 !important;
+}

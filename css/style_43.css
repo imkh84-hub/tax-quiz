@@ -1,0 +1,12 @@
+
+#learn .v139Grid article:nth-child(3){
+  background:linear-gradient(135deg,#e7f8f4 0%,#cceee7 100%) !important;
+  padding:24px !important;
+}
+#learn .v139Grid article:nth-child(3) > i,
+#learn .v139Grid article:nth-child(3) > h4,
+#learn .v139Grid article:nth-child(3) > p,
+#learn .v139Grid article:nth-child(3) > strong,
+#learn .v139Grid article:nth-child(3) > button{
+  display:initial !important;
+}

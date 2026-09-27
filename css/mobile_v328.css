@@ -1,0 +1,159 @@
+
+/* V328 — 모바일 홈 상단 정리
+   PC(901px 이상)는 V326/V327 상태 그대로 유지.
+   390px을 주 기준, 360~430px 유동 대응.
+*/
+@media (max-width:900px){
+
+  /* 1) 기관 헤더: 조금 더 컴팩트하게 */
+  header{
+    min-height:64px !important;
+    padding:9px 14px !important;
+  }
+  .v310Brand{
+    min-height:42px !important;
+    display:flex !important;
+    align-items:center !important;
+  }
+  .officialLogo{
+    max-height:34px !important;
+    width:auto !important;
+  }
+  .v310BrandText{
+    font-size:clamp(13px,3.7vw,16px) !important;
+    line-height:1.2 !important;
+    gap:7px !important;
+  }
+
+  /* 2) 상단 메뉴: 5등분 + 작은 아이콘 + 메뉴명 모두 표시 */
+  nav{
+    position:sticky !important;
+    top:0 !important;
+    z-index:60 !important;
+    display:grid !important;
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    align-items:stretch !important;
+    width:100% !important;
+    min-height:60px !important;
+    padding:0 4px !important;
+    gap:0 !important;
+    background:#fff !important;
+    border-top:1px solid #eef2f6 !important;
+    border-bottom:1px solid #e7edf3 !important;
+    overflow:hidden !important;
+  }
+
+  nav button{
+    min-width:0 !important;
+    width:100% !important;
+    height:60px !important;
+    padding:6px 1px 5px !important;
+    margin:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:3px !important;
+    overflow:hidden !important;
+    white-space:nowrap !important;
+    background:transparent !important;
+    border:0 !important;
+  }
+
+  /* 기존 PC용 대형 SVG/아이콘 규칙을 모바일에서 강제로 축소 */
+  nav button svg,
+  nav button img,
+  nav .v289NavIcon,
+  nav [class*="Icon"],
+  nav [class*="icon"]{
+    width:18px !important;
+    height:18px !important;
+    min-width:18px !important;
+    max-width:18px !important;
+    min-height:18px !important;
+    max-height:18px !important;
+    flex:0 0 18px !important;
+    object-fit:contain !important;
+    margin:0 auto !important;
+    transform:none !important;
+  }
+
+  nav .v289NavLabel,
+  nav .v290HomeLabel,
+  nav button span{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    font-size:clamp(9px,2.65vw,11px) !important;
+    line-height:1.15 !important;
+    font-weight:700 !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+  }
+
+  /* 활성 메뉴 밑줄 */
+  nav button.active,
+  nav button[aria-selected="true"]{
+    position:relative !important;
+  }
+  nav button.active::after,
+  nav button[aria-selected="true"]::after{
+    content:"" !important;
+    position:absolute !important;
+    left:22% !important;
+    right:22% !important;
+    bottom:0 !important;
+    height:3px !important;
+    border-radius:3px 3px 0 0 !important;
+    background:#0b84d8 !important;
+  }
+
+  /* 3) 홈 본문: 현재 잘 나온 비율 유지, 메뉴와 배너 사이만 정돈 */
+  #home .v235HomeHero,
+  #home .hero{
+    margin-top:10px !important;
+  }
+
+  /* 4) 2x2 카드: 유지하되 간격만 통일 */
+  #home .v242IntegratedQuick{
+    gap:10px !important;
+  }
+  #home .v242IntegratedCard{
+    border-radius:15px !important;
+  }
+
+  /* 5) 하단 안내 배너는 현재 비율 유지 */
+  #home img{
+    max-width:100% !important;
+  }
+}
+
+/* 360px 전후: 긴 메뉴명이 잘리지 않도록 조금 더 축소 */
+@media (max-width:374px){
+  nav{
+    padding-left:1px !important;
+    padding-right:1px !important;
+  }
+  nav button{
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+  nav .v289NavLabel,
+  nav .v290HomeLabel,
+  nav button span{
+    font-size:9px !important;
+    letter-spacing:-0.35px !important;
+  }
+}
+
+/* 415~430px: 메뉴 글자를 약간 키움 */
+@media (min-width:415px) and (max-width:900px){
+  nav .v289NavLabel,
+  nav .v290HomeLabel,
+  nav button span{
+    font-size:11px !important;
+  }
+}

@@ -1,0 +1,36 @@
+
+/* V324 — 중학생 고화질 카드 적용
+   저학년/고학년은 V323 그대로 유지.
+*/
+@media (min-width:901px){
+  #course .v247GradeCard:nth-child(3){
+    overflow:hidden !important;
+  }
+  #course .v247GradeCard:nth-child(3) img{
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+    transform:none !important;
+    margin:0 !important;
+    display:block !important;
+  }
+}
+@media (max-width:900px){
+  #course .v247GradeCard:nth-child(3){
+    overflow:hidden !important;
+  }
+  #course .v247GradeCard:nth-child(3) img{
+    width:100% !important;
+    height:100% !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+    transform:none !important;
+    margin:0 !important;
+    display:block !important;
+  }
+}

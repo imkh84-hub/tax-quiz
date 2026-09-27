@@ -1,0 +1,11 @@
+
+/* 제목의 실제 글자 시작점과 설명 시작점을 정확히 맞춤 */
+#learn .v126-title-text{
+  display:inline-block !important;
+}
+#learn .v123-grade-subtitle{
+  margin-top:2px !important;
+  margin-bottom:16px !important;
+  padding:0 !important;
+  text-indent:0 !important;
+}

@@ -1,0 +1,83 @@
+
+/* V334 — 모바일 버튼 글자 축소 + 한글 단어 우선 줄바꿈
+   PC(901px+) 변경 없음.
+*/
+@media (max-width:900px){
+
+  /* 모바일 한글: 가능하면 단어 중간을 자르지 않고 단어 단위로 줄바꿈 */
+  #home, #course, #learn, #video, #effect,
+  #gradeIntroModal{
+    word-break:keep-all !important;
+    overflow-wrap:break-word !important;
+  }
+
+  /* 일반 제목/설명도 음절 단위 강제 분리를 피함 */
+  #home p, #home h1, #home h2, #home h3,
+  #course p, #course h1, #course h2, #course h3,
+  #learn p, #learn h1, #learn h2, #learn h3,
+  #video p, #video h1, #video h2, #video h3,
+  #effect p, #effect h1, #effect h2, #effect h3{
+    word-break:keep-all !important;
+    overflow-wrap:break-word !important;
+  }
+
+  /* 고학년/중학생 팝업 하단 버튼:
+     390px에서 약 8.5px, 한 줄 고정 */
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    box-sizing:border-box !important;
+    font-size:8.5px !important;
+    line-height:1 !important;
+    font-weight:800 !important;
+    letter-spacing:-0.25px !important;
+    white-space:nowrap !important;
+    word-break:keep-all !important;
+    overflow-wrap:normal !important;
+    text-indent:0 !important;
+    padding:0 5px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+  }
+
+  /* 왼쪽/오른쪽 클릭영역을 이미지 속 버튼 안쪽으로 조금 줄여 여백 확보 */
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v274MiddleArt .v274Back{
+    left:4.2% !important;
+    width:27.5% !important;
+    color:#174d77 !important;
+  }
+
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    right:4.2% !important;
+    width:28.5% !important;
+    color:#fff !important;
+  }
+}
+
+/* 360px 전후에서는 한 단계 더 작게 */
+@media (max-width:374px){
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    font-size:7.8px !important;
+    padding-left:4px !important;
+    padding-right:4px !important;
+  }
+}
+
+/* 415~430px에서는 조금만 키움 */
+@media (min-width:415px) and (max-width:900px){
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    font-size:9px !important;
+  }
+}

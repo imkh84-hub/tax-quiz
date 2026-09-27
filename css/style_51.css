@@ -1,0 +1,15 @@
+
+#v168HighDetail{margin-top:24px}
+#v168HighDetail .v172HighDetailImg{
+  display:block;width:100%;height:auto;border-radius:26px;
+  box-shadow:0 12px 34px rgba(38,79,110,.10);
+}
+#v168HighDetail .v172HighNav{
+  display:flex;justify-content:center;gap:16px;margin:24px 0 10px;
+}
+#v168HighDetail .v172HighNav button{
+  min-width:150px;padding:14px 22px;border:1px solid #d5e4ef;
+  border-radius:999px;background:#fff;color:#174f79;font-size:18px;
+  font-weight:700;cursor:pointer;
+}
+#v168HighDetail .v172HighNav button:hover{background:#f3f9fd}

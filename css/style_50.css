@@ -1,0 +1,19 @@
+
+.v183-learn-overview{
+  width:100%;
+  max-width:1720px;
+  margin:36px auto 0;
+  padding:0;
+  box-sizing:border-box;
+}
+.v183-learn-overview-img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  border-radius:24px;
+}
+@media(max-width:900px){
+  .v183-learn-overview{margin-top:22px}
+  .v183-learn-overview-img{border-radius:16px}
+}

@@ -1,0 +1,40 @@
+
+/* V335 — 모바일 고학년/중학생 팝업 버튼 글자 대폭 축소
+   PC 및 기타 영역 변경 없음.
+*/
+@media (max-width:900px){
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    font-size:5px !important;
+    line-height:1 !important;
+    font-weight:700 !important;
+    letter-spacing:-0.08px !important;
+    white-space:nowrap !important;
+    word-break:keep-all !important;
+    overflow-wrap:normal !important;
+    padding:0 6px !important;
+    text-indent:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+  }
+}
+@media (max-width:374px){
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    font-size:4.5px !important;
+  }
+}
+@media (min-width:415px) and (max-width:900px){
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    font-size:5.5px !important;
+  }
+}

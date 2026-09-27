@@ -1,0 +1,38 @@
+/* V317 — 고학년 카드 최종 지오메트리 보정
+   저학년(V314)을 기준으로 카드 외곽 규격을 완전히 동일하게 고정.
+   새 고학년 원본은 카드 부분만 정확히 크롭했기 때문에 강제 가로 확대를 제거하고
+   화살표 아래/오른쪽 여백이 저학년처럼 보이도록 전체 이미지를 카드 안에 맞춤. */
+@media (min-width:901px){
+  #course .v247GradeCard:nth-child(2){
+    width:94% !important;
+    aspect-ratio:1.90 / 1 !important;
+    justify-self:center !important;
+    align-self:center !important;
+    border-radius:20px !important;
+    overflow:hidden !important;
+    box-shadow:0 7px 18px rgba(35,75,115,.09) !important;
+  }
+  #course .v247GradeCard:nth-child(2) img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:fill !important;
+    object-position:center center !important;
+    transform:none !important;
+  }
+}
+@media (max-width:900px){
+  #course .v247GradeCard:nth-child(2){
+    width:96% !important;
+    aspect-ratio:1.90 / 1 !important;
+    justify-self:center !important;
+    border-radius:18px !important;
+    overflow:hidden !important;
+  }
+  #course .v247GradeCard:nth-child(2) img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:fill !important;
+    object-position:center center !important;
+    transform:none !important;
+  }
+}

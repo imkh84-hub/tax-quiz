@@ -1,0 +1,20 @@
+
+#learn .v139Grid article:nth-child(3){
+  padding:0 !important;
+  background:#fff !important;
+}
+#learn .v139Grid article:nth-child(3) > i,
+#learn .v139Grid article:nth-child(3) > h4,
+#learn .v139Grid article:nth-child(3) > p,
+#learn .v139Grid article:nth-child(3) > strong,
+#learn .v139Grid article:nth-child(3) > button{
+  display:none !important;
+}
+#learn .v139Grid article:nth-child(3) > .v147ExactCard{
+  display:block !important;
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:fill !important;
+}

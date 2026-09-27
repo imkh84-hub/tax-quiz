@@ -1,0 +1,67 @@
+/* V289 — reference-style top navigation icons + hover motion/underline */
+@media (min-width:901px){
+  nav .v289NavItem{
+    gap:8px !important;
+    overflow:visible !important;
+  }
+  nav .v289NavIcon{
+    width:27px;
+    height:27px;
+    flex:0 0 27px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    transform-origin:50% 70%;
+    transition:transform .22s cubic-bezier(.2,.75,.25,1.25), filter .22s ease;
+    will-change:transform;
+  }
+  nav .v289NavIcon svg{width:100%;height:100%;display:block;overflow:visible}
+  nav .v289NavLabel{position:relative;display:inline-block;line-height:1.1}
+  nav .v289NavLabel::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-9px;
+    width:0;
+    height:3px;
+    border-radius:999px;
+    transform:translateX(-50%);
+    opacity:0;
+    transition:width .22s ease, opacity .18s ease;
+  }
+  nav .v289NavItem:hover .v289NavIcon,
+  nav .v289NavItem:focus-visible .v289NavIcon{
+    transform:translateY(-5px) scale(1.07) rotate(-2deg);
+    filter:drop-shadow(0 4px 3px rgba(30,70,110,.13));
+  }
+  nav .v289NavItem:hover .v289NavLabel::after,
+  nav .v289NavItem:focus-visible .v289NavLabel::after{
+    width:100%;
+    opacity:1;
+  }
+  /* 기존 active 하단선은 유지하되 hover용 밑줄과 충돌하지 않게 약하게 */
+  nav .v289NavItem.active::after{opacity:.18 !important;}
+
+  /* 업로드한 참고 이미지의 색/모양 계열 */
+  nav .v289CourseNav .v289NavIcon svg{fill:#79c89a;stroke:#4fae78;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  nav .v289CourseNav .v289NavLabel::after{background:#5fbe85}
+
+  nav .v289LearnNav .v289NavIcon svg{fill:#d8e9ff;stroke:#6799d9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  nav .v289LearnNav .v289NavLabel::after{background:#6799d9}
+
+  nav .v289VideoNav .v289NavIcon svg{fill:#ffe0e8;stroke:#e77791;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  nav .v289VideoNav .v289NavIcon path{fill:#ed7892;stroke:#ed7892}
+  nav .v289VideoNav .v289NavLabel::after{background:#e77791}
+
+  nav .v289EffectNav .v289NavIcon svg{fill:#bfe7fb;stroke:#56a8d4;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  nav .v289EffectNav .v289NavLabel::after{background:#56a8d4}
+}
+
+@media (prefers-reduced-motion:reduce){
+  nav .v289NavIcon,nav .v289NavLabel::after{transition:none !important}
+  nav .v289NavItem:hover .v289NavIcon,nav .v289NavItem:focus-visible .v289NavIcon{transform:none !important}
+}
+
+
+/* V307 learning-info modal */
+.v307-info-modal{position:fixed;inset:0;z-index:10050;background:rgba(18,35,52,.46);display:none;align-items:center;justify-content:center;padding:24px}.v307-info-modal.show{display:flex}.v307-info-panel{width:min(720px,94vw);background:#fff;border-radius:28px;box-shadow:0 28px 80px rgba(18,45,67,.24);padding:36px 40px 32px;position:relative;border:1px solid #e7eef2}.v307-info-close{position:absolute;right:22px;top:18px;border:0;background:#f2f5f6;width:38px;height:38px;border-radius:50%;font-size:25px;color:#5d6b70;cursor:pointer}.v307-info-badge{display:inline-flex;background:#eaf8ef;color:#19834c;border:1px solid #ccebd8;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:800}.v307-info-panel h2{margin:18px 0 8px;font-size:28px;color:#19333d;letter-spacing:-.8px}.v307-info-lead{margin:0 0 25px;color:#667980;font-size:15px}.v307-info-form{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.v307-info-form label{display:flex;flex-direction:column;gap:8px}.v307-info-form .v307-wide{grid-column:1/-1}.v307-info-form span{font-weight:800;color:#334d56;font-size:14px}.v307-info-form em{font-style:normal;font-size:11px;color:#8c9a9f;font-weight:600;margin-left:5px}.v307-info-form input,.v307-info-form select{height:50px;border:1.5px solid #d9e3e6;border-radius:13px;padding:0 14px;background:#fff;color:#263e47;font-size:15px;outline:none}.v307-info-form input:focus,.v307-info-form select:focus{border-color:#20a262;box-shadow:0 0 0 3px rgba(32,162,98,.1)}.v307-info-note{margin-top:20px;background:#f2faf5;border:1px solid #d9efe1;border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;font-size:13px}.v307-info-note b{color:#18814b;white-space:nowrap}.v307-info-note span{color:#60736b;line-height:1.55}.v307-info-actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.v307-info-actions button{height:52px;border-radius:13px;padding:0 22px;font-weight:800;font-size:15px;cursor:pointer}.v307-back{background:#fff;border:1.5px solid #d9e3e6;color:#64767d}.v307-start{background:#1f9d5b;border:1.5px solid #1f9d5b;color:#fff;min-width:225px;box-shadow:0 8px 20px rgba(31,157,91,.18)}.v307-start:hover{transform:translateY(-1px);background:#188a4e}@media(max-width:650px){.v307-info-panel{padding:30px 22px 24px}.v307-info-form{grid-template-columns:1fr 1fr}.v307-info-form label:last-child{grid-column:1/-1}.v307-info-panel h2{font-size:23px}.v307-info-actions{flex-direction:column-reverse}.v307-info-actions button{width:100%}.v307-info-note{display:block}.v307-info-note b{display:block;margin-bottom:4px}}

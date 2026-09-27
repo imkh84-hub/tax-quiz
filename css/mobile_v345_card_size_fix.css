@@ -1,0 +1,65 @@
+
+/* V345 - 요청한 두 부분만 정확히 보정
+   1) 고학년 8번 좌우 여백: 원본 비율(923x205)에 맞춤
+   2) 중학생 7/8: 1~6과 동일한 2열 카드 폭 안에서 자연 비율로 축소
+*/
+@media (max-width:900px){
+
+  /* 고학년 7/8: 각 원본 이미지 비율을 따로 사용
+     8번을 7번 비율(1023/202)에 강제로 넣던 것이 좌우 여백의 원인이었음 */
+  #learn #lessonBody .v343HighWideGrid .v168HighCard:nth-child(1){
+    aspect-ratio:1023 / 202 !important;
+  }
+  #learn #lessonBody .v343HighWideGrid .v168HighCard:nth-child(2){
+    aspect-ratio:923 / 205 !important;
+  }
+  #learn #lessonBody .v343HighWideGrid .v168HighCard:nth-child(1) img,
+  #learn #lessonBody .v343HighWideGrid .v168HighCard:nth-child(2) img{
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    transform:none !important;
+    object-fit:cover !important;
+    object-position:center !important;
+  }
+
+  /* 중학생 통합 1~8: 모두 정확히 2열 */
+  #learn #lessonBody .v344MiddleUnified{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    align-items:start !important;
+  }
+  #learn #lessonBody .v344MiddleUnified > .v199MidCard{
+    grid-column:auto !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    aspect-ratio:auto !important;
+  }
+
+  /* 1~6은 기존 카드 비율 */
+  #learn #lessonBody .v344MiddleUnified > .v199MidCard:nth-child(-n+6) img{
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:auto !important;
+    object-fit:contain !important;
+  }
+
+  /* 7/8은 원본 960x278 비율 그대로 축소.
+     전체폭으로 키우지 않고 한 칸(약 50%)만 차지 */
+  #learn #lessonBody .v344MiddleUnified > .v199MidCard:nth-child(7),
+  #learn #lessonBody .v344MiddleUnified > .v199MidCard:nth-child(8){
+    grid-column:auto !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
+  #learn #lessonBody .v344MiddleUnified > .v199MidCard:nth-child(7) img,
+  #learn #lessonBody .v344MiddleUnified > .v199MidCard:nth-child(8) img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:960 / 278 !important;
+    object-fit:contain !important;
+    object-position:center !important;
+  }
+}

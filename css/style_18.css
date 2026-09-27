@@ -1,0 +1,40 @@
+
+/* 문자 화살표는 숨기고 CSS 도형으로 정확한 중앙 화살표를 그림 */
+#course .v85-grade-card.low .v88-low-arrow,
+#course .v85-grade-card.high .v101-high-arrow,
+#course .v85-grade-card.middle .v102-middle-arrow{
+  font-size:0 !important;
+  line-height:0 !important;
+  position:absolute !important;
+}
+
+/* 화살표 몸통 */
+#course .v85-grade-card.low .v88-low-arrow::before,
+#course .v85-grade-card.high .v101-high-arrow::before,
+#course .v85-grade-card.middle .v102-middle-arrow::before{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:15px !important;
+  height:2px !important;
+  background:#fff !important;
+  border-radius:2px !important;
+  transform:translate(-50%,-50%) !important;
+}
+
+/* 화살표 머리 */
+#course .v85-grade-card.low .v88-low-arrow::after,
+#course .v85-grade-card.high .v101-high-arrow::after,
+#course .v85-grade-card.middle .v102-middle-arrow::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:8px !important;
+  height:8px !important;
+  border-top:2px solid #fff !important;
+  border-right:2px solid #fff !important;
+  transform:translate(1px,-50%) rotate(45deg) !important;
+  box-sizing:border-box !important;
+}

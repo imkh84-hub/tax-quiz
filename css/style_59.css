@@ -1,0 +1,18 @@
+/* V218 — 학년 선택 카드: V217 대비 세로 높이 30% 축소.
+   세 일러스트의 전체 문구/인물은 보존하면서 새 가로형 카드 비율에 맞춤.
+   고학년·중학생 원본 좌측 흰 여백은 이미지 파일에서 별도 제거.
+   기존 hover/selected 스타일은 변경하지 않음. */
+#learn .v129-grade-card-row { align-items: start; }
+#learn .v129-grade-card {
+  height: auto !important;
+  aspect-ratio: 2.0214 / 1 !important;
+  overflow: hidden !important;
+}
+#learn .v129-grade-card .v132-low-card-image,
+#learn .v129-grade-card .v133-high-card-image,
+#learn .v129-grade-card .v134-middle-card-image {
+  position: absolute !important; inset: 0 !important;
+  display: block !important; width: 100% !important; height: 100% !important;
+  object-fit: fill !important; object-position: center !important;
+  border: 0 !important; margin: 0 !important; padding: 0 !important;
+}

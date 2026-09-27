@@ -1,0 +1,39 @@
+/* V313 — 저학년 카드 미세조정
+   바깥 카드 자체를 더 낮고 컴팩트하게 만들고,
+   원본 이미지의 흰 외곽 여백은 카드 내부에서 살짝 확대해 덜 보이게 처리. */
+@media (min-width:901px){
+  #course .v247GradeCard:first-child{
+    width:94% !important;
+    aspect-ratio:1.90 / 1 !important;
+    justify-self:center !important;
+    align-self:center !important;
+    border-radius:20px !important;
+    overflow:hidden !important;
+    box-shadow:0 7px 18px rgba(35,75,115,.09) !important;
+  }
+  #course .v247GradeCard:first-child img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+    transform:scale(1.075) !important;
+    transform-origin:center center !important;
+  }
+}
+@media (max-width:900px){
+  #course .v247GradeCard:first-child{
+    width:96% !important;
+    aspect-ratio:1.90 / 1 !important;
+    justify-self:center !important;
+    border-radius:18px !important;
+    overflow:hidden !important;
+  }
+  #course .v247GradeCard:first-child img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+    transform:scale(1.07) !important;
+    transform-origin:center center !important;
+  }
+}

@@ -1,0 +1,17 @@
+
+/* 이미지가 아닌 코드(SVG)로 만든 새싹 */
+#course .v85-grade-card.low .v99-sprout{
+  display:inline-flex !important;
+  width:31px !important;
+  height:31px !important;
+  flex:0 0 31px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  transform:translateY(-2px) !important;
+}
+#course .v85-grade-card.low .v99-sprout svg{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  overflow:visible !important;
+}

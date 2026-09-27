@@ -1,0 +1,23 @@
+
+/* 상단: 공통 일러스트 전체 배경 + HTML 문구 */
+#learn .v139Head.v145Head{
+  position:relative !important;
+  min-height:210px !important;
+  display:block !important;
+  overflow:hidden !important;
+  background-image:
+    linear-gradient(90deg,rgba(244,251,255,.98) 0%,rgba(244,251,255,.95) 29%,rgba(244,251,255,.76) 43%,rgba(244,251,255,.18) 61%,rgba(244,251,255,0) 74%),
+    url("../images/image_021.jpg") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+}
+#learn .v145HeadCopy{
+  position:relative;z-index:2;width:52%;padding:29px 32px !important;
+}
+#learn .v145HeadCopy span{
+  display:inline-block;background:rgba(255,255,255,.9);color:#0876c9;
+  border-radius:20px;padding:7px 14px;font-weight:800;font-size:14px;
+}
+#learn .v145HeadCopy h3{margin:11px 0 7px;color:#073b69;font-size:30px;line-height:1.24;letter-spacing:-1.3px}
+#learn .v145HeadCopy p{margin:0;max-width:500px;color:#496a82;font-size:15px;line-height:1.6}
+

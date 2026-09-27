@@ -1,0 +1,97 @@
+
+/* V347
+   고학년/중학생 모두:
+   - 1~8 카드 2열 x 4행
+   - 8개 전부 하나의 테두리(컨테이너) 안
+   - 학년 재진입 시에도 같은 구조 유지
+*/
+@media (max-width:900px){
+
+  /* ===== 고학년 ===== */
+  #learn #lessonBody .v168HighGrid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+    margin:0 8px 10px !important;
+    padding:6px 10px 10px !important;
+    border:1px solid #e1ebf3 !important;
+    border-top:0 !important;
+    border-radius:0 0 16px 16px !important;
+    background:#fff !important;
+    box-shadow:0 5px 14px rgba(30,78,112,.05) !important;
+  }
+
+  #learn #lessonBody .v168HighGrid > .v168HighCard{
+    grid-column:auto !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    margin:0 !important;
+    overflow:hidden !important;
+    border-radius:11px !important;
+    aspect-ratio:auto !important;
+  }
+
+  /* 7/8도 전체폭 금지, 각각 한 칸 */
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(7),
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(8){
+    grid-column:auto !important;
+    width:100% !important;
+    aspect-ratio:auto !important;
+  }
+
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(7) img,
+  #learn #lessonBody .v168HighGrid > .v168HighCard:nth-child(8) img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:none !important;
+    margin:0 !important;
+    transform:none !important;
+    object-fit:contain !important;
+  }
+
+  /* ===== 중학생 =====
+     기존 1~6 grid와 7~8 grid의 '두 테두리'를 없애고,
+     JS가 7/8을 원래 1~6 grid로 넣어 8개를 하나로 만든다. */
+  #learn #lessonBody .v199MidGrid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+    margin:0 8px 10px !important;
+    padding:6px 10px 10px !important;
+    border:1px solid #e1ebf3 !important;
+    border-top:0 !important;
+    border-radius:0 0 16px 16px !important;
+    background:#fff !important;
+    box-shadow:0 5px 14px rgba(30,78,112,.05) !important;
+  }
+
+  #learn #lessonBody .v199MidGrid > .v199MidCard{
+    grid-column:auto !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    margin:0 !important;
+    overflow:hidden !important;
+    border-radius:11px !important;
+  }
+
+  #learn #lessonBody .v199MidGrid > .v199MidCard:nth-child(7) img,
+  #learn #lessonBody .v199MidGrid > .v199MidCard:nth-child(8) img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:960/278 !important;
+    object-fit:contain !important;
+  }
+
+  /* 7/8의 원래 별도 wrapper는 모바일에서 레이아웃을 차지하지 않음 */
+  #learn #lessonBody .v206MidWideGrid{
+    display:none !important;
+    margin:0 !important;
+    padding:0 !important;
+    border:0 !important;
+    box-shadow:none !important;
+  }
+}

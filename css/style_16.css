@@ -1,0 +1,74 @@
+
+/* 앞의 두 카드와 동일한 위치 체계 */
+#course .v85-grade-card.middle{
+  position:relative !important;
+  overflow:hidden !important;
+}
+#course .v85-grade-card.middle .v102-middle-copy{
+  display:block !important;
+  position:absolute !important;
+  left:57% !important;
+  top:25px !important;
+  z-index:5 !important;
+  text-align:left !important;
+  font-family:"Noto Sans KR","Malgun Gothic",sans-serif !important;
+  letter-spacing:-0.6px !important;
+  pointer-events:none !important;
+}
+#course .v102-middle-title{
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  margin:0 0 6px !important;
+  color:#32158f !important;
+  font-size:21px !important;
+  line-height:1.15 !important;
+  font-weight:900 !important;
+  white-space:nowrap !important;
+}
+#course .v102-middle-grade{
+  margin:0 0 18px !important;
+  color:#273b67 !important;
+  font-size:16px !important;
+  line-height:1.2 !important;
+  font-weight:800 !important;
+  white-space:nowrap !important;
+}
+#course .v102-middle-desc{
+  margin:0 !important;
+  color:#38415e !important;
+  font-size:15px !important;
+  line-height:1.48 !important;
+  font-weight:650 !important;
+  white-space:nowrap !important;
+}
+#course .v102-cap{
+  display:inline-flex !important;
+  width:34px !important;
+  height:29px !important;
+  flex:0 0 34px !important;
+  transform:translateY(-1px) !important;
+}
+#course .v102-cap svg{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+}
+#course .v102-middle-arrow{
+  position:absolute !important;
+  z-index:6 !important;
+  right:17px !important;
+  bottom:18px !important;
+  width:46px !important;
+  height:46px !important;
+  border-radius:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#9554e8 !important;
+  color:#fff !important;
+  font-size:27px !important;
+  line-height:1 !important;
+  pointer-events:none !important;
+  box-shadow:0 5px 12px rgba(149,84,232,.18) !important;
+}

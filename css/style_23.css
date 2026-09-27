@@ -1,0 +1,27 @@
+
+/* 학습자료: 세금교실과 동일하게 일러스트가 메인 배너 전체를 채우도록 적용 */
+#learn > .hero.sky {
+  background-image:
+    linear-gradient(90deg,
+      rgba(238,248,255,.96) 0%,
+      rgba(238,248,255,.91) 28%,
+      rgba(238,248,255,.60) 40%,
+      rgba(238,248,255,.12) 52%,
+      rgba(238,248,255,0) 63%),
+    url('../images/image_002.png') !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+  position:relative !important;
+}
+#learn > .hero.sky .heroIllustration.learnArt {
+  display:none !important;
+}
+#learn > .hero.sky .heroCopy {
+  position:relative !important;
+  z-index:2 !important;
+  width:47% !important;
+}
+#learn > .hero.sky:after {
+  display:none !important;
+}

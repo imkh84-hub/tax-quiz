@@ -1,0 +1,91 @@
+
+/*
+ V179 원칙:
+ 자동으로 [onclick]/cursor:pointer를 찾아 확대하지 않는다.
+ 실제 카드의 '최외곽 컨테이너'만 직접 확대한다.
+ 따라서 배경 이미지 + 나중에 얹은 HTML 글자 + 화살표가 한 덩어리로 함께 확대된다.
+*/
+@media (hover:hover) and (pointer:fine){
+  /* 홈 메인 카드 */
+  .card,
+
+  /* 세금교실 학년 선택 3개 카드 */
+  #learn .v129-grade-card,
+
+  /* 저학년 1~6 학습카드 */
+  #learn .v147ExactCard,
+
+  /* 고학년 1~8 학습카드 */
+  #learn .v168HighCard,
+
+  /* 학습자료/기타 카드형 UI */
+  #learn .v113-card,
+  #learn .v108-topic,
+  #learn .v85-grade-card {
+    transition:transform .20s ease, box-shadow .20s ease !important;
+    transform-origin:center center !important;
+    will-change:transform;
+    cursor:pointer;
+    position:relative;
+  }
+
+  .card:hover,
+  #learn .v129-grade-card:hover,
+  #learn .v147ExactCard:hover,
+  #learn .v168HighCard:hover,
+  #learn .v113-card:hover,
+  #learn .v108-topic:hover,
+  #learn .v85-grade-card:hover {
+    transform:scale(1.025) !important;
+    box-shadow:0 14px 32px rgba(24,70,105,.16) !important;
+    z-index:30 !important;
+  }
+}
+
+/* 학년선택 카드 내부 레이어는 원래 구조 그대로 유지.
+   자식 요소에는 transform을 절대 주지 않는다. */
+#learn .v129-grade-card{
+  isolation:isolate;
+}
+#learn .v129-grade-card .v129-card-art,
+#learn .v129-grade-card .v132-low-card-image,
+#learn .v129-grade-card .v133-high-card-image,
+#learn .v129-grade-card .v134-middle-card-image{
+  z-index:0;
+}
+#learn .v129-grade-card .v129-card-copy,
+#learn .v129-grade-card .v129-card-arrow{
+  z-index:2;
+}
+
+/* 고학년 상세 하단 버튼 — 저학년과 같은 3자리 고정 */
+#v168HighDetail .v172HighNav{
+  display:grid !important;
+  grid-template-columns:112px 112px 112px !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:12px !important;
+  margin:22px 0 8px !important;
+}
+#v168HighDetail .v172HighNav button{
+  min-width:112px !important;
+  height:44px !important;
+  padding:0 18px !important;
+  border:1px solid #d9e4ec !important;
+  border-radius:999px !important;
+  background:#fff !important;
+  color:#35566d !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  box-shadow:0 3px 10px rgba(30,72,103,.07) !important;
+  cursor:pointer !important;
+}
+#v168HighDetail .v172HighNav button:disabled{
+  opacity:.38 !important;
+  cursor:default !important;
+  pointer-events:none !important;
+  background:#f6f8fa !important;
+  color:#91a0aa !important;
+  border-color:#e2e8ed !important;
+  box-shadow:none !important;
+}

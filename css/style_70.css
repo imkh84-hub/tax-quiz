@@ -1,0 +1,5 @@
+/* V237: 학년별 교육영상 소제목 아이콘 크기 고정 및 정렬 */
+#video #v223VideoGradesTitle.v224VideoTitle{display:flex;align-items:center;gap:10px;line-height:1.25;}
+#video #v223VideoGradesTitle .v237VideoIcon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;line-height:0;}
+#video #v223VideoGradesTitle .v237VideoIcon svg{display:block;width:30px!important;height:30px!important;max-width:30px!important;max-height:30px!important;flex:none;}
+@media(max-width:650px){#video #v223VideoGradesTitle .v237VideoIcon,#video #v223VideoGradesTitle .v237VideoIcon svg{width:25px!important;height:25px!important;flex-basis:25px;}}

@@ -1,0 +1,45 @@
+/* V252 — 세금교실 가로 기준선 통일: 메인 배너 = 학년 선택 = 3개 카드 = 학습내용 */
+@media (min-width:901px){
+  #course > .hero.green.courseHeroV70.courseHeroV234,
+  #course > .v106-grade-heading,
+  #course > .v247GradeCards,
+  #course > .v183-learn-overview{
+    width:100% !important;
+    max-width:none !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    box-sizing:border-box !important;
+  }
+
+  #course > .v106-grade-heading{
+    margin-top:24px !important;
+    margin-bottom:18px !important;
+  }
+
+  #course > .v247GradeCards{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:22px !important;
+  }
+}
+
+/* V253 — 기존 '이런 내용을 배워요' 제목/내용 이미지를 일체형 학습 일러스트로 교체 */
+#course > .v183-learn-overview{
+  margin-top:30px !important;
+  overflow:hidden !important;
+  border-radius:28px !important;
+  background:#fff !important;
+  box-shadow:0 12px 34px rgba(32,78,120,.10) !important;
+}
+#course > .v183-learn-overview .v183-learn-overview-img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:2.5 / 1 !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  border-radius:28px !important;
+}
+@media (max-width:900px){
+  #course > .v183-learn-overview{border-radius:18px !important;margin-top:20px !important;}
+  #course > .v183-learn-overview .v183-learn-overview-img{border-radius:18px !important;aspect-ratio:auto !important;}
+}

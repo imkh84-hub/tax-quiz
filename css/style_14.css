@@ -1,0 +1,5 @@
+
+/* 저학년 카드의 텍스트+새싹 묶음만 조금 더 오른쪽으로 이동 */
+#course .v85-grade-card.low .v88-low-copy{
+  left:57% !important;
+}

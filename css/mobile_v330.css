@@ -1,0 +1,110 @@
+
+/* V330 — 모바일 학년 소개 팝업 하단 버튼 보정
+   PC는 변경하지 않음.
+   고학년/중학생의 '학년 다시 선택' / '학습 시작하기'를
+   이미지 안 하단 UI에 맞는 작은 클릭영역으로 정렬.
+*/
+@media (max-width:900px){
+
+  /* 팝업 자체가 모바일 폭을 넘지 않도록 */
+  #gradeIntroModal .v108-intro-panel{
+    width:calc(100vw - 20px) !important;
+    max-width:390px !important;
+    margin:auto !important;
+    border-radius:18px !important;
+    overflow:hidden !important;
+  }
+
+  /* 고학년/중학생 스테이지는 이미지 비율 그대로 */
+  #gradeIntroModal.v264UpperArt .v264UpperStage,
+  #gradeIntroModal.v274MiddleArt .v274MiddleStage{
+    position:relative !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:3 / 2 !important;
+    overflow:hidden !important;
+  }
+  #gradeIntroModal.v264UpperArt .v264UpperStage img,
+  #gradeIntroModal.v274MiddleArt .v274MiddleStage img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:center !important;
+    display:block !important;
+  }
+
+  /* 고학년/중학생: 이미지에 이미 버튼 디자인이 있으므로
+     실제 HTML 버튼은 '보이지 않는 클릭영역'만 정확히 얹는다. */
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v274MiddleArt .v274Back{
+    display:block !important;
+    position:absolute !important;
+    left:4.5% !important;
+    right:auto !important;
+    bottom:3.2% !important;
+    width:31.5% !important;
+    height:10.5% !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    border-radius:999px !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    color:transparent !important;
+    font-size:0 !important;
+    line-height:0 !important;
+    overflow:hidden !important;
+    z-index:20 !important;
+  }
+
+  #gradeIntroModal.v264UpperArt .v264Start,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    display:block !important;
+    position:absolute !important;
+    left:auto !important;
+    right:4.5% !important;
+    bottom:3.2% !important;
+    width:34.5% !important;
+    height:10.5% !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    border-radius:999px !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    color:transparent !important;
+    font-size:0 !important;
+    line-height:0 !important;
+    overflow:hidden !important;
+    z-index:20 !important;
+  }
+
+  #gradeIntroModal.v264UpperArt .v264Back::before,
+  #gradeIntroModal.v264UpperArt .v264Back::after,
+  #gradeIntroModal.v264UpperArt .v264Start::before,
+  #gradeIntroModal.v264UpperArt .v264Start::after,
+  #gradeIntroModal.v274MiddleArt .v274Back::before,
+  #gradeIntroModal.v274MiddleArt .v274Back::after,
+  #gradeIntroModal.v274MiddleArt .v274Start::before,
+  #gradeIntroModal.v274MiddleArt .v274Start::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  /* 닫기 X도 모바일 팝업에 맞게 통일 */
+  #gradeIntroModal.v264UpperArt .v264Close,
+  #gradeIntroModal.v274MiddleArt .v274Close{
+    top:8px !important;
+    right:8px !important;
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+    min-height:36px !important;
+    padding:0 !important;
+    border-radius:50% !important;
+  }
+}

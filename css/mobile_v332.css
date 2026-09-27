@@ -1,0 +1,95 @@
+
+/* V332
+   V330 원본 고학년/중학생 팝업 이미지 유지.
+   모바일에서 하단 HTML 버튼의 시각 요소만 완전히 제거하고
+   이미지에 그려진 버튼 위에 클릭영역만 배치.
+   PC / 저학년 변경 없음.
+*/
+@media (max-width:900px){
+
+  /* 고학년 */
+  #gradeIntroModal.v264UpperArt .v264Back,
+  #gradeIntroModal.v264UpperArt .v264Start,
+
+  /* 중학생 */
+  #gradeIntroModal.v274MiddleArt .v274Back,
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    appearance:none !important;
+    -webkit-appearance:none !important;
+    position:absolute !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    outline:0 !important;
+    background:none !important;
+    background-color:transparent !important;
+    background-image:none !important;
+    box-shadow:none !important;
+    color:transparent !important;
+    -webkit-text-fill-color:transparent !important;
+    text-shadow:none !important;
+    font-size:0 !important;
+    line-height:0 !important;
+    letter-spacing:0 !important;
+    text-indent:-9999px !important;
+    overflow:hidden !important;
+    opacity:1 !important;
+    z-index:30 !important;
+  }
+
+  /* 내부 span/icon/svg 등도 화면에서 제거 */
+  #gradeIntroModal.v264UpperArt .v264Back *,
+  #gradeIntroModal.v264UpperArt .v264Start *,
+  #gradeIntroModal.v274MiddleArt .v274Back *,
+  #gradeIntroModal.v274MiddleArt .v274Start *{
+    visibility:hidden !important;
+    opacity:0 !important;
+    display:none !important;
+  }
+
+  #gradeIntroModal.v264UpperArt .v264Back::before,
+  #gradeIntroModal.v264UpperArt .v264Back::after,
+  #gradeIntroModal.v264UpperArt .v264Start::before,
+  #gradeIntroModal.v264UpperArt .v264Start::after,
+  #gradeIntroModal.v274MiddleArt .v274Back::before,
+  #gradeIntroModal.v274MiddleArt .v274Back::after,
+  #gradeIntroModal.v274MiddleArt .v274Start::before,
+  #gradeIntroModal.v274MiddleArt .v274Start::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  /* 고학년 원본 이미지의 하단 버튼 위치 */
+  #gradeIntroModal.v264UpperArt .v264Back{
+    left:3.5% !important;
+    right:auto !important;
+    bottom:2.0% !important;
+    width:29% !important;
+    height:11% !important;
+  }
+  #gradeIntroModal.v264UpperArt .v264Start{
+    left:auto !important;
+    right:3.5% !important;
+    bottom:2.0% !important;
+    width:30% !important;
+    height:11% !important;
+  }
+
+  /* 중학생도 동일 원칙 */
+  #gradeIntroModal.v274MiddleArt .v274Back{
+    left:3.5% !important;
+    right:auto !important;
+    bottom:2.0% !important;
+    width:29% !important;
+    height:11% !important;
+  }
+  #gradeIntroModal.v274MiddleArt .v274Start{
+    left:auto !important;
+    right:3.5% !important;
+    bottom:2.0% !important;
+    width:30% !important;
+    height:11% !important;
+  }
+}
