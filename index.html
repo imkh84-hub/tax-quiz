@@ -811,6 +811,68 @@ document.addEventListener('DOMContentLoaded',function(){
   #effect > .effectHeroV236{margin-top:-2px!important;}
 }
 </style>
+
+<style id="v415-mobile-header-left-gap-fix">
+/* V415 — 모바일: 상단 브랜드/메뉴 전체를 왼쪽으로 미세 이동 + 짧은 페이지의 shell 최소높이 제거 */
+@media (max-width:560px){
+  /* 홈/교육영상처럼 콘텐츠가 짧은 페이지에서 shell의 viewport 최소높이가 푸터 위 공백을 만들지 않게 함 */
+  .shell{min-height:0!important;height:auto!important;}
+  /* 로고+순천세무서를 왼쪽으로 */
+  .v310Brand{padding-left:5px!important;}
+  /* 5개 메뉴 묶음도 같이 왼쪽으로 */
+  nav{right:6px!important;}
+}
+@media (max-width:390px){
+  .v310Brand{padding-left:3px!important;}
+  nav{right:5px!important;}
+}
+</style>
+
+<style id="v419-mobile-video-title-removed">
+/* V419 — 모바일 교육영상: 중복된 유튜브 아이콘/학년별 교육영상 제목 제거, 실제 콘텐츠를 위로 이동 */
+@media (max-width:560px){
+  #video #v223VideoGradesTitle{display:none!important;}
+  #video > .v223VideoGrades{margin-top:0!important;padding-top:0!important;}
+  #video .v353VideoMobile{margin-top:0!important;}
+}
+</style>
+
+<style id="v420-mobile-video-header-hard-hide">
+/* V420 — 모바일에서 제목 행(재생 아이콘 + 학년별 교육영상)을 확실히 제거 */
+@media (max-width:560px){
+  #video .v420PcOnlyVideoTitle{display:none!important;visibility:hidden!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;}
+  #video > .v223VideoGrades{margin-top:0!important;padding-top:0!important;}
+  #video .v353VideoMobile{margin-top:0!important;padding-top:0!important;}
+  #video .v353OfficialGuide{margin-top:0!important;}
+}
+</style>
+
+<style id="v421-mobile-video-gap-tightened">
+/* V421 — 모바일 교육영상: 삭제된 제목이 차지하던 시각적 여백까지 제거 */
+@media (max-width:560px){
+  #video #v223VideoGradesTitle.v224VideoTitle{
+    display:none!important;
+    visibility:hidden!important;
+    height:0!important;
+    min-height:0!important;
+    max-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    overflow:hidden!important;
+  }
+  #video > .v223VideoGrades{
+    margin-top:-8px!important;
+    padding-top:0!important;
+  }
+  #video .v353VideoMobile,
+  #video .v353OfficialGuide{
+    margin-top:0!important;
+    padding-top:0!important;
+  }
+}
+</style>
+
 </head>
 <body><div class="shell">
 <header><div class="brand v290Brand v310Brand">
@@ -976,7 +1038,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <section class="page" id="video">
 <div class="hero video videoHeroV222"><div class="heroCopy"><div class="eyebrow">순천세무서 청소년 세금교육</div><h2>영상으로 만나는<br/><strong>세금 이야기</strong></h2><p>재미있는 영상으로 세금을 쉽고 친근하게 배워보세요.</p></div></div>
 <section aria-labelledby="v223VideoGradesTitle" class="v223VideoGrades">
-<h3 class="v224VideoTitle" id="v223VideoGradesTitle"><span aria-hidden="true" class="v237VideoIcon v293VideoSectionIcon v391VideoPlayIcon"><span class="v391VideoPlayTriangle"></span></span><span>학년별 교육영상</span></h3>
+<h3 class="v224VideoTitle v420PcOnlyVideoTitle" id="v223VideoGradesTitle"><span aria-hidden="true" class="v237VideoIcon v293VideoSectionIcon v391VideoPlayIcon"><span class="v391VideoPlayTriangle"></span></span><span>학년별 교육영상</span></h3>
 <div class="v353VideoMobile">
 <div class="v353OfficialGuide">
 <span aria-hidden="true" class="v353GuideIcon v355BluePlayIcon"><span class="v355PlayTriangle"></span></span>
@@ -1554,4 +1616,251 @@ function v402SkipLearningInfo(){
   #effect > .effectHeroV236{margin-top:1px!important;}
 }
 </style>
+
+
+
+<style id="v413-mobile-footer-gap-align">
+/* V413 — 모바일: 홈/교육영상의 마지막 콘텐츠와 푸터 사이 여백을 다른 탭과 동일하게 정리 */
+@media (max-width:560px){
+  #home, #video{padding-bottom:0!important;margin-bottom:0!important;}
+  #home > :last-child, #video > :last-child{margin-bottom:0!important;}
+  #home .v257HomeOverview, #video > .v223VideoGrades{margin-bottom:0!important;}
+}
+</style>
+
+<!-- V412 — 모바일 푸터 + PC/모바일 보기 전환 -->
+<footer id="v412MobileFooter" class="v412-mobile-footer" aria-label="사이트 하단 정보">
+  <div class="v412-footer-title">순천세무서 청소년 세금교실</div>
+  <div class="v412-footer-copy">세금에 대해 쉽고 재미있게 배워보세요.</div>
+  <button type="button" class="v412-view-switch" onclick="v412SetView('desktop')">PC 버전으로 보기</button>
+  <div class="v412-footer-copyright">© 2026 순천세무서 · 청소년 세금교실</div>
+</footer>
+<button id="v412MobileReturn" type="button" onclick="v412SetView('mobile')">모바일 버전으로 보기</button>
+<style id="v412-footer-view-switch-style">
+.v412-mobile-footer{display:none;}
+#v412MobileReturn{display:none;}
+@media (max-width:560px){
+  .v412-mobile-footer{
+    display:block!important; box-sizing:border-box; width:calc(100% - 24px); max-width:520px;
+    margin:22px auto 12px; padding:20px 16px 18px; text-align:center;
+    border-top:1px solid #e5ebf2; color:#718096;
+    font-family:Pretendard,'Noto Sans KR','Malgun Gothic',sans-serif;
+  }
+  .v412-footer-title{font-size:14px;font-weight:800;color:#34495e;letter-spacing:-.3px;}
+  .v412-footer-copy{margin-top:5px;font-size:11.5px;line-height:1.5;color:#8a98a8;letter-spacing:-.2px;}
+  .v412-view-switch{
+    margin:13px 0 11px; padding:8px 15px; border:1px solid #cdd9e6; border-radius:999px;
+    background:#fff; color:#315f8d; font-size:12px; font-weight:700; cursor:pointer;
+  }
+  .v412-footer-copyright{font-size:10.5px;color:#a0aab5;letter-spacing:-.1px;}
+}
+body.v412-force-desktop #v412MobileReturn{
+  display:block!important; position:fixed; right:18px; bottom:18px; z-index:99999;
+  padding:10px 15px; border:1px solid #b9cbe0; border-radius:999px; background:#fff;
+  box-shadow:0 5px 18px rgba(31,61,92,.16); color:#245b91; font-size:12px; font-weight:800; cursor:pointer;
+}
+</style>
+<script id="v412-view-switch-script">
+(function(){
+  var meta=document.querySelector('meta[name="viewport"]');
+  if(!meta){ meta=document.createElement('meta'); meta.name='viewport'; document.head.appendChild(meta); }
+  window.v412SetView=function(mode){
+    try{ localStorage.setItem('taxclass_view_mode',mode); }catch(e){}
+    if(mode==='desktop'){
+      document.body.classList.add('v412-force-desktop');
+      meta.setAttribute('content','width=1280');
+    }else{
+      document.body.classList.remove('v412-force-desktop');
+      meta.setAttribute('content','width=device-width, initial-scale=1.0');
+    }
+    window.scrollTo(0,0);
+  };
+  document.addEventListener('DOMContentLoaded',function(){
+    var mode='mobile';
+    try{ mode=localStorage.getItem('taxclass_view_mode')||'mobile'; }catch(e){}
+    if(mode==='desktop') v412SetView('desktop');
+  });
+})();
+</script>
+
+
+
+<style id="v414-mobile-gap-swipe-style">
+/* V414 — 모바일: 홈/교육영상 실제 콘텐츠 높이에 맞춰 푸터 여백 제거 + 메인 탭 스와이프 */
+@media (max-width:560px){
+  main{min-height:0!important;height:auto!important;padding-bottom:0!important;margin-bottom:0!important;}
+  main > .page{min-height:0!important;height:auto!important;padding-bottom:0!important;margin-bottom:0!important;}
+  main > .page.active{min-height:0!important;height:auto!important;}
+  #home, #video{min-height:0!important;height:auto!important;padding-bottom:0!important;margin-bottom:0!important;}
+  #home .v257HomeOverview.v183-learn-overview,
+  #video > .v223VideoGrades{margin-bottom:0!important;padding-bottom:0!important;}
+  .v412-mobile-footer{margin-top:14px!important;}
+}
+</style>
+<script id="v414-mobile-main-swipe">
+(function(){
+  var order=['home','course','learn','video','effect'];
+  var sx=0, sy=0, st=0, tracking=false;
+  function mobile(){ return window.matchMedia && window.matchMedia('(max-width:560px)').matches && !document.body.classList.contains('v412-force-desktop'); }
+  function blocked(el){
+    if(!el || !el.closest) return false;
+    return !!el.closest('button,a,input,textarea,select,label,[role="button"],[role="tab"],.quiz,.modal,.popup,.v353Tabs,.v353VideoMobile,.v357-tabs,.v242IntegratedQuick');
+  }
+  function current(){
+    var a=document.querySelector('main > .page.active');
+    return a ? order.indexOf(a.id) : 0;
+  }
+  function move(dir){
+    var i=current(), n=i+dir;
+    if(n<0 || n>=order.length) return;
+    var b=document.querySelector('nav [data-page="'+order[n]+'"]');
+    if(b){ b.click(); window.scrollTo({top:0,behavior:'smooth'}); }
+  }
+  document.addEventListener('touchstart',function(e){
+    if(!mobile() || e.touches.length!==1 || blocked(e.target)){ tracking=false; return; }
+    sx=e.touches[0].clientX; sy=e.touches[0].clientY; st=Date.now(); tracking=true;
+  },{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(!tracking || !mobile() || !e.changedTouches.length){tracking=false;return;}
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy, dt=Date.now()-st;
+    tracking=false;
+    if(dt>900 || Math.abs(dx)<65 || Math.abs(dx)<Math.abs(dy)*1.35) return;
+    move(dx<0 ? 1 : -1);
+  },{passive:true});
+})();
+</script>
+
+
+
+<!-- V418 — 홈 제외, 세금교실~학습효과 4-dot 은은한 위치 인디케이터 -->
+<div id="v418PageDots" class="v418-page-dots" aria-hidden="true">
+  <span class="v418-dot"></span><span class="v418-dot"></span><span class="v418-dot"></span><span class="v418-dot"></span>
+</div>
+<style id="v418-soft-4dot-indicator-style">
+.v418-page-dots{display:none;pointer-events:none;}
+@media (max-width:560px){
+  body:not(.v412-force-desktop) main > .page.active > .hero{position:relative!important;}
+  body:not(.v412-force-desktop) .v418-page-dots{
+    position:absolute;right:12px;bottom:10px;z-index:8;
+    display:flex;align-items:center;gap:5px;
+    padding:4px 6px;border-radius:999px;
+    background:rgba(255,255,255,.38);
+    box-shadow:0 1px 5px rgba(35,73,110,.045);
+    backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+    opacity:.72;
+  }
+  .v418-dot{display:block;width:5px;height:5px;border-radius:50%;background:rgba(128,145,162,.30);transition:background .18s ease,transform .18s ease,opacity .18s ease;}
+  .v418-dot.is-active{background:rgba(103,166,220,.62);transform:scale(1.12);}
+  body.v416-subview-open .v418-page-dots{display:none!important;}
+}
+</style>
+<script id="v418-soft-4dot-indicator-script">
+(function(){
+  var order=['course','learn','video','effect'];
+  function sync(){
+    var box=document.getElementById('v418PageDots'); if(!box) return;
+    var active=document.querySelector('main > .page.active');
+    var idx=active ? order.indexOf(active.id) : -1;
+    if(idx<0){ box.style.display='none'; return; }
+    var hero=active.querySelector(':scope > .hero');
+    if(!hero){ box.style.display='none'; return; }
+    if(box.parentNode!==hero) hero.appendChild(box);
+    box.style.display='flex';
+    var dots=box.querySelectorAll('.v418-dot');
+    for(var i=0;i<dots.length;i++) dots[i].classList.toggle('is-active',i===idx);
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    sync();
+    var main=document.querySelector('main');
+    if(main && window.MutationObserver){
+      new MutationObserver(sync).observe(main,{subtree:true,attributes:true,attributeFilter:['class']});
+    }
+    document.addEventListener('click',function(){setTimeout(sync,0);},true);
+  });
+})();
+</script>
+
+
+
+<style id="v422-mobile-video-spacing-centered">
+@media (max-width:560px){
+  /* 교육영상 제목 삭제 후 남은 실제 콘텐츠 전체를 위로 당김 */
+  #video > .v223VideoGrades{
+    margin-top:0!important;
+    padding-top:0!important;
+  }
+  #video .v353VideoMobile{
+    margin-top:-28px!important;
+    padding-top:0!important;
+  }
+
+  /* 공식페이지 안내박스 내부: 아이콘/문구 세로 중앙 재정렬 */
+  #video .v353OfficialGuide{
+    display:flex!important;
+    align-items:center!important;
+    margin-top:0!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+  }
+  #video .v353GuideIcon{
+    align-self:center!important;
+    margin-top:0!important;
+    margin-bottom:0!important;
+  }
+  #video .v353GuideText{
+    display:flex!important;
+    align-items:center!important;
+    align-self:center!important;
+    margin-top:0!important;
+    margin-bottom:0!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+    line-height:1.35!important;
+    transform:translateY(2px)!important;
+  }
+}
+</style>
+
+
+<style id="v423-mobile-video-guide-centered">
+@media (max-width:560px){
+  /* 안내박스 높이를 조금 키우고 모든 내부 요소를 동일 중심선에 맞춤 */
+  #video .v353OfficialGuide{
+    min-height:44px!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    padding:6px 10px!important;
+  }
+  #video .v353GuideIcon{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    align-self:center!important;
+    margin:0 8px 0 0!important;
+    transform:none!important;
+  }
+  #video .v353GuideText{
+    display:flex!important;
+    align-items:center!important;
+    align-self:center!important;
+    flex-wrap:nowrap!important;
+    margin:0!important;
+    padding:0!important;
+    line-height:1!important;
+    transform:none!important;
+  }
+  #video .v353GuideText strong{
+    display:inline-flex!important;
+    align-items:center!important;
+    align-self:center!important;
+    line-height:1!important;
+    margin:0 3px!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+    transform:none!important;
+  }
+}
+</style>
+
 </body></html>
