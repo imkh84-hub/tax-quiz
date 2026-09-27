@@ -1863,4 +1863,182 @@ body.v412-force-desktop #v412MobileReturn{
 }
 </style>
 
+
+<style id="v424-learn-grade-swipe-indicator">
+/* V424 — 모바일 학습자료 학년카드 스와이프 위치 표시. PC 영향 없음 */
+.v424LearnGradeDots{display:none;}
+@media (max-width:560px){
+  #learn .v424LearnGradeDots{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    height:18px;
+    margin:7px 0 3px;
+  }
+  #learn .v424LearnGradeDot{
+    width:6px;
+    height:6px;
+    padding:0;
+    border:0;
+    border-radius:999px;
+    background:#d5dee7;
+    box-shadow:none;
+    pointer-events:none;
+    transition:width .18s ease, background-color .18s ease, opacity .18s ease;
+    opacity:.82;
+  }
+  #learn .v424LearnGradeDot.active{
+    width:18px;
+    background:#8ebce3;
+    opacity:.95;
+  }
+}
+</style>
+<script id="v424-learn-grade-swipe-indicator-script">
+(function(){
+  function initLearnGradeDots(){
+    var row=document.querySelector('#learn .v129-grade-card-row');
+    if(!row || row.dataset.v424DotsReady==='1') return;
+    var cards=Array.prototype.slice.call(row.querySelectorAll('.v129-grade-card'));
+    if(cards.length<2) return;
+
+    var dots=document.createElement('div');
+    dots.className='v424LearnGradeDots';
+    dots.setAttribute('aria-hidden','true');
+
+    cards.forEach(function(_,i){
+      var dot=document.createElement('span');
+      dot.className='v424LearnGradeDot'+(i===0?' active':'');
+      dots.appendChild(dot);
+    });
+    row.insertAdjacentElement('afterend',dots);
+    row.dataset.v424DotsReady='1';
+
+    var dotEls=Array.prototype.slice.call(dots.children);
+    var ticking=false;
+
+    function update(){
+      ticking=false;
+      var center=row.scrollLeft + row.clientWidth/2;
+      var best=0, dist=Infinity;
+      cards.forEach(function(card,i){
+        var c=card.offsetLeft + card.offsetWidth/2;
+        var d=Math.abs(c-center);
+        if(d<dist){dist=d;best=i;}
+      });
+      dotEls.forEach(function(dot,i){dot.classList.toggle('active',i===best);});
+    }
+
+    row.addEventListener('scroll',function(){
+      if(!ticking){
+        ticking=true;
+        requestAnimationFrame(update);
+      }
+    },{passive:true});
+    window.addEventListener('resize',update,{passive:true});
+    setTimeout(update,60);
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initLearnGradeDots);
+  }else{
+    initLearnGradeDots();
+  }
+})();
+</script>
+
+
+<style id="v425-learn-grade-indicator-gap">
+@media (max-width:560px){
+  #learn .v424LearnGradeDots{
+    margin-top:1px!important;
+    margin-bottom:3px!important;
+  }
+}
+</style>
+
+
+<style id="v429-main-4dot-clearer">
+/* V429 — V425 기준. 학습자료 3개 인디케이터는 그대로,
+   메인 4개 페이지 인디케이터만 가시성 강화 */
+@media (max-width:560px){
+  .v417HeroDot, .v418HeroDot, .v418PageDot, .v417PageDot{
+    opacity:.88!important;
+  }
+  .v417HeroDot:not(.active), .v418HeroDot:not(.active),
+  .v418PageDot:not(.active), .v417PageDot:not(.active){
+    background:#b8c4cf!important;
+  }
+  .v417HeroDot.active, .v418HeroDot.active,
+  .v418PageDot.active, .v417PageDot.active{
+    background:#4f92ca!important;
+    opacity:1!important;
+  }
+}
+</style>
+
+
+<style id="v430-main-4dot-stronger">
+/* V430 — 메인 4개 인디케이터만 한 단계 더 선명하게 */
+@media (max-width:560px){
+  .v417HeroDot, .v418HeroDot, .v418PageDot, .v417PageDot{
+    opacity:1!important;
+  }
+  .v417HeroDot:not(.active), .v418HeroDot:not(.active),
+  .v418PageDot:not(.active), .v417PageDot:not(.active){
+    background:#8f9daa!important;
+  }
+  .v417HeroDot.active, .v418HeroDot.active,
+  .v418PageDot.active, .v417PageDot.active{
+    background:#2377b9!important;
+    opacity:1!important;
+  }
+}
+</style>
+
+
+<style id="v433-main-active-short-bar">
+@media (max-width:560px){
+  body:not(.v412-force-desktop) .v418-page-dots{
+    gap:7px!important;
+    align-items:center!important;
+  }
+  body:not(.v412-force-desktop) .v418-page-dots .v418-dot{
+    display:block!important;
+    width:6px!important;
+    min-width:6px!important;
+    height:6px!important;
+    border-radius:999px!important;
+    background:#9eacb9!important;
+    opacity:1!important;
+    transform:none!important;
+    box-shadow:none!important;
+    transition:width .18s ease, background-color .18s ease!important;
+  }
+  body:not(.v412-force-desktop) .v418-page-dots .v418-dot.is-active{
+    width:15px!important;
+    min-width:15px!important;
+    height:5px!important;
+    border-radius:999px!important;
+    background:#347fbd!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+</style>
+
+
+<style id="v434-main-indicator-softer">
+/* V434 — 메인 인디케이터 색상만 한 단계 부드럽게 */
+@media (max-width:560px){
+  body:not(.v412-force-desktop) .v418-page-dots .v418-dot{
+    background:#bcc7d1!important;
+  }
+  body:not(.v412-force-desktop) .v418-page-dots .v418-dot.is-active{
+    background:#6da3cf!important;
+  }
+}
+</style>
+
 </body></html>
