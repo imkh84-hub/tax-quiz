@@ -1708,12 +1708,12 @@ body.v412-force-desktop #v412MobileReturn{
 <script id="v385-mobile-smooth-swipe">
 (function(){
   var order=['home','course','learn','video','effect'];
-  var sx=0,sy=0,lastX=0,lastT=0,startT=0,tracking=false,horizontal=false;
+  var sx=0,sy=0,lastX=0,lastT=0,startT=0,vx=0,tracking=false,horizontal=false;
   var page=null,neighbor=null,dir=0,idx=0,width=0;
-  var THRESHOLD=58, VELOCITY=.42, MAX_EDGE=44;
+  var THRESHOLD=72, VELOCITY=.34, MAX_EDGE=38;
 
   function mobile(){return window.matchMedia&&window.matchMedia('(max-width:560px)').matches&&!document.body.classList.contains('v412-force-desktop');}
-  function blocked(el){return !!(el&&el.closest&&el.closest('input,textarea,select,.quiz,.modal,.popup,.v353Tabs,.v357-tabs,[data-no-page-swipe]'));}
+  function blocked(el){return !!(el&&el.closest&&el.closest('input,textarea,select,.quiz,.modal,.popup,.v353Tabs,.v357-tabs,#learn .v129-grade-card-row,[data-no-page-swipe]'));}
   function activePage(){return document.querySelector('main > .page.active');}
   function current(){var a=activePage();return a?order.indexOf(a.id):0;}
   function navTo(i){
@@ -1745,13 +1745,13 @@ body.v412-force-desktop #v412MobileReturn{
     return true;
   }
   function animateBack(){
-    var dur='280ms',ease='cubic-bezier(.20,.78,.22,1)';
+    var dur='360ms',ease='cubic-bezier(.16,1,.30,1)';
     if(page){page.style.transition='transform '+dur+' '+ease;xform(page,0);}
     if(neighbor){neighbor.style.transition='transform '+dur+' '+ease;xform(neighbor,dir>0?width:-width);}
     setTimeout(cleanup,295);
   }
   function animateComplete(target){
-    var dur='315ms',ease='cubic-bezier(.18,.82,.20,1)';
+    var dur='390ms',ease='cubic-bezier(.16,1,.30,1)';
     if(page){page.style.transition='transform '+dur+' '+ease;xform(page,dir>0?-width:width);}
     if(neighbor){neighbor.style.transition='transform '+dur+' '+ease;xform(neighbor,0);}
     setTimeout(function(){
@@ -1760,19 +1760,19 @@ body.v412-force-desktop #v412MobileReturn{
       if(neighbor)neighbor.style.transition='none';
       navTo(target);
       cleanup();
-    },330);
+    },405);
   }
 
   document.addEventListener('touchstart',function(e){
     if(!mobile()||e.touches.length!==1||blocked(e.target)){tracking=false;return;}
-    var t=e.touches[0];sx=lastX=t.clientX;sy=t.clientY;startT=lastT=performance.now();
+    var t=e.touches[0];sx=lastX=t.clientX;sy=t.clientY;startT=lastT=performance.now();vx=0;
     page=activePage();idx=current();width=Math.max(document.documentElement.clientWidth,window.innerWidth||0);
     tracking=!!page;horizontal=false;dir=0;clearNeighbor();
   },{passive:true});
 
   document.addEventListener('touchmove',function(e){
     if(!tracking||!mobile()||e.touches.length!==1)return;
-    var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;lastX=t.clientX;lastT=performance.now();
+    var t=e.touches[0],now=performance.now(),dx=t.clientX-sx,dy=t.clientY-sy;var dt=Math.max(1,now-lastT);vx=(t.clientX-lastX)/dt;lastX=t.clientX;lastT=now;
     if(!horizontal){
       if(Math.abs(dx)<8&&Math.abs(dy)<8)return;
       if(Math.abs(dy)>=Math.abs(dx)*.82){tracking=false;cleanup();return;}
@@ -1789,7 +1789,7 @@ body.v412-force-desktop #v412MobileReturn{
   document.addEventListener('touchend',function(e){
     if(!tracking||!page){tracking=false;cleanup();return;}
     var ex=(e.changedTouches&&e.changedTouches.length)?e.changedTouches[0].clientX:lastX;
-    var dx=ex-sx,elapsed=Math.max(1,performance.now()-startT),velocity=Math.abs(dx)/elapsed;
+    var dx=ex-sx,elapsed=Math.max(1,performance.now()-startT),velocity=Math.max(Math.abs(vx),Math.abs(dx)/elapsed*.55),projected=dx+vx*135;
     tracking=false;
     if(!horizontal){cleanup();return;}
     var d=dx<0?1:-1,target=idx+d;
@@ -1797,7 +1797,7 @@ body.v412-force-desktop #v412MobileReturn{
       page.style.transition='transform 300ms cubic-bezier(.18,.82,.2,1)';xform(page,0);setTimeout(cleanup,315);return;
     }
     if(!neighbor)prepare(d);
-    if(Math.abs(dx)>=THRESHOLD||velocity>=VELOCITY)animateComplete(target);else animateBack();
+    if(Math.abs(projected)>=THRESHOLD||velocity>=VELOCITY)animateComplete(target);else animateBack();
   },{passive:true});
 
   var suppressTrustedClickUntil=0;
@@ -2125,4 +2125,48 @@ body.v412-force-desktop #v412MobileReturn{
 }
 </style>
 
+
+
+<!-- V386 — 메인 스와이프 자연 감속 + 학습자료 3카드 독립 스와이프 -->
+<style id="v386-natural-main-and-learn-card-swipe">
+@media (max-width:560px){
+  #learn .v129-grade-card-row{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    gap:12px!important;
+    width:100%!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x mandatory!important;
+    scroll-padding-inline:14px!important;
+    overscroll-behavior-x:contain!important;
+    -webkit-overflow-scrolling:touch!important;
+    touch-action:pan-x pan-y!important;
+    scrollbar-width:none!important;
+    padding:0 14px 3px!important;
+    box-sizing:border-box!important;
+  }
+  #learn .v129-grade-card-row::-webkit-scrollbar{display:none!important;}
+  #learn .v129-grade-card-row .v129-grade-card{
+    flex:0 0 calc(100% - 28px)!important;
+    min-width:calc(100% - 28px)!important;
+    max-width:calc(100% - 28px)!important;
+    scroll-snap-align:center!important;
+    scroll-snap-stop:always!important;
+    box-sizing:border-box!important;
+  }
+  #learn .v129-grade-card-row .v129-grade-card:active{transform:scale(.995);}
+}
+</style>
+<script id="v386-learn-card-swipe-priority">
+(function(){
+  function init(){
+    var row=document.querySelector('#learn .v129-grade-card-row');
+    if(!row)return;
+    row.setAttribute('data-no-page-swipe','');
+    row.setAttribute('aria-label','학년별 학습자료 카드 — 좌우로 밀어 선택');
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 </body></html>
