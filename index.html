@@ -2607,4 +2607,103 @@ body.v412-force-desktop #v412MobileReturn{
   sync();
 })();
 </script>
+
+
+<!-- V399 — Mobile portrait + landscape: unified modal background lock -->
+<style id="v399-mobile-all-orientation-modal-lock-style">
+/* Applied by JS only while a target modal is open on a phone/touch viewport. */
+html.v399-modal-lock,
+body.v399-modal-lock{
+  overflow:hidden !important;
+  overscroll-behavior:none !important;
+}
+body.v399-modal-lock{
+  position:fixed !important;
+  left:0 !important;
+  right:0 !important;
+  width:100% !important;
+}
+@media (pointer: coarse){
+  /* Keep gestures inside the modal. This does not alter normal page layout. */
+  #gradeIntroModal,
+  #v307InfoModal{
+    overscroll-behavior:contain !important;
+  }
+  #gradeIntroModal .v108-intro-panel,
+  #v307InfoModal .v307-info-panel{
+    overscroll-behavior-y:contain !important;
+    -webkit-overflow-scrolling:touch !important;
+    touch-action:pan-y !important;
+  }
+  /* The information form may become taller than the viewport (especially with keyboard open). */
+  #v307InfoModal .v307-info-panel{
+    max-height:calc(100dvh - 16px) !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+  }
+}
+</style>
+<script id="v399-mobile-all-orientation-modal-lock-script">
+(function(){
+  var intro=document.getElementById('gradeIntroModal');
+  var info=document.getElementById('v307InfoModal');
+  if(!intro && !info) return;
+
+  var savedY=0;
+  var locked=false;
+
+  function isMobileTouch(){
+    var coarse=!!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+    /* Phone portrait/landscape: use the short side so landscape width does not misclassify it as desktop. */
+    var shortSide=Math.min(window.innerWidth||9999, window.innerHeight||9999);
+    return coarse && shortSide<=600;
+  }
+  function isOpen(el){
+    if(!el) return false;
+    if(el.getAttribute('aria-hidden')==='false') return true;
+    var cs=getComputedStyle(el);
+    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')!==0 && cs.pointerEvents!=='none';
+  }
+  function anyOpen(){ return isOpen(intro) || isOpen(info); }
+
+  function lock(){
+    if(locked) return;
+    savedY=window.scrollY || document.documentElement.scrollTop || 0;
+    document.documentElement.classList.add('v399-modal-lock');
+    document.body.classList.add('v399-modal-lock');
+    document.body.style.setProperty('top',(-savedY)+'px','important');
+    locked=true;
+  }
+  function unlock(){
+    if(!locked) return;
+    document.documentElement.classList.remove('v399-modal-lock');
+    document.body.classList.remove('v399-modal-lock');
+    document.body.style.removeProperty('top');
+    locked=false;
+    window.scrollTo(0,savedY);
+  }
+  function sync(){
+    if(isMobileTouch() && anyOpen()) lock();
+    else unlock();
+  }
+
+  [intro,info].forEach(function(modal){
+    if(!modal) return;
+    new MutationObserver(function(){ requestAnimationFrame(sync); })
+      .observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
+
+    /* Stop modal gestures from bubbling to the document-level page swipe handlers. */
+    ['touchstart','touchmove','touchend','touchcancel'].forEach(function(type){
+      modal.addEventListener(type,function(e){
+        if(isMobileTouch() && isOpen(modal)) e.stopPropagation();
+      },{passive:true});
+    });
+  });
+
+  window.addEventListener('resize',function(){ setTimeout(sync,0); },{passive:true});
+  window.addEventListener('orientationchange',function(){ setTimeout(sync,120); },{passive:true});
+  document.addEventListener('click',function(){ setTimeout(sync,0); },true);
+  sync();
+})();
+</script>
 </body></html>
