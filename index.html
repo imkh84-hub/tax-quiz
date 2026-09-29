@@ -2501,4 +2501,110 @@ body.v412-force-desktop #v412MobileReturn{
   sync();
 })();
 </script>
+
+
+<!-- V398 — Mobile landscape learning-info modal: lock background + scroll panel only -->
+<style id="v398-mobile-landscape-info-scroll-lock-style">
+@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
+  html.v398-info-lock,
+  body.v398-info-lock{
+    overflow:hidden !important;
+    overscroll-behavior:none !important;
+  }
+  body.v398-info-lock{
+    position:fixed !important;
+    left:0 !important;
+    right:0 !important;
+    width:100% !important;
+  }
+  #v307InfoModal.v307-info-modal{
+    position:fixed !important;
+    inset:0 !important;
+    width:100vw !important;
+    height:100dvh !important;
+    max-height:100dvh !important;
+    overflow:hidden !important;
+    overscroll-behavior:contain !important;
+    touch-action:pan-y !important;
+  }
+  #v307InfoModal .v307-info-panel{
+    box-sizing:border-box !important;
+    max-height:calc(100dvh - 12px) !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior-y:contain !important;
+    touch-action:pan-y !important;
+    scrollbar-gutter:stable !important;
+  }
+  #v307InfoModal .v307-info-form,
+  #v307InfoModal .v307-info-note,
+  #v307InfoModal .v307-info-actions,
+  #v307InfoModal .v402-info-skip,
+  #v307InfoModal input,
+  #v307InfoModal select,
+  #v307InfoModal button{
+    touch-action:manipulation !important;
+  }
+}
+</style>
+<script id="v398-mobile-landscape-info-scroll-lock-script">
+(function(){
+  var modal=document.getElementById('v307InfoModal');
+  if(!modal) return;
+  var panel=modal.querySelector('.v307-info-panel');
+  if(!panel) return;
+  var savedY=0, locked=false;
+
+  function landscape(){
+    return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
+  }
+  function isOpen(){
+    if(modal.getAttribute('aria-hidden')==='false') return true;
+    var cs=getComputedStyle(modal);
+    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')!==0 && cs.pointerEvents!=='none';
+  }
+  function lock(){
+    if(locked) return;
+    savedY=window.scrollY||document.documentElement.scrollTop||0;
+    document.documentElement.classList.add('v398-info-lock');
+    document.body.classList.add('v398-info-lock');
+    document.body.style.top=(-savedY)+'px';
+    locked=true;
+  }
+  function unlock(){
+    if(!locked) return;
+    document.documentElement.classList.remove('v398-info-lock');
+    document.body.classList.remove('v398-info-lock');
+    document.body.style.top='';
+    locked=false;
+    window.scrollTo(0,savedY);
+  }
+  function sync(){
+    if(landscape() && isOpen()){
+      lock();
+      requestAnimationFrame(function(){
+        panel.style.setProperty('overflow-y','auto','important');
+      });
+    }else unlock();
+  }
+
+  /* Keep all vertical gestures inside the information modal; don't let page swipe/body consume them. */
+  modal.addEventListener('touchstart',function(e){
+    if(landscape() && isOpen()) e.stopPropagation();
+  },{passive:true});
+  modal.addEventListener('touchmove',function(e){
+    if(landscape() && isOpen()) e.stopPropagation();
+  },{passive:true});
+  modal.addEventListener('touchend',function(e){
+    if(landscape() && isOpen()) e.stopPropagation();
+  },{passive:true});
+
+  new MutationObserver(function(){setTimeout(sync,0);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
+  window.addEventListener('resize',function(){setTimeout(sync,0);},{passive:true});
+  window.addEventListener('orientationchange',function(){setTimeout(sync,120);},{passive:true});
+  document.addEventListener('click',function(){setTimeout(sync,0);},true);
+  sync();
+})();
+</script>
 </body></html>
