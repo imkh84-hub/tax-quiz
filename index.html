@@ -2477,4 +2477,64 @@ body.v412-force-desktop #v412MobileReturn{
 })();
 </script>
 
+
+
+<!-- V395 — 모바일 가로모드: touch-action 충돌 제거, 안내 팝업 네이티브 세로 스크롤 복구 -->
+<style id="v395-mobile-landscape-native-scroll-fix">
+@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
+  /* V394의 touch-action:none이 자식 스크롤까지 막는 문제를 최종 덮어씀 */
+  #gradeIntroModal.v108-intro-modal{
+    touch-action:pan-y !important;
+    overflow:hidden !important;
+  }
+  #gradeIntroModal .v108-intro-panel{
+    touch-action:pan-y !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior-y:contain !important;
+  }
+  #gradeIntroModal .v108-intro-panel *,
+  #gradeIntroModal .v260LowerStage,
+  #gradeIntroModal .v264UpperStage,
+  #gradeIntroModal .v274MiddleStage,
+  #gradeIntroModal .v260LowerStage *,
+  #gradeIntroModal .v264UpperStage *,
+  #gradeIntroModal .v274MiddleStage *{
+    touch-action:pan-y !important;
+  }
+}
+</style>
+<script id="v395-mobile-landscape-native-scroll-fix-script">
+(function(){
+  var modal=document.getElementById('gradeIntroModal');
+  if(!modal) return;
+  var panel=modal.querySelector('.v108-intro-panel');
+  if(!panel) return;
+
+  function landscape(){
+    return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
+  }
+  function opened(){
+    if(modal.getAttribute('aria-hidden')==='false') return true;
+    var cs=getComputedStyle(modal);
+    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0 && cs.pointerEvents!=='none';
+  }
+
+  /* 메인 페이지 가로 스와이프에는 전달하지 않되, 기본 세로 스크롤은 절대 preventDefault 하지 않는다. */
+  ['touchstart','touchmove','touchend','touchcancel'].forEach(function(type){
+    panel.addEventListener(type,function(e){
+      if(landscape() && opened()) e.stopPropagation();
+    },{passive:true});
+  });
+
+  function reset(){
+    if(landscape() && opened()){
+      panel.scrollTop=0;
+    }
+  }
+  new MutationObserver(function(){setTimeout(reset,0);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
+})();
+</script>
+
 </body></html>
