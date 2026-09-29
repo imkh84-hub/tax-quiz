@@ -2322,226 +2322,20 @@ body.v412-force-desktop #v412MobileReturn{
 </style>
 
 
-<!-- V393 — 모바일 가로모드: 안내 팝업 자체 스크롤 + 본문 완전 고정 -->
-<style id="v393-mobile-landscape-modal-scroll-lock">
+<!-- V397 — Mobile landscape grade-intro: real content height + native/manual vertical scroll -->
+<style id="v397-mobile-landscape-intro-true-scroll-style">
 @media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
-  #gradeIntroModal.v108-intro-modal{
-    position:fixed !important;
-    inset:0 !important;
-    box-sizing:border-box !important;
-    height:100dvh !important;
-    max-height:100dvh !important;
-    overflow-x:hidden !important;
-    overflow-y:auto !important;
-    -webkit-overflow-scrolling:touch !important;
-    overscroll-behavior:contain !important;
-    touch-action:pan-y !important;
-    padding:8px 0 !important;
-    align-items:flex-start !important;
-  }
-  #gradeIntroModal .v108-intro-panel{
-    box-sizing:border-box !important;
-    height:auto !important;
-    max-height:none !important;
-    overflow:visible !important;
-    margin:0 auto !important;
-    flex:none !important;
-    touch-action:pan-y !important;
-  }
-  #gradeIntroModal .v260LowerStage,
-  #gradeIntroModal .v264UpperStage,
-  #gradeIntroModal .v274MiddleStage,
-  #gradeIntroModal img{
-    touch-action:pan-y !important;
-  }
-  html.v393-intro-lock,
-  body.v393-intro-lock{
+  html.v397-intro-lock,
+  body.v397-intro-lock{
     overflow:hidden !important;
     overscroll-behavior:none !important;
   }
-  body.v393-intro-lock{
+  body.v397-intro-lock{
     position:fixed !important;
     left:0 !important;
     right:0 !important;
     width:100% !important;
   }
-}
-</style>
-<script id="v393-mobile-landscape-modal-scroll-lock-script">
-(function(){
-  var modal=document.getElementById('gradeIntroModal');
-  if(!modal) return;
-  var locked=false, savedY=0;
-  function landscape(){
-    return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
-  }
-  function open(){
-    if(modal.getAttribute('aria-hidden')==='false') return true;
-    var cs=getComputedStyle(modal);
-    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0 && cs.pointerEvents!=='none';
-  }
-  function lock(){
-    if(locked) return;
-    savedY=window.scrollY||window.pageYOffset||0;
-    document.documentElement.classList.add('v393-intro-lock');
-    document.body.classList.add('v393-intro-lock');
-    document.body.style.top=(-savedY)+'px';
-    modal.scrollTop=0;
-    locked=true;
-  }
-  function unlock(){
-    if(!locked) return;
-    document.documentElement.classList.remove('v393-intro-lock');
-    document.body.classList.remove('v393-intro-lock');
-    document.body.style.top='';
-    locked=false;
-    window.scrollTo(0,savedY);
-  }
-  function sync(){
-    if(landscape() && open()) lock(); else unlock();
-  }
-  /* 가로모드 팝업이 열린 동안 배경으로 전달되는 터치를 차단 */
-  document.addEventListener('touchmove',function(e){
-    if(!locked) return;
-    if(!e.target.closest || !e.target.closest('#gradeIntroModal')) e.preventDefault();
-  },{passive:false,capture:true});
-  new MutationObserver(function(){setTimeout(sync,0);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
-  window.addEventListener('resize',sync,{passive:true});
-  window.addEventListener('orientationchange',function(){setTimeout(sync,100);},{passive:true});
-  document.addEventListener('click',function(){setTimeout(sync,0);},true);
-  sync();
-})();
-</script>
-
-
-<!-- V394 — 모바일 가로모드: 실제 패널을 독립 세로 스크롤 컨테이너로 전환 -->
-<style id="v394-mobile-landscape-panel-scroll-fix">
-@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
-  #gradeIntroModal.v108-intro-modal{
-    overflow:hidden !important;
-    padding:8px 0 !important;
-    align-items:flex-start !important;
-    justify-content:center !important;
-    touch-action:none !important;
-  }
-  #gradeIntroModal .v108-intro-panel{
-    display:block !important;
-    box-sizing:border-box !important;
-    width:min(94vw, 760px) !important;
-    height:calc(100dvh - 16px) !important;
-    max-height:calc(100dvh - 16px) !important;
-    margin:0 auto !important;
-    overflow-x:hidden !important;
-    overflow-y:scroll !important;
-    -webkit-overflow-scrolling:touch !important;
-    overscroll-behavior-y:contain !important;
-    touch-action:pan-y !important;
-    scrollbar-gutter:stable !important;
-  }
-  #gradeIntroModal .v108-intro-panel > *,
-  #gradeIntroModal .v260LowerStage,
-  #gradeIntroModal .v264UpperStage,
-  #gradeIntroModal .v274MiddleStage,
-  #gradeIntroModal .v260LowerStage img,
-  #gradeIntroModal .v264UpperStage img,
-  #gradeIntroModal .v274MiddleStage img{
-    touch-action:pan-y !important;
-  }
-  /* 하단 버튼 뒤에 여유를 확보해 마지막까지 확실히 스크롤되도록 함 */
-  #gradeIntroModal .v108-intro-actions{
-    margin-bottom:18px !important;
-  }
-}
-</style>
-<script id="v394-mobile-landscape-panel-scroll-fix-script">
-(function(){
-  var modal=document.getElementById('gradeIntroModal');
-  if(!modal) return;
-  var panel=modal.querySelector('.v108-intro-panel');
-  if(!panel) return;
-  function landscape(){
-    return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
-  }
-  function opened(){
-    if(modal.getAttribute('aria-hidden')==='false') return true;
-    var cs=getComputedStyle(modal);
-    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0 && cs.pointerEvents!=='none';
-  }
-  function reset(){ if(landscape() && opened()) panel.scrollTop=0; }
-  new MutationObserver(function(){setTimeout(reset,0);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
-  window.addEventListener('orientationchange',function(){setTimeout(reset,120);},{passive:true});
-  /* 팝업 내부 터치가 메인 페이지 스와이프 핸들러로 번지는 것을 차단 */
-  panel.addEventListener('touchstart',function(e){e.stopPropagation();},{passive:true});
-  panel.addEventListener('touchmove',function(e){e.stopPropagation();},{passive:true});
-  panel.addEventListener('touchend',function(e){e.stopPropagation();},{passive:true});
-})();
-</script>
-
-
-
-<!-- V395 — 모바일 가로모드: touch-action 충돌 제거, 안내 팝업 네이티브 세로 스크롤 복구 -->
-<style id="v395-mobile-landscape-native-scroll-fix">
-@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
-  /* V394의 touch-action:none이 자식 스크롤까지 막는 문제를 최종 덮어씀 */
-  #gradeIntroModal.v108-intro-modal{
-    touch-action:pan-y !important;
-    overflow:hidden !important;
-  }
-  #gradeIntroModal .v108-intro-panel{
-    touch-action:pan-y !important;
-    overflow-x:hidden !important;
-    overflow-y:auto !important;
-    -webkit-overflow-scrolling:touch !important;
-    overscroll-behavior-y:contain !important;
-  }
-  #gradeIntroModal .v108-intro-panel *,
-  #gradeIntroModal .v260LowerStage,
-  #gradeIntroModal .v264UpperStage,
-  #gradeIntroModal .v274MiddleStage,
-  #gradeIntroModal .v260LowerStage *,
-  #gradeIntroModal .v264UpperStage *,
-  #gradeIntroModal .v274MiddleStage *{
-    touch-action:pan-y !important;
-  }
-}
-</style>
-<script id="v395-mobile-landscape-native-scroll-fix-script">
-(function(){
-  var modal=document.getElementById('gradeIntroModal');
-  if(!modal) return;
-  var panel=modal.querySelector('.v108-intro-panel');
-  if(!panel) return;
-
-  function landscape(){
-    return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
-  }
-  function opened(){
-    if(modal.getAttribute('aria-hidden')==='false') return true;
-    var cs=getComputedStyle(modal);
-    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0 && cs.pointerEvents!=='none';
-  }
-
-  /* 메인 페이지 가로 스와이프에는 전달하지 않되, 기본 세로 스크롤은 절대 preventDefault 하지 않는다. */
-  ['touchstart','touchmove','touchend','touchcancel'].forEach(function(type){
-    panel.addEventListener(type,function(e){
-      if(landscape() && opened()) e.stopPropagation();
-    },{passive:true});
-  });
-
-  function reset(){
-    if(landscape() && opened()){
-      panel.scrollTop=0;
-    }
-  }
-  new MutationObserver(function(){setTimeout(reset,0);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
-})();
-</script>
-
-
-
-<!-- V396 — 모바일 가로모드: 이미지형 학년 스테이지를 실제 스크롤 흐름에 포함 -->
-<style id="v396-mobile-landscape-stage-scroll-fix">
-@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
   #gradeIntroModal.v108-intro-modal{
     position:fixed !important;
     inset:0 !important;
@@ -2554,11 +2348,8 @@ body.v412-force-desktop #v412MobileReturn{
     justify-content:center !important;
     touch-action:pan-y !important;
   }
-
-  /* 실제 손가락 스크롤을 담당하는 단 하나의 컨테이너 */
   #gradeIntroModal .v108-intro-panel{
     position:relative !important;
-    inset:auto !important;
     display:block !important;
     box-sizing:border-box !important;
     width:min(94vw,760px) !important;
@@ -2566,92 +2357,148 @@ body.v412-force-desktop #v412MobileReturn{
     min-height:0 !important;
     max-height:100dvh !important;
     margin:0 auto !important;
-    padding:8px 0 max(24px, env(safe-area-inset-bottom)) !important;
+    padding:0 0 max(24px,env(safe-area-inset-bottom)) !important;
     overflow-x:hidden !important;
-    overflow-y:auto !important;
+    overflow-y:scroll !important;
     -webkit-overflow-scrolling:touch !important;
     overscroll-behavior-y:contain !important;
     touch-action:pan-y !important;
   }
-
-  /* 핵심: 기존 absolute/fixed 스테이지를 문서 흐름으로 되돌려 scrollHeight를 만들기 */
   #gradeIntroModal .v260LowerStage,
   #gradeIntroModal .v264UpperStage,
   #gradeIntroModal .v274MiddleStage{
     position:relative !important;
     inset:auto !important;
-    top:auto !important;
-    right:auto !important;
-    bottom:auto !important;
-    left:auto !important;
     transform:none !important;
-    box-sizing:border-box !important;
     width:100% !important;
-    height:auto !important;
-    min-height:0 !important;
+    max-width:none !important;
     max-height:none !important;
-    margin:0 auto !important;
+    margin:0 !important;
     overflow:visible !important;
     touch-action:pan-y !important;
   }
-
   #gradeIntroModal .v260LowerStage > img,
   #gradeIntroModal .v264UpperStage > img,
   #gradeIntroModal .v274MiddleStage > img{
-    position:relative !important;
-    inset:auto !important;
+    position:absolute !important;
+    inset:0 auto auto 0 !important;
     display:block !important;
     width:100% !important;
-    height:auto !important;
-    max-width:100% !important;
+    max-width:none !important;
     max-height:none !important;
-    object-fit:contain !important;
-    margin:0 !important;
+    object-fit:fill !important;
     touch-action:pan-y !important;
-    pointer-events:none !important;
   }
-
-  /* 이미지 위 핫스팟 버튼은 stage를 기준으로 기존 좌표 유지 */
   #gradeIntroModal .v260Hotspot,
   #gradeIntroModal .v264Hotspot,
   #gradeIntroModal .v274Hotspot{
     position:absolute !important;
     touch-action:manipulation !important;
   }
-
-  /* 이미지형 시작화면 사용 중 중복되는 구형 텍스트 영역이 scrollHeight를 왜곡하지 않도록 유지 */
-  #gradeIntroModal .v108-intro-panel > .v108-intro-badge,
-  #gradeIntroModal .v108-intro-panel > #v108IntroTitle,
-  #gradeIntroModal .v108-intro-panel > .v108-intro-lead,
-  #gradeIntroModal .v108-intro-panel > .v108-intro-box,
-  #gradeIntroModal .v108-intro-panel > .v108-intro-actions{
-    /* 기존 CSS의 표시/숨김 상태를 건드리지 않음 */
-  }
 }
 </style>
-<script id="v396-mobile-landscape-stage-scroll-fix-script">
+<script id="v397-mobile-landscape-intro-true-scroll-script">
 (function(){
   var modal=document.getElementById('gradeIntroModal');
   if(!modal) return;
   var panel=modal.querySelector('.v108-intro-panel');
   if(!panel) return;
+  var savedY=0, locked=false, startY=0, lastY=0, dragging=false;
+
   function landscape(){
     return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
   }
-  function opened(){
+  function isOpen(){
     if(modal.getAttribute('aria-hidden')==='false') return true;
     var cs=getComputedStyle(modal);
-    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0 && cs.pointerEvents!=='none';
+    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')!==0;
   }
-  function prepare(){
-    if(!landscape() || !opened()) return;
-    panel.scrollTop=0;
-    /* 강제 reflow 후 실제 scrollHeight가 계산되도록 함 */
-    void panel.offsetHeight;
+  function visibleStage(){
+    var stages=modal.querySelectorAll('.v260LowerStage,.v264UpperStage,.v274MiddleStage');
+    for(var i=0;i<stages.length;i++){
+      var cs=getComputedStyle(stages[i]);
+      if(cs.display!=='none' && cs.visibility!=='hidden') return stages[i];
+    }
+    return null;
   }
-  new MutationObserver(function(){requestAnimationFrame(prepare);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
-  window.addEventListener('orientationchange',function(){setTimeout(prepare,150);},{passive:true});
-  window.addEventListener('resize',function(){if(landscape()) requestAnimationFrame(prepare);},{passive:true});
+  function sizeStage(){
+    if(!landscape() || !isOpen()) return;
+    var stage=visibleStage();
+    if(!stage) return;
+    var img=stage.querySelector(':scope > img');
+    if(!img) return;
+    function apply(){
+      var w=stage.clientWidth || panel.clientWidth;
+      if(!w) return;
+      var nw=img.naturalWidth || 1, nh=img.naturalHeight || 1;
+      var h=Math.ceil(w*(nh/nw));
+      /* Guarantee a genuinely scrollable document box in short landscape viewports. */
+      h=Math.max(h, panel.clientHeight+80);
+      stage.style.setProperty('height',h+'px','important');
+      stage.style.setProperty('min-height',h+'px','important');
+      img.style.setProperty('height',h+'px','important');
+      panel.scrollTop=0;
+    }
+    if(img.complete && img.naturalWidth) apply();
+    else img.addEventListener('load',apply,{once:true});
+    requestAnimationFrame(apply);
+    setTimeout(apply,80);
+  }
+  function lock(){
+    if(locked) return;
+    savedY=window.scrollY||document.documentElement.scrollTop||0;
+    document.documentElement.classList.add('v397-intro-lock');
+    document.body.classList.add('v397-intro-lock');
+    document.body.style.top=(-savedY)+'px';
+    locked=true;
+  }
+  function unlock(){
+    if(!locked) return;
+    document.documentElement.classList.remove('v397-intro-lock');
+    document.body.classList.remove('v397-intro-lock');
+    document.body.style.top='';
+    locked=false;
+    window.scrollTo(0,savedY);
+  }
+  function sync(){
+    if(landscape() && isOpen()){
+      lock();
+      sizeStage();
+    }else unlock();
+  }
+
+  /* Manual fallback: move the real scrollTop even when browser gesture arbitration blocks native scrolling. */
+  panel.addEventListener('touchstart',function(e){
+    if(!landscape() || !isOpen() || e.touches.length!==1) return;
+    startY=lastY=e.touches[0].clientY;
+    dragging=true;
+  },{passive:true,capture:true});
+  panel.addEventListener('touchmove',function(e){
+    if(!dragging || !landscape() || e.touches.length!==1) return;
+    var y=e.touches[0].clientY;
+    var dy=lastY-y;
+    if(Math.abs(y-startY)>3){
+      panel.scrollTop += dy;
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    lastY=y;
+  },{passive:false,capture:true});
+  panel.addEventListener('touchend',function(){dragging=false;},{passive:true,capture:true});
+  panel.addEventListener('touchcancel',function(){dragging=false;},{passive:true,capture:true});
+
+  /* Never let a landscape intro gesture reach the main-page horizontal swipe engine. */
+  modal.addEventListener('touchmove',function(e){
+    if(landscape() && isOpen()) e.stopPropagation();
+  },{passive:true,capture:false});
+
+  new MutationObserver(function(){setTimeout(sync,0);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
+  window.addEventListener('resize',function(){setTimeout(sync,0);},{passive:true});
+  window.addEventListener('orientationchange',function(){setTimeout(sync,120);},{passive:true});
+  document.addEventListener('click',function(e){
+    if(e.target.closest && e.target.closest('.v120-course-grade-card,.v118-course-grade-card,.v129-grade-card')) setTimeout(sync,0);
+  },true);
+  sync();
 })();
 </script>
 </body></html>
