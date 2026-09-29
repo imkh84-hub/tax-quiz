@@ -1705,15 +1705,15 @@ body.v412-force-desktop #v412MobileReturn{
   body.v383-page-swiping main > .page.active{position:relative!important;z-index:3!important;will-change:transform!important;}
 }
 </style>
-<script id="v385-mobile-smooth-swipe">
+<script id="v387-mobile-inertial-flick-swipe">
 (function(){
   var order=['home','course','learn','video','effect'];
-  var sx=0,sy=0,lastX=0,lastT=0,startT=0,vx=0,tracking=false,horizontal=false;
-  var page=null,neighbor=null,dir=0,idx=0,width=0;
-  var THRESHOLD=72, VELOCITY=.34, MAX_EDGE=38;
+  var sx=0,sy=0,lastX=0,lastT=0,vx=0,tracking=false,horizontal=false;
+  var page=null,neighbor=null,dir=0,idx=0,width=0,dx=0,raf=0,settling=false;
+  var EDGE_MAX=46, MIN_DRAG=7, COMMIT_RATIO=.22, FLICK_V=.34;
 
   function mobile(){return window.matchMedia&&window.matchMedia('(max-width:560px)').matches&&!document.body.classList.contains('v412-force-desktop');}
-  function blocked(el){return !!(el&&el.closest&&el.closest('input,textarea,select,.quiz,.modal,.popup,.v353Tabs,.v357-tabs,#learn .v129-grade-card-row,[data-no-page-swipe]'));}
+  function blocked(el){return !!(el&&el.closest&&el.closest('input,textarea,select,.quiz,.modal,.popup,.v353Tabs,.v357-tabs,[data-no-page-swipe]'));}
   function activePage(){return document.querySelector('main > .page.active');}
   function current(){var a=activePage();return a?order.indexOf(a.id):0;}
   function navTo(i){
@@ -1727,11 +1727,12 @@ body.v412-force-desktop #v412MobileReturn{
     neighbor=null;
   }
   function cleanup(){
+    cancelAnimationFrame(raf);raf=0;settling=false;
     document.body.classList.remove('v383-page-swiping');
     if(page){page.style.transform='';page.style.transition='';page.style.zIndex='';}
-    clearNeighbor(); page=null; dir=0;
+    clearNeighbor();page=null;dir=0;dx=0;vx=0;
   }
-  function edgeResistance(dx){var sign=dx<0?-1:1;return sign*Math.min(MAX_EDGE,Math.pow(Math.abs(dx),.72)*1.7);}
+  function edgeResistance(x){var sign=x<0?-1:1;return sign*Math.min(EDGE_MAX,Math.pow(Math.abs(x),.70)*1.55);}
   function prepare(d){
     if(dir===d&&neighbor)return true;
     clearNeighbor();dir=d;
@@ -1744,73 +1745,85 @@ body.v412-force-desktop #v412MobileReturn{
     xform(neighbor,d>0?width:-width);
     return true;
   }
-  function animateBack(){
-    var dur='360ms',ease='cubic-bezier(.16,1,.30,1)';
-    if(page){page.style.transition='transform '+dur+' '+ease;xform(page,0);}
-    if(neighbor){neighbor.style.transition='transform '+dur+' '+ease;xform(neighbor,dir>0?width:-width);}
-    setTimeout(cleanup,295);
+  function render(x,d){
+    xform(page,x);
+    if(neighbor)xform(neighbor,x+(d>0?width:-width));
   }
-  function animateComplete(target){
-    var dur='390ms',ease='cubic-bezier(.16,1,.30,1)';
-    if(page){page.style.transition='transform '+dur+' '+ease;xform(page,dir>0?-width:width);}
-    if(neighbor){neighbor.style.transition='transform '+dur+' '+ease;xform(neighbor,0);}
-    setTimeout(function(){
-      /* 애니메이션이 끝난 뒤 실제 탭 상태만 교체 — 중간 점프 제거 */
-      if(page)page.style.transition='none';
-      if(neighbor)neighbor.style.transition='none';
-      navTo(target);
-      cleanup();
-    },405);
+  function easeOutQuint(t){return 1-Math.pow(1-t,5);}
+  function springBack(t){
+    /* 부드러운 감속 뒤 아주 약한 settling — 딱 붙는 느낌 방지 */
+    var e=1-Math.pow(1-t,4);
+    return e + Math.sin(t*Math.PI)*0.012*(1-t);
+  }
+  function animateTo(targetX,d,commit){
+    if(settling)return;settling=true;
+    var from=dx;
+    var distance=Math.abs(targetX-from);
+    var speed=Math.max(.18,Math.min(1.45,Math.abs(vx)));
+    var duration=commit ? Math.max(260,Math.min(520,230+distance/(.85+speed*.75))) : Math.max(240,Math.min(430,220+distance/.9));
+    var start=performance.now();
+    function frame(now){
+      var t=Math.min(1,(now-start)/duration);
+      var e=commit?easeOutQuint(t):springBack(t);
+      dx=from+(targetX-from)*e;
+      render(dx,d);
+      if(t<1){raf=requestAnimationFrame(frame);return;}
+      if(commit){
+        var target=idx+d;
+        /* 최종 프레임을 그린 다음 실제 탭 교체 */
+        requestAnimationFrame(function(){navTo(target);cleanup();});
+      }else cleanup();
+    }
+    raf=requestAnimationFrame(frame);
   }
 
   document.addEventListener('touchstart',function(e){
-    if(!mobile()||e.touches.length!==1||blocked(e.target)){tracking=false;return;}
-    var t=e.touches[0];sx=lastX=t.clientX;sy=t.clientY;startT=lastT=performance.now();vx=0;
+    if(settling||!mobile()||e.touches.length!==1||blocked(e.target)){tracking=false;return;}
+    var t=e.touches[0],now=performance.now();
+    sx=lastX=t.clientX;sy=t.clientY;lastT=now;vx=0;dx=0;
     page=activePage();idx=current();width=Math.max(document.documentElement.clientWidth,window.innerWidth||0);
     tracking=!!page;horizontal=false;dir=0;clearNeighbor();
   },{passive:true});
 
   document.addEventListener('touchmove',function(e){
     if(!tracking||!mobile()||e.touches.length!==1)return;
-    var t=e.touches[0],now=performance.now(),dx=t.clientX-sx,dy=t.clientY-sy;var dt=Math.max(1,now-lastT);vx=(t.clientX-lastX)/dt;lastX=t.clientX;lastT=now;
+    var t=e.touches[0],now=performance.now(),mx=t.clientX-lastX,dt=Math.max(8,now-lastT);
+    dx=t.clientX-sx;
+    var dy=t.clientY-sy;
     if(!horizontal){
-      if(Math.abs(dx)<8&&Math.abs(dy)<8)return;
-      if(Math.abs(dy)>=Math.abs(dx)*.82){tracking=false;cleanup();return;}
+      if(Math.abs(dx)<MIN_DRAG&&Math.abs(dy)<MIN_DRAG)return;
+      if(Math.abs(dy)>Math.abs(dx)*.9){tracking=false;cleanup();return;}
       horizontal=true;document.body.classList.add('v383-page-swiping');
     }
     e.preventDefault();
+    /* 최근 순간속도를 저역통과 필터로 부드럽게 측정 */
+    var instant=mx/dt;
+    vx=vx*.68+instant*.32;
+    lastX=t.clientX;lastT=now;
     var d=dx<0?1:-1;
-    if(!prepare(d)){xform(page,edgeResistance(dx));return;}
-    /* 손가락과 1:1로 현재/다음 페이지가 함께 이동 */
-    xform(page,dx);
-    xform(neighbor,dx+(d>0?width:-width));
+    if(!prepare(d)){dx=edgeResistance(dx);render(dx,d);return;}
+    render(dx,d);
   },{passive:false});
 
   document.addEventListener('touchend',function(e){
     if(!tracking||!page){tracking=false;cleanup();return;}
-    var ex=(e.changedTouches&&e.changedTouches.length)?e.changedTouches[0].clientX:lastX;
-    var dx=ex-sx,elapsed=Math.max(1,performance.now()-startT),velocity=Math.max(Math.abs(vx),Math.abs(dx)/elapsed*.55),projected=dx+vx*135;
     tracking=false;
     if(!horizontal){cleanup();return;}
     var d=dx<0?1:-1,target=idx+d;
-    if(target<0||target>=order.length){
-      page.style.transition='transform 300ms cubic-bezier(.18,.82,.2,1)';xform(page,0);setTimeout(cleanup,315);return;
-    }
+    if(target<0||target>=order.length){animateTo(0,d,false);return;}
     if(!neighbor)prepare(d);
-    if(Math.abs(projected)>=THRESHOLD||velocity>=VELOCITY)animateComplete(target);else animateBack();
+    /* 현재 위치 + 순간속도로 짧은 미래 위치를 예측해 flick 여부 판단 */
+    var projected=dx+vx*185;
+    var commit=Math.abs(projected)>width*COMMIT_RATIO || (Math.abs(vx)>FLICK_V&&Math.abs(dx)>18);
+    animateTo(commit?(d>0?-width:width):0,d,commit);
   },{passive:true});
 
-  var suppressTrustedClickUntil=0;
-  document.addEventListener('touchend',function(e){
-    if(horizontal) suppressTrustedClickUntil=performance.now()+420;
-  },{passive:true});
-  document.addEventListener('click',function(e){
-    if(mobile() && e.isTrusted && performance.now()<suppressTrustedClickUntil){
-      e.preventDefault(); e.stopPropagation();
-    }
-  },true);
+  document.addEventListener('touchcancel',function(){if(page&&horizontal)animateTo(0,dir||1,false);else cleanup();tracking=false;},{passive:true});
 
-  document.addEventListener('touchcancel',function(){if(page)animateBack();tracking=false;},{passive:true});
+  /* 스와이프 직후 의도치 않은 클릭 차단 */
+  var suppressUntil=0;
+  document.addEventListener('touchend',function(){if(horizontal)suppressUntil=performance.now()+360;},{passive:true});
+  document.addEventListener('click',function(e){if(mobile()&&e.isTrusted&&performance.now()<suppressUntil){e.preventDefault();e.stopPropagation();}},true);
 })();
 </script>
 
@@ -2127,7 +2140,7 @@ body.v412-force-desktop #v412MobileReturn{
 
 
 
-<!-- V386 — 메인 스와이프 자연 감속 + 학습자료 3카드 독립 스와이프 -->
+<!-- V387 — requestAnimationFrame 관성 flick 메인 스와이프 + 학습자료 3카드 독립 스와이프 -->
 <style id="v386-natural-main-and-learn-card-swipe">
 @media (max-width:560px){
   #learn .v129-grade-card-row{
