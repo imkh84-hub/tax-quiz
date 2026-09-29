@@ -2706,4 +2706,71 @@ body.v399-modal-lock{
   sync();
 })();
 </script>
+
+
+<!-- V400 — Mobile landscape: keep the same five-menu color language as portrait -->
+<style id="v400-mobile-landscape-nav-colors">
+@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
+  /* A phone in landscape can exceed the desktop width breakpoint. Force the portrait/mobile icon set. */
+  nav .v290HomeNav > .v384PcHomeIcon{display:none !important;}
+  nav .v290HomeNav > .v360NavIcon{display:grid !important;}
+
+  nav button .v360NavIcon{
+    width:23px !important;
+    height:23px !important;
+    margin:0 auto 4px !important;
+    transition:color .18s ease,transform .18s ease !important;
+  }
+  nav button .v360NavIcon svg{
+    width:21px !important;
+    height:21px !important;
+    display:block !important;
+    fill:none !important;
+    stroke:currentColor !important;
+    stroke-width:1.85 !important;
+    stroke-linecap:round !important;
+    stroke-linejoin:round !important;
+  }
+  nav button .v360NavIcon svg *{
+    fill:none !important;
+    stroke:currentColor !important;
+    stroke-width:1.85 !important;
+  }
+
+  /* Same category colors used in portrait mobile mode. */
+  nav button[data-page="home"] .v360NavIcon{color:#2386d8 !important;}
+  nav button[data-page="course"] .v360NavIcon{color:#35a76f !important;}
+  nav button[data-page="learn"] .v360NavIcon{color:#3d78d8 !important;}
+  nav button[data-page="video"] .v360NavIcon{color:#ef6b57 !important;}
+  nav button[data-page="effect"] .v360NavIcon{color:#8265d6 !important;}
+
+  nav button .v289NavLabel,
+  nav button .v290HomeLabel{
+    color:#4d5f73 !important;
+    font-weight:700 !important;
+  }
+  nav button.active .v289NavLabel,
+  nav button.active .v290HomeLabel{
+    color:#172b4d !important;
+    font-weight:800 !important;
+  }
+
+  nav button.active .v360NavIcon{transform:translateY(-1px) !important;}
+  nav button.active::after{
+    content:"" !important;
+    position:absolute !important;
+    left:26% !important;
+    right:26% !important;
+    bottom:0 !important;
+    height:3px !important;
+    border-radius:3px 3px 0 0 !important;
+    background:currentColor !important;
+  }
+  nav button[data-page="home"].active{color:#2386d8 !important;}
+  nav button[data-page="course"].active{color:#35a76f !important;}
+  nav button[data-page="learn"].active{color:#3d78d8 !important;}
+  nav button[data-page="video"].active{color:#ef6b57 !important;}
+  nav button[data-page="effect"].active{color:#8265d6 !important;}
+}
+</style>
 </body></html>
