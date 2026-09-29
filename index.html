@@ -2537,4 +2537,121 @@ body.v412-force-desktop #v412MobileReturn{
 })();
 </script>
 
+
+
+<!-- V396 — 모바일 가로모드: 이미지형 학년 스테이지를 실제 스크롤 흐름에 포함 -->
+<style id="v396-mobile-landscape-stage-scroll-fix">
+@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
+  #gradeIntroModal.v108-intro-modal{
+    position:fixed !important;
+    inset:0 !important;
+    width:100vw !important;
+    height:100dvh !important;
+    max-height:100dvh !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    align-items:stretch !important;
+    justify-content:center !important;
+    touch-action:pan-y !important;
+  }
+
+  /* 실제 손가락 스크롤을 담당하는 단 하나의 컨테이너 */
+  #gradeIntroModal .v108-intro-panel{
+    position:relative !important;
+    inset:auto !important;
+    display:block !important;
+    box-sizing:border-box !important;
+    width:min(94vw,760px) !important;
+    height:100dvh !important;
+    min-height:0 !important;
+    max-height:100dvh !important;
+    margin:0 auto !important;
+    padding:8px 0 max(24px, env(safe-area-inset-bottom)) !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior-y:contain !important;
+    touch-action:pan-y !important;
+  }
+
+  /* 핵심: 기존 absolute/fixed 스테이지를 문서 흐름으로 되돌려 scrollHeight를 만들기 */
+  #gradeIntroModal .v260LowerStage,
+  #gradeIntroModal .v264UpperStage,
+  #gradeIntroModal .v274MiddleStage{
+    position:relative !important;
+    inset:auto !important;
+    top:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    left:auto !important;
+    transform:none !important;
+    box-sizing:border-box !important;
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    margin:0 auto !important;
+    overflow:visible !important;
+    touch-action:pan-y !important;
+  }
+
+  #gradeIntroModal .v260LowerStage > img,
+  #gradeIntroModal .v264UpperStage > img,
+  #gradeIntroModal .v274MiddleStage > img{
+    position:relative !important;
+    inset:auto !important;
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:100% !important;
+    max-height:none !important;
+    object-fit:contain !important;
+    margin:0 !important;
+    touch-action:pan-y !important;
+    pointer-events:none !important;
+  }
+
+  /* 이미지 위 핫스팟 버튼은 stage를 기준으로 기존 좌표 유지 */
+  #gradeIntroModal .v260Hotspot,
+  #gradeIntroModal .v264Hotspot,
+  #gradeIntroModal .v274Hotspot{
+    position:absolute !important;
+    touch-action:manipulation !important;
+  }
+
+  /* 이미지형 시작화면 사용 중 중복되는 구형 텍스트 영역이 scrollHeight를 왜곡하지 않도록 유지 */
+  #gradeIntroModal .v108-intro-panel > .v108-intro-badge,
+  #gradeIntroModal .v108-intro-panel > #v108IntroTitle,
+  #gradeIntroModal .v108-intro-panel > .v108-intro-lead,
+  #gradeIntroModal .v108-intro-panel > .v108-intro-box,
+  #gradeIntroModal .v108-intro-panel > .v108-intro-actions{
+    /* 기존 CSS의 표시/숨김 상태를 건드리지 않음 */
+  }
+}
+</style>
+<script id="v396-mobile-landscape-stage-scroll-fix-script">
+(function(){
+  var modal=document.getElementById('gradeIntroModal');
+  if(!modal) return;
+  var panel=modal.querySelector('.v108-intro-panel');
+  if(!panel) return;
+  function landscape(){
+    return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
+  }
+  function opened(){
+    if(modal.getAttribute('aria-hidden')==='false') return true;
+    var cs=getComputedStyle(modal);
+    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0 && cs.pointerEvents!=='none';
+  }
+  function prepare(){
+    if(!landscape() || !opened()) return;
+    panel.scrollTop=0;
+    /* 강제 reflow 후 실제 scrollHeight가 계산되도록 함 */
+    void panel.offsetHeight;
+  }
+  new MutationObserver(function(){requestAnimationFrame(prepare);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
+  window.addEventListener('orientationchange',function(){setTimeout(prepare,150);},{passive:true});
+  window.addEventListener('resize',function(){if(landscape()) requestAnimationFrame(prepare);},{passive:true});
+})();
+</script>
 </body></html>
