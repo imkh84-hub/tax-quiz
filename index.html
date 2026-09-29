@@ -2775,11 +2775,11 @@ body.v399-modal-lock{
 </style>
 
 
-<!-- V401 — Learning data engine: anonymous session ID, staged persistence, retry queue -->
-<script id="v401-learning-data-engine">
+<!-- V402 — Google Sheets connected learning data engine -->
+<script id="v402-learning-data-engine">
 (function(){
   'use strict';
-  var CFG={ endpoint:'', version:'V401' }; // Google Apps Script Web App URL is connected in the next step.
+  var CFG={ endpoint:'https://script.google.com/macros/s/AKfycbx3__XHVnkZOWoGQbr_QQzfqnEhlxEd0HT9mxeWos2rpn9qRigu0UGyhsDMfwriXZ7i/exec', version:'V402' }; // Google Apps Script Web App endpoint
   var ACTIVE='taxclass_active_learning_v401', QUEUE='taxclass_sync_queue_v401';
 
   function now(){ return new Date().toISOString(); }
@@ -2820,18 +2820,50 @@ body.v399-modal-lock{
     x.gainPoint=(Number.isFinite(x.prePercent)&&Number.isFinite(x.postPercent))?Math.round((x.postPercent-x.prePercent)*10)/10:null;
     return x;
   }
+  function levelLabel(level){
+    level=normalizeLevel(level);
+    return level==='low'?'초등 저학년':level==='high'?'초등 고학년':level==='middle'?'중학생':level;
+  }
+  function serverPayload(x,event){
+    // Map the browser's internal V401/V402 state to the deployed Apps Script schema.
+    return {
+      learningId:x.learningId||'',
+      startedAt:x.startedAt||'',
+      school:(x.school&&String(x.school).trim())?x.school:'미입력',
+      grade:levelLabel(x.level),
+      preCompleted:x.preStatus==='COMPLETED',
+      preScore:(x.preRaw===null||x.preRaw===undefined)?'':x.preRaw,
+      prePercent:(x.prePercent===null||x.prePercent===undefined)?'':x.prePercent,
+      preCompletedAt:x.preCompletedAt||'',
+      postCompleted:x.postStatus==='COMPLETED',
+      postScore:(x.postRaw===null||x.postRaw===undefined)?'':x.postRaw,
+      postPercent:(x.postPercent===null||x.postPercent===undefined)?'':x.postPercent,
+      postCompletedAt:x.postCompletedAt||'',
+      improvement:(x.gainPoint===null||x.gainPoint===undefined)?'':x.gainPoint,
+      status:x.status||event||'STARTED',
+      event:event||'',
+      clientSavedAt:now()
+    };
+  }
   function queue(payload){ var q=read(QUEUE,[]); q.push(payload); if(q.length>100) q=q.slice(-100); write(QUEUE,q); }
+  function sendPayload(payload){
+    return fetch(CFG.endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+  }
   function sync(x,event){
-    var payload=Object.assign({},x,{event:event,clientSavedAt:now()});
+    var payload=serverPayload(x,event);
     if(!CFG.endpoint){ queue(payload); return Promise.resolve(false); }
-    return fetch(CFG.endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
-      .then(function(){ return true; }).catch(function(){ queue(payload); return false; });
+    return sendPayload(payload).then(function(){ return true; }).catch(function(){ queue(payload); return false; });
+  }
+  function normalizeQueued(p){
+    // V401 may already have queued its internal state before the endpoint was connected.
+    if(p && Object.prototype.hasOwnProperty.call(p,'preStatus')) return serverPayload(p,p.event||p.status||'RETRY');
+    return p;
   }
   function flush(){
     if(!CFG.endpoint || !navigator.onLine) return;
     var q=read(QUEUE,[]); if(!q.length) return;
     write(QUEUE,[]);
-    q.forEach(function(p){ fetch(CFG.endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)}).catch(function(){ queue(p); }); });
+    q.forEach(function(p){ p=normalizeQueued(p); sendPayload(p).catch(function(){ queue(p); }); });
   }
   window.addEventListener('online',flush);
 
