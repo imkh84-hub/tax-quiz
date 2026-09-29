@@ -2412,4 +2412,69 @@ body.v412-force-desktop #v412MobileReturn{
   sync();
 })();
 </script>
+
+
+<!-- V394 — 모바일 가로모드: 실제 패널을 독립 세로 스크롤 컨테이너로 전환 -->
+<style id="v394-mobile-landscape-panel-scroll-fix">
+@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
+  #gradeIntroModal.v108-intro-modal{
+    overflow:hidden !important;
+    padding:8px 0 !important;
+    align-items:flex-start !important;
+    justify-content:center !important;
+    touch-action:none !important;
+  }
+  #gradeIntroModal .v108-intro-panel{
+    display:block !important;
+    box-sizing:border-box !important;
+    width:min(94vw, 760px) !important;
+    height:calc(100dvh - 16px) !important;
+    max-height:calc(100dvh - 16px) !important;
+    margin:0 auto !important;
+    overflow-x:hidden !important;
+    overflow-y:scroll !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior-y:contain !important;
+    touch-action:pan-y !important;
+    scrollbar-gutter:stable !important;
+  }
+  #gradeIntroModal .v108-intro-panel > *,
+  #gradeIntroModal .v260LowerStage,
+  #gradeIntroModal .v264UpperStage,
+  #gradeIntroModal .v274MiddleStage,
+  #gradeIntroModal .v260LowerStage img,
+  #gradeIntroModal .v264UpperStage img,
+  #gradeIntroModal .v274MiddleStage img{
+    touch-action:pan-y !important;
+  }
+  /* 하단 버튼 뒤에 여유를 확보해 마지막까지 확실히 스크롤되도록 함 */
+  #gradeIntroModal .v108-intro-actions{
+    margin-bottom:18px !important;
+  }
+}
+</style>
+<script id="v394-mobile-landscape-panel-scroll-fix-script">
+(function(){
+  var modal=document.getElementById('gradeIntroModal');
+  if(!modal) return;
+  var panel=modal.querySelector('.v108-intro-panel');
+  if(!panel) return;
+  function landscape(){
+    return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
+  }
+  function opened(){
+    if(modal.getAttribute('aria-hidden')==='false') return true;
+    var cs=getComputedStyle(modal);
+    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0 && cs.pointerEvents!=='none';
+  }
+  function reset(){ if(landscape() && opened()) panel.scrollTop=0; }
+  new MutationObserver(function(){setTimeout(reset,0);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
+  window.addEventListener('orientationchange',function(){setTimeout(reset,120);},{passive:true});
+  /* 팝업 내부 터치가 메인 페이지 스와이프 핸들러로 번지는 것을 차단 */
+  panel.addEventListener('touchstart',function(e){e.stopPropagation();},{passive:true});
+  panel.addEventListener('touchmove',function(e){e.stopPropagation();},{passive:true});
+  panel.addEventListener('touchend',function(e){e.stopPropagation();},{passive:true});
+})();
+</script>
+
 </body></html>
