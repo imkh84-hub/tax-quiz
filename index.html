@@ -2773,4 +2773,128 @@ body.v399-modal-lock{
   nav button[data-page="effect"].active{color:#8265d6 !important;}
 }
 </style>
+
+
+<!-- V401 — Learning data engine: anonymous session ID, staged persistence, retry queue -->
+<script id="v401-learning-data-engine">
+(function(){
+  'use strict';
+  var CFG={ endpoint:'', version:'V401' }; // Google Apps Script Web App URL is connected in the next step.
+  var ACTIVE='taxclass_active_learning_v401', QUEUE='taxclass_sync_queue_v401';
+
+  function now(){ return new Date().toISOString(); }
+  function uid(){
+    var d=new Date(), y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');
+    var r=''; try{ r=crypto.getRandomValues(new Uint32Array(2)).join('').slice(-8); }catch(e){ r=Math.random().toString(36).slice(2,10).toUpperCase(); }
+    return 'TC-'+y+m+day+'-'+r;
+  }
+  function read(k,def){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):def; }catch(e){ return def; } }
+  function write(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+  function active(){ return read(ACTIVE,null); }
+  function saveLocal(x){ write(ACTIVE,x); return x; }
+  function normalizeLevel(x){ x=String(x||'').toLowerCase(); return x==='lower'?'low':x==='upper'?'high':(x||'low'); }
+
+  function ensure(level){
+    var x=active();
+    if(!x || x.finalized){
+      x={
+        learningId:uid(), version:CFG.version, startedAt:now(), updatedAt:now(),
+        level:normalizeLevel(level), school:'미입력', grade:'', classNo:'', studentNo:'', infoEntered:false,
+        preStatus:'NOT_STARTED', preRaw:null, preTotal:5, prePercent:null, preCompletedAt:'',
+        postStatus:'NOT_STARTED', postRaw:null, postTotal:10, postPercent:null, postCompletedAt:'',
+        gainPoint:null, status:'STARTED', finalized:false
+      };
+      saveLocal(x); sync(x,'STARTED');
+    } else if(level){ x.level=normalizeLevel(level); x.updatedAt=now(); saveLocal(x); }
+    return x;
+  }
+  function pct(raw,total){ raw=Number(raw); total=Number(total); return Number.isFinite(raw)&&total?Math.round(raw/total*1000)/10:null; }
+  function parseScoreText(t,total){
+    t=String(t||'').trim(); if(!t || t==='-') return null;
+    var m=t.match(/(\d+(?:\.\d+)?)\s*%/); if(m) return {raw:null,percent:Number(m[1])};
+    m=t.match(/(\d+)\s*\/\s*(\d+)/); if(m) return {raw:Number(m[1]),percent:pct(Number(m[1]),Number(m[2]))};
+    m=t.match(/(\d+(?:\.\d+)?)/); if(m){ var n=Number(m[1]); return n<=total?{raw:n,percent:pct(n,total)}:{raw:null,percent:n}; }
+    return null;
+  }
+  function calc(x){
+    x.gainPoint=(Number.isFinite(x.prePercent)&&Number.isFinite(x.postPercent))?Math.round((x.postPercent-x.prePercent)*10)/10:null;
+    return x;
+  }
+  function queue(payload){ var q=read(QUEUE,[]); q.push(payload); if(q.length>100) q=q.slice(-100); write(QUEUE,q); }
+  function sync(x,event){
+    var payload=Object.assign({},x,{event:event,clientSavedAt:now()});
+    if(!CFG.endpoint){ queue(payload); return Promise.resolve(false); }
+    return fetch(CFG.endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
+      .then(function(){ return true; }).catch(function(){ queue(payload); return false; });
+  }
+  function flush(){
+    if(!CFG.endpoint || !navigator.onLine) return;
+    var q=read(QUEUE,[]); if(!q.length) return;
+    write(QUEUE,[]);
+    q.forEach(function(p){ fetch(CFG.endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)}).catch(function(){ queue(p); }); });
+  }
+  window.addEventListener('online',flush);
+
+  function captureInfo(level,skipped){
+    var x=ensure(level);
+    var school=document.getElementById('v307School'), grade=document.getElementById('v307Grade'), cls=document.getElementById('v307Class'), num=document.getElementById('v307Number');
+    x.school=skipped?'미입력':((school&&school.value.trim())||'미입력');
+    x.grade=skipped?'':((grade&&grade.value)||''); x.classNo=skipped?'':((cls&&cls.value)||''); x.studentNo=skipped?'':((num&&num.value)||'');
+    x.infoEntered=!skipped && !!(school&&school.value.trim()); x.updatedAt=now(); x.status='STARTED'; saveLocal(x); sync(x,skipped?'INFO_SKIPPED':'INFO_SAVED');
+  }
+  function quizStarted(level,phase){
+    var x=ensure(level); phase=String(phase||'').toLowerCase();
+    if(phase==='pre'){ x.preStatus='IN_PROGRESS'; x.status='PRE_IN_PROGRESS'; }
+    if(phase==='post'){ x.postStatus='IN_PROGRESS'; x.status='POST_IN_PROGRESS'; }
+    x.updatedAt=now(); saveLocal(x); sync(x,phase==='post'?'POST_STARTED':'PRE_STARTED');
+  }
+  function complete(phase,score){
+    var x=ensure(); if(!score) return;
+    if(phase==='pre'){
+      if(x.preStatus==='COMPLETED' && x.prePercent===score.percent) return;
+      x.preStatus='COMPLETED'; x.preRaw=score.raw; x.prePercent=score.percent; x.preCompletedAt=now(); x.status='PRE_COMPLETED';
+    }else{
+      if(x.postStatus==='COMPLETED' && x.postPercent===score.percent) return;
+      x.postStatus='COMPLETED'; x.postRaw=score.raw; x.postPercent=score.percent; x.postCompletedAt=now(); x.status='POST_COMPLETED'; x.finalized=true;
+    }
+    x.updatedAt=now(); calc(x); saveLocal(x); sync(x,phase==='pre'?'PRE_COMPLETED':'POST_COMPLETED');
+  }
+  function markPreSkipped(){ var x=ensure(); x.preStatus='SKIPPED'; x.status='PRE_SKIPPED'; x.updatedAt=now(); saveLocal(x); sync(x,'PRE_SKIPPED'); }
+  function newLearning(level){ var old=active(); if(old) old.finalized=true; try{localStorage.removeItem(ACTIVE);}catch(e){} return ensure(level); }
+
+  // Public API for the existing quiz code and the Google Sheets connector.
+  window.TaxClassData={
+    config:function(endpoint){ CFG.endpoint=String(endpoint||''); flush(); },
+    get:active, ensure:ensure, newLearning:newLearning, captureInfo:captureInfo,
+    quizStarted:quizStarted, completePre:function(raw,total){ complete('pre',{raw:Number(raw),percent:pct(raw,total||5)}); },
+    completePost:function(raw,total){ complete('post',{raw:Number(raw),percent:pct(raw,total||10)}); },
+    markPreSkipped:markPreSkipped, flush:flush,
+    pendingCount:function(){ return read(QUEUE,[]).length; }
+  };
+
+  // Hook the existing UI without changing its design.
+  function wrapFunctions(){
+    if(typeof window.startQuiz==='function' && !window.startQuiz.__v401){
+      var oldStart=window.startQuiz;
+      var f=function(level,phase){ quizStarted(level,phase); return oldStart.apply(this,arguments); }; f.__v401=true; window.startQuiz=f;
+    }
+    if(typeof window.submitLearningInfo==='function' && !window.submitLearningInfo.__v401){
+      var oldInfo=window.submitLearningInfo;
+      var g=function(){ var lv=(typeof window.v307PendingLevel!=='undefined'&&window.v307PendingLevel)||'low'; captureInfo(lv,false); return oldInfo.apply(this,arguments); }; g.__v401=true; window.submitLearningInfo=g;
+    }
+    if(typeof window.v402SkipLearningInfo==='function' && !window.v402SkipLearningInfo.__v401){
+      var oldSkip=window.v402SkipLearningInfo;
+      var h=function(){ var lv=(typeof window.v307PendingLevel!=='undefined'&&window.v307PendingLevel)||'low'; captureInfo(lv,true); return oldSkip.apply(this,arguments); }; h.__v401=true; window.v402SkipLearningInfo=h;
+    }
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    wrapFunctions(); setTimeout(wrapFunctions,250); setTimeout(wrapFunctions,1000);
+    var pre=document.getElementById('preScore'), post=document.getElementById('postScore');
+    function watch(el,phase,total){ if(!el)return; var last=''; var check=function(){ var t=(el.textContent||'').trim(); if(t===last)return; last=t; var sc=parseScoreText(t,total); if(sc) complete(phase,sc); }; new MutationObserver(check).observe(el,{childList:true,subtree:true,characterData:true}); check(); }
+    watch(pre,'pre',5); watch(post,'post',10);
+    flush();
+  });
+})();
+</script>
+
 </body></html>
