@@ -2322,81 +2322,93 @@ body.v412-force-desktop #v412MobileReturn{
 </style>
 
 
-<!-- V392 — 모바일 가로모드: 세금교실 학년 안내 팝업 내부 스크롤 + 배경 스크롤 잠금 -->
-<style id="v392-mobile-landscape-intro-scroll-fix">
-@media (orientation: landscape) and (max-height: 560px) and (hover: none) and (pointer: coarse){
+<!-- V393 — 모바일 가로모드: 안내 팝업 자체 스크롤 + 본문 완전 고정 -->
+<style id="v393-mobile-landscape-modal-scroll-lock">
+@media (orientation: landscape) and (max-height: 600px) and (pointer: coarse){
   #gradeIntroModal.v108-intro-modal{
-    overflow:hidden !important;
-    overscroll-behavior:contain !important;
-    touch-action:none !important;
-  }
-  #gradeIntroModal .v108-intro-panel{
+    position:fixed !important;
+    inset:0 !important;
     box-sizing:border-box !important;
-    max-height:calc(100dvh - 16px) !important;
-    max-height:calc(100vh - 16px) !important;
+    height:100dvh !important;
+    max-height:100dvh !important;
     overflow-x:hidden !important;
     overflow-y:auto !important;
     -webkit-overflow-scrolling:touch !important;
-    overscroll-behavior-y:contain !important;
+    overscroll-behavior:contain !important;
     touch-action:pan-y !important;
-    scrollbar-gutter:stable !important;
+    padding:8px 0 !important;
+    align-items:flex-start !important;
   }
-  /* 실제 학년별 시작 이미지/핫스팟도 패널과 함께 세로로 이동 */
+  #gradeIntroModal .v108-intro-panel{
+    box-sizing:border-box !important;
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+    margin:0 auto !important;
+    flex:none !important;
+    touch-action:pan-y !important;
+  }
   #gradeIntroModal .v260LowerStage,
   #gradeIntroModal .v264UpperStage,
-  #gradeIntroModal .v274MiddleStage{
+  #gradeIntroModal .v274MiddleStage,
+  #gradeIntroModal img{
     touch-action:pan-y !important;
   }
-  html.v392-intro-landscape-open,
-  body.v392-intro-landscape-open{
+  html.v393-intro-lock,
+  body.v393-intro-lock{
     overflow:hidden !important;
     overscroll-behavior:none !important;
-    touch-action:none !important;
   }
-  body.v392-intro-landscape-open #gradeIntroModal .v108-intro-panel{
-    touch-action:pan-y !important;
+  body.v393-intro-lock{
+    position:fixed !important;
+    left:0 !important;
+    right:0 !important;
+    width:100% !important;
   }
 }
 </style>
-<script id="v392-mobile-landscape-intro-scroll-script">
+<script id="v393-mobile-landscape-modal-scroll-lock-script">
 (function(){
   var modal=document.getElementById('gradeIntroModal');
   if(!modal) return;
   var locked=false, savedY=0;
-  function isLandscapeMobile(){
-    return window.matchMedia &&
-      window.matchMedia('(orientation: landscape) and (max-height: 560px) and (hover: none) and (pointer: coarse)').matches;
+  function landscape(){
+    return !!(window.matchMedia && window.matchMedia('(orientation: landscape) and (max-height: 600px) and (pointer: coarse)').matches);
   }
-  function isOpen(){
+  function open(){
     if(modal.getAttribute('aria-hidden')==='false') return true;
-    var cs=window.getComputedStyle(modal);
-    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0;
+    var cs=getComputedStyle(modal);
+    return cs.display!=='none' && cs.visibility!=='hidden' && parseFloat(cs.opacity||'1')>0 && cs.pointerEvents!=='none';
   }
   function lock(){
     if(locked) return;
     savedY=window.scrollY||window.pageYOffset||0;
-    document.documentElement.classList.add('v392-intro-landscape-open');
-    document.body.classList.add('v392-intro-landscape-open');
+    document.documentElement.classList.add('v393-intro-lock');
+    document.body.classList.add('v393-intro-lock');
+    document.body.style.top=(-savedY)+'px';
+    modal.scrollTop=0;
     locked=true;
-    var panel=modal.querySelector('.v108-intro-panel');
-    if(panel) panel.scrollTop=0;
   }
   function unlock(){
     if(!locked) return;
-    document.documentElement.classList.remove('v392-intro-landscape-open');
-    document.body.classList.remove('v392-intro-landscape-open');
+    document.documentElement.classList.remove('v393-intro-lock');
+    document.body.classList.remove('v393-intro-lock');
+    document.body.style.top='';
     locked=false;
     window.scrollTo(0,savedY);
   }
   function sync(){
-    if(isLandscapeMobile() && isOpen()) lock(); else unlock();
+    if(landscape() && open()) lock(); else unlock();
   }
-  new MutationObserver(sync).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
+  /* 가로모드 팝업이 열린 동안 배경으로 전달되는 터치를 차단 */
+  document.addEventListener('touchmove',function(e){
+    if(!locked) return;
+    if(!e.target.closest || !e.target.closest('#gradeIntroModal')) e.preventDefault();
+  },{passive:false,capture:true});
+  new MutationObserver(function(){setTimeout(sync,0);}).observe(modal,{attributes:true,attributeFilter:['class','style','aria-hidden']});
   window.addEventListener('resize',sync,{passive:true});
-  window.addEventListener('orientationchange',function(){setTimeout(sync,80);},{passive:true});
-  document.addEventListener('click',function(e){
-    if(e.target && e.target.closest && e.target.closest('.v247GradeCard')) setTimeout(sync,0);
-  },true);
+  window.addEventListener('orientationchange',function(){setTimeout(sync,100);},{passive:true});
+  document.addEventListener('click',function(){setTimeout(sync,0);},true);
   sync();
 })();
 </script>
